@@ -1,8 +1,8 @@
 <template>
   <template v-if="target">
     <a
-      :class="[type, shape, size, status]"
-      :disabled="disabled"
+      :class="[type, shape, size, status, disabled ? 'disabled' : undefined]"
+      class="element"
       :href="target"
       @click="handleclick"
     >
@@ -10,7 +10,12 @@
     </a>
   </template>
   <template v-else>
-    <button :class="[type, shape, size, status]" :disabled="disabled" @click="handleclick">
+    <button
+      :class="[type, shape, size, status, disabled ? 'disabled' : undefined]"
+      class="element"
+      :disabled="disabled"
+      @click="handleclick"
+    >
       <span v-if="loading"> </span>
       <slot />
     </button>
@@ -19,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+// import less from 'less'
 import type { PropType } from 'vue'
 // import { onMounted, getCurrentInstance, computed } from 'vue';
 import type { ButtonType, ButtonShape, ButtonStatus, ButtonSize } from './constant'
@@ -104,13 +110,41 @@ function handleclick(ev: MouseEvent): void {
     ev.preventDefault()
     return
   }
+  ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }
 </script>
 
-<style scoped>
-button,
-a {
+<style lang="less" scoped>
+@color-white: rgba(248, 247, 240, 1);
+@color-text-hover: rgba(248, 247, 240, 1);
+@color-text-hover-light: rgba(241, 245, 197);
+
+@color-normal-dark: rgba(91, 164, 174, 1);
+@color-normal-light: rgba(91, 164, 174, 0.1);
+@color-normal-hover-primary: rgba(91, 164, 174, 0.7);
+@color-normal-hover-default-dashed: rgba(91, 164, 174, 0.3);
+@color-normal-hover-link: rgba(91, 164, 174, 0.6);
+
+@color-success-dark: rgba(140, 184, 131, 1);
+@color-success-light: rgba(140, 184, 131, 0.1);
+@color-success-hover-primary: rgba(140, 184, 131, 0.7);
+@color-success-hover-default-dashed: rgba(140, 184, 131, 0.3);
+@color-success-hover-link: rgba(140, 184, 131, 0.6);
+
+@color-warning-dark: rgba(240, 85, 16, 1);
+@color-warning-light: rgba(240, 85, 16, 0.1);
+@color-warning-hover-primary: rgba(240, 85, 16, 0.7);
+@color-warning-hover-default-dashed: rgba(240, 85, 16, 0.3);
+@color-warning-hover-link: rgba(240, 85, 16, 0.6);
+
+@color-danger-dark: rgba(195, 37, 43, 1);
+@color-danger-light: rgba(195, 37, 43, 0.1);
+@color-danger-hover-primary: rgba(195, 37, 43, 0.7);
+@color-danger-hover-default-dashed: rgba(195, 37, 43, 0.3);
+@color-danger-hover-link: rgba(195, 37, 43, 0.6);
+
+.element {
   background-color: var(--background-color);
   height: var(--height);
   font-size: var(--font-size);
@@ -128,143 +162,147 @@ a {
   cursor: pointer;
   /* 禁止左键选中 */
   user-select: none;
+  outline: none;
+}
+
+// 针对悬浮时背景颜色变化的样式
+.background_hover(@color_hover) {
+  &:hover:not(.disabled) {
+    --background-color: @color_hover;
+  }
+}
+// 针对悬浮时文本颜色变化的样式
+.text_hover(@color_hover) {
+  &:hover:not(.disabled) {
+    --color: @color_hover;
+  }
+}
+// 针对悬浮时背景颜色变化的样式，三者合一
+.focus_hover_active_background(@color_focus, @color_hover, @color_active) {
+  &:focus:not(.disabled) {
+    // transform: translateY(2px);
+    box-shadow: 0 3px 5px @color_focus; /* 在活动状态下改变阴影颜色 */
+  }
+  .background_hover(@color_hover);
+  &:active:not(.disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 3px 4px @color_active; /* 在活动状态下改变阴影颜色 */
+  }
+}
+// 针对悬浮时文本颜色变化的样式，三者合一
+.focus_hover_active_text(@color_focus, @color_hover, @color_active) {
+  &:focus:not(.disabled) {
+    // transform: translateY(2px);
+    box-shadow: 0 3px 5px @color_focus; /* 在活动状态下改变阴影颜色 */
+  }
+  .text_hover(@color_hover);
+  &:active:not(.disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 3px 4px @color_active; /* 在活动状态下改变阴影颜色 */
+  }
+}
+.status_mixins(@color_status,@background_color_status,@background_color_hover) {
+  --color: @color_status;
+  --background-color: @background_color_status;
 }
 
 .primary {
   --border-style: none;
+  &.normal {
+    .status_mixins(@color-white,@color-normal-dark,@color-normal-hover-primary);
+    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-primary,@color-normal-dark);
+  }
+  &.success {
+    .status_mixins(@color-white,@color-success-dark,@color-success-hover-primary);
+    .focus_hover_active_background(@color-success-dark,@color-success-hover-primary,@color-success-dark);
+  }
+  &.warning {
+    .status_mixins(@color-white,@color-warning-dark,@color-warning-hover-primary);
+    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-primary,@color-warning-dark);
+  }
+  &.danger {
+    .status_mixins(@color-white,@color-danger-dark,@color-danger-hover-primary);
+    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-primary,@color-danger-dark);
+  }
 }
-.primary.normal {
-  --color: rgba(248, 247, 240, 1);
-  --background-color: rgba(91, 164, 174, 1);
-}
-.primary.success {
-  --color: rgba(248, 247, 240, 1);
-  --background-color: rgba(140, 184, 131, 1);
-}
-.primary.warning {
-  --color: rgba(248, 247, 240, 1);
-  --background-color: rgba(240, 85, 16, 1);
-}
-.primary.danger {
-  --color: rgba(248, 247, 240, 1);
-  --background-color: rgba(195, 37, 43, 1);
-}
-.primary.normal:hover {
-  --background-color: rgba(91, 164, 174, 0.7);
-  /* --background-color: rgba(248, 247, 240, 1); */
-}
-.primary.success:hover {
-  --background-color: rgba(140, 184, 131, 0.7);
-}
-.primary.warning:hover {
-  --background-color: rgba(240, 85, 16, 0.7);
-}
-.primary.danger:hover {
-  --background-color: rgba(195, 37, 43, 0.7);
-}
-
 .default {
-  border-style: solid;
-}
-.default.normal {
-  --color: rgba(91, 164, 174, 1);
-  --background-color: rgba(91, 164, 174, 0.1);
-}
-.default.success {
-  --color: rgba(140, 184, 131, 1);
-  --background-color: rgba(140, 184, 131, 0.1);
-}
-.default.warning {
-  --color: rgba(240, 85, 16, 1);
-  --background-color: rgba(240, 85, 16, 0.1);
-}
-.default.danger {
-  --color: rgba(195, 37, 43, 1);
-  --background-color: rgba(195, 37, 43, 0.1);
+  --border-style: solid;
+  &.normal {
+    .status_mixins(@color-normal-dark,@color-normal-light,@color-normal-hover-default-dashed);
+    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-default-dashed,@color-normal-dark);
+  }
+  &.success {
+    .status_mixins(@color-success-dark,@color-success-light,@color-success-hover-default-dashed);
+    .focus_hover_active_background(@color-success-dark,@color-success-hover-default-dashed,@color-success-dark);
+  }
+  &.warning {
+    .status_mixins(@color-warning-dark,@color-warning-light,@color-warning-hover-default-dashed);
+    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-default-dashed,@color-warning-dark);
+  }
+  &.danger {
+    .status_mixins(@color-danger-dark,@color-danger-light,@color-danger-hover-default-dashed);
+    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-default-dashed,@color-danger-dark);
+  }
 }
 .dashed {
   --border-style: dashed;
+  &.normal {
+    .status_mixins(@color-normal-dark,@color-normal-light,@color-normal-hover-default-dashed);
+    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-default-dashed,@color-normal-dark);
+  }
+  &.success {
+    .status_mixins(@color-success-dark,@color-success-light,@color-success-hover-default-dashed);
+    .focus_hover_active_background(@color-success-dark,@color-success-hover-default-dashed,@color-success-dark);
+  }
+  &.warning {
+    .status_mixins(@color-warning-dark,@color-warning-light,@color-warning-hover-default-dashed);
+    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-default-dashed,@color-warning-dark);
+  }
+  &.danger {
+    .status_mixins(@color-danger-dark,@color-danger-light,@color-danger-hover-default-dashed);
+    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-default-dashed,@color-danger-dark);
+  }
 }
-.dashed.normal {
-  --color: rgba(91, 164, 174, 1);
-  --background-color: rgba(91, 164, 174, 0.1);
-}
-.dashed.success {
-  --color: rgba(140, 184, 131, 1);
-  --background-color: rgba(140, 184, 131, 0.1);
-}
-.dashed.warning {
-  --color: rgba(240, 85, 16, 1);
-  --background-color: rgba(240, 85, 16, 0.1);
-}
-.dashed.danger {
-  --color: rgba(195, 37, 43, 1);
-  --background-color: rgba(195, 37, 43, 0.1);
-}
-
-.default.normal:hover,
-.dashed.normal:hover {
-  --background-color: rgba(91, 164, 174, 0.3);
-}
-.default.success:hover,
-.dashed.success:hover {
-  --background-color: rgba(140, 184, 131, 0.3);
-}
-.default.warning:hover,
-.dashed.warning:hover {
-  --background-color: rgba(240, 85, 16, 0.3);
-}
-.default.danger:hover,
-.dashed.danger:hover {
-  --background-color: rgba(195, 37, 43, 0.3);
-}
-
 .text {
   --border-style: none;
+  // .focus_hover_active(@color-text-hover-light,@color-text-hover,@color-text-hover-light);
+  &.normal {
+    --color: @color-normal-dark;
+    .focus_hover_active_background(@color-normal-dark,@color-text-hover,@color-normal-dark);
+  }
+  &.success {
+    --color: @color-success-dark;
+    .focus_hover_active_background(@color-success-dark,@color-text-hover,@color-success-dark);
+  }
+  &.warning {
+    --color: @color-warning-dark;
+    .focus_hover_active_background(@color-warning-dark,@color-text-hover,@color-warning-dark);
+  }
+  &.danger {
+    --color: @color-danger-dark;
+    .focus_hover_active_background(@color-danger-dark,@color-text-hover,@color-danger-dark);
+  }
 }
-.text:hover {
-  --background-color: rgba(248, 247, 240, 1);
-}
-.text.normal {
-  --color: rgba(91, 164, 174, 1);
-}
-.text.success {
-  --color: rgba(140, 184, 131, 1);
-}
-.text.warning {
-  --color: rgba(240, 85, 16, 1);
-}
-.text.danger {
-  --color: rgba(195, 37, 43, 1);
+.link {
+  --border-style: none;
+  &.normal {
+    --color: @color-normal-dark;
+    .focus_hover_active_text(@color-normal-dark,@color-normal-hover-link,@color-normal-dark);
+  }
+  &.success {
+    --color: @color-success-dark;
+    .focus_hover_active_text(@color-success-dark,@color-success-hover-link,@color-success-dark);
+  }
+  &.warning {
+    --color: @color-warning-dark;
+    .focus_hover_active_text(@color-warning-dark,@color-warning-hover-link,@color-warning-dark);
+  }
+  &.danger {
+    --color: @color-danger-dark;
+    .focus_hover_active_text(@color-danger-dark,@color-danger-hover-link,@color-danger-dark);
+  }
 }
 
-/* .link {
-} */
-
-.link.normal {
-  --color: rgba(91, 164, 174, 1);
-}
-.link.success {
-  --color: rgba(140, 184, 131, 1);
-}
-.link.warning {
-  --color: rgba(240, 85, 16, 1);
-}
-.link.danger {
-  --color: rgba(195, 37, 43, 1);
-}
-.link.normal:hover {
-  --color: rgba(91, 164, 174, 0.6);
-}
-.link.success:hover {
-  --color: rgba(140, 184, 131, 0.6);
-}
-.link.warning:hover {
-  --color: rgba(240, 85, 16, 0.6);
-}
-.link.danger:hover {
-  --color: rgba(195, 37, 43, 0.6);
-}
 .square {
   border-radius: 0%;
 }
@@ -292,25 +330,8 @@ a {
   --font-size: large;
 }
 
-button[disabled]:hover,
-a[disabled='true']:hover {
-  cursor: not-allowed;
+.disabled {
+  opacity: 0.5; /* 降低不透明度 */
+  cursor: not-allowed; /* 更改光标样式 */
 }
-
-/* a:hover,
-button:hover {
-  border-color: rgb(86, 166, 182);
-  color: rgb(86, 166, 182);
-} */
-
-/* button[loading]:hover {
-  border-color: rgb(86, 166, 182);
-  color: rgb(86, 166, 182);
-} */
-
-/* button:active,
-button:focus {
-  border-color: rgb(86, 166, 182);
-  color: rgb(86, 166, 182);
-} */
 </style>

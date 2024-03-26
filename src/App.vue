@@ -9,13 +9,13 @@ function foo() {
 </script>
 
 <template>
-  <!-- <aer-button type="primary" @click="foo">我是primary按钮</aer-button>
+  <aer-button type="primary" @click="foo">我是primary按钮</aer-button>
   <aer-button type="dashed" @click="foo" disabled>我是dashed按钮</aer-button>
   <aer-button type="link" target="https://www.baidu.com/" disabled>我是link按钮</aer-button>
   <aer-button type="link" target="https://www.baidu.com/">我是link按钮</aer-button>
   <aer-button type="text" size="large" @click="foo">我是text按钮</aer-button>
   <aer-button type="default" size="small">我是default按钮</aer-button>
-  <h1>test</h1> -->
+  <h1>test</h1>
 
   <aer-button type="primary" shape="square">我是primary按钮</aer-button>
   <aer-button type="primary" shape="square" status="success">我是primary按钮</aer-button>
