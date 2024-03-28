@@ -6,6 +6,7 @@
   <buton>fsdfsdf</buton> <buton>fsdfsdf</buton> <buton>fsdfsdf</buton> -->
   <Input placeholder="这是默认输入框" size="large" v-model="str" />
   <label>{{ str }}</label>
+  <Input placeholder="这是默认输入框" size="small" v-model="str" disabled />
   <!-- <Input defaultValue="awerewersda" placeholder="这是默认输入框" :allowClear="true">
     <template v-slot:append><Button>后置标签</Button></template>
     <template v-slot:prepend><Button>前置标签</Button></template>
@@ -24,4 +25,8 @@ import { ref } from 'vue'
 var str = ref('我没变')
 </script>
 
-<style scoped></style>
+<style scoped>
+#app{
+  
+}
+</style>

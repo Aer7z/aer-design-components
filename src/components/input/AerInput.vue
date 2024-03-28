@@ -2,12 +2,13 @@
   <!-- <template v-if="$slots.prepend">
     <span :class="[size]"><slot name="prepend" /></span>
   </template> -->
-  <span :class="[size]" class="newInput">
+  <span :class="[styleClass,size]" class="newInput">
     <!-- <template v-if="$slots.prefix">
       <slot name="prefix" />
     </template> -->
     <!-- <input :type="type" :value="defaultValue" :placeholder="placeholder" /> -->
-    <input v-model="model" @input="update" />
+    <input v-model="model" :disabled="disabled"/>
+    <span>{{ props }}</span>
 
     <!-- <template v-if="allowClear">删除</template> -->
     <!-- <template v-if="$slots.suffix">
@@ -28,9 +29,6 @@ defineOptions({
 })
 const model = defineModel()
 console.log(model)
-function update() {
-  model.value += '我变了'
-}
 
 const props = defineProps({
   modelValue: {
