@@ -1,0 +1,76 @@
+input {
+  border: none;
+}
+input:focus {
+  outline: none; /* 取消默认的外部轮廓线 */
+  border-color: transparent; /* 设置边框颜色为透明 */
+  box-shadow: none; /* 取消默认的阴影效果 */
+}
+.newInput {
+  border: solid 0.5px rgba(91, 164, 174, 1);
+  // background: black;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin: 0px;
+
+  // height: var(--height);
+  // font-size: var(--font-size);
+}
+input {
+  &:extend(.size);
+  // position: absolute; /* 设置子元素为绝对定位 */
+  width: 100%; /* 子元素宽度填充父元素 */
+  height: 100%; /* 子元素高度填充父元素 */
+}
+
+.size {
+  height: var(--height);
+  font-size: var(--font-size);
+  // background: black;
+  // background: black;
+}
+
+.mini {
+  --height: 24px;
+  --font-size: x-small;
+}
+.small {
+  --height: 28px;
+  --font-size: small;
+}
+.medium {
+  --height: 32px;
+  --font-size: medium;
+}
+.large {
+  --height: 36px;
+  --font-size: large;
+}
+// .input-wrapper {
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .input-wrapper .suffix {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   right: 20%; /* 调整右边距离 */
+//   background-color: aquamarine;
+// }
+// .input-wrapper .prefix {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   left: 20%; /* 调整右边距离 */
+//   background-color: aquamarine;
+// }
+
+.disabled {
+  opacity: 0.5; /* 降低不透明度 */
+  cursor: not-allowed; /* 更改光标样式 */
+}
