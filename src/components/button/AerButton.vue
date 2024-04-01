@@ -35,13 +35,34 @@ defineOptions({
 
 const props = defineProps({
   /**
-   * @zh 按钮的类型，分为五种：默认按钮、主要按钮、虚框按钮、文字按钮、链接按钮。
-   * @en Button types are divided into five types: default, primary, dashed, text and link.
-   * @defaultValue 'default'
+   * @zh 按钮是否禁用
+   * @en Whether the button is disabled
+   * @defaultValue false
    */
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'default'
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  icon: {
+    type: String
+  },
+  /**
+   * @zh 按钮是否为加载中状态
+   * @en Whether the button is in the loading state
+   */
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * @zh 按钮的尺寸
+   * @en Button size
+   * @values 'mini','small','medium','large'
+   * @defaultValue 'medium'
+   */
+  size: {
+    type: String as PropType<ButtonSize>,
+    default: 'medium'
   },
   /**
    * @zh 按钮的形状
@@ -65,16 +86,6 @@ const props = defineProps({
     default: 'normal'
   },
   /**
-   * @zh 按钮的尺寸
-   * @en Button size
-   * @values 'mini','small','medium','large'
-   * @defaultValue 'medium'
-   */
-  size: {
-    type: String as PropType<ButtonSize>,
-    default: 'medium'
-  },
-  /**
    * @zh 设置跳转链接。设置此属性时，按钮渲染为a标签。
    * @en Set up a jump link. When this property is set, the button is rendered as `<a>`
    */
@@ -82,24 +93,13 @@ const props = defineProps({
     type: String
   },
   /**
-   * @zh 按钮是否为加载中状态
-   * @en Whether the button is in the loading state
+   * @zh 按钮的类型，分为五种：默认按钮、主要按钮、虚框按钮、文字按钮、链接按钮。
+   * @en Button types are divided into five types: default, primary, dashed, text and link.
+   * @defaultValue 'default'
    */
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  /**
-   * @zh 按钮是否禁用
-   * @en Whether the button is disabled
-   * @defaultValue false
-   */
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  icon: {
-    type: String
+  type: {
+    type: String as PropType<ButtonType>,
+    default: 'default'
   }
 })
 const emits = defineEmits({
