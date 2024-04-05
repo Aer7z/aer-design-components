@@ -1,5 +1,6 @@
 export const BUTTON_TYPES = ['default', 'primary', 'dashed', 'text', 'link'] as const
 export type ButtonType = (typeof BUTTON_TYPES)[number]
+
 export const BUTTON_SHAPES = ['square', 'circle', 'round'] as const
 export type ButtonShape = (typeof BUTTON_SHAPES)[number]
 

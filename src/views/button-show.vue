@@ -38,10 +38,16 @@
   <Button type="link" status="danger">我是link按钮</Button>
   <!-- <Button type="default" shape="circle">我是default按钮</Button>
   <Button type="default" shape="round">我</Button> -->
+  
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Button from '../components/button/index'
+// import  '../components/button/index'
+
+function foo(): void {
+  console.log('我爱你')
+}
 </script>
 
 <style></style>

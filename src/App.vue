@@ -3,6 +3,10 @@
   <div>
     <button><router-link to="/Button">Button</router-link></button>
     <button><router-link to="/Input">Input</router-link></button>
+    <button><router-link to="Dialog">Dialog</router-link></button>
+    <AerButton>我</AerButton>
+    <!-- <Aer></Aer> -->
+    <!-- <Aer_Button></Aer_Button> -->
   </div>
 
   <br /><br />
@@ -10,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+// import ButtonGroup from './components/button/button-group.vue';
+// import Button from './components/button/button.vue'
+
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
 </script>

@@ -1,0 +1,48 @@
+@import '../../style/theme.less';
+
+.dialogWrapper {
+  position: fixed;
+  background-color: rgba(#000000, 0.5);
+  inset: 0;
+  // width:100%;
+  overflow: auto;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .dialog {
+    background-color: rgba(#000000, 0.5);
+    // width: 50vw;
+    // height: 30vh;
+    // display: ;
+    box-sizing: border-box;
+    margin: 3vh 8vw;
+    padding: 4vh 8vw;
+    &Header {
+      background-color: rgba(#006600, 0.5);
+      padding: 2vh 10vw;
+      position: relative;
+      .dialogHeaderTitle {
+      }
+      .dialogHeaderButton {
+        position: absolute;
+        right: 1vw;
+      }
+    }
+    &Body {
+      padding: 4vh 10vw;
+      background-color: rgba(#660000, 0.5);
+    }
+    &Footer {
+      padding: 2vh 10vw;
+      position: relative;
+      text-align: right;
+      background-color: rgba(#000066, 0.5);
+      .dialogFooterButton:first-child {
+        margin-right: 1vw;
+      }
+    }
+  }
+}
