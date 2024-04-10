@@ -1,193 +1,651 @@
 @import '../../style/theme.less';
+@import '../../style/color/index.less';
+@import './token.less';
 
-.element {
-  background-color: var(--background-color);
-  height: var(--height);
-  font-size: var(--font-size);
-  color: var(--color);
+.@{components-prefix}btn {
+  cursor: var(--cursor, pointer);
+
   border-style: var(--border-style);
+  background-color: var(--background-color);
+  color: var(--color);
+  // outline-color: antiquewhite;
   border-color: var(--border-color);
+  outline-color: var(--outline-color);
+  &:hover {
+    --background-color: var(--background-color_hover);
+    --color: var(--color_hover);
+    --border-color: var(--border-color_hover);
+  }
+  &:active {
+    --background-color: var(--background-color_active);
+    --color: var(--color_active);
+    --border-color: var(--border-color_active);
+  }
+  &:focus {
+    --outline-color: var(--outline-color_focus);
+    //只有聚焦状态显示轮廓
+    outline-style: var(--outline-style, solid);
+    outline-width: 4px;
+    outline-offset: 1px;
+  }
+  &:disabled {
+    --background-color: var(--background-color_disabled);
+    --color: var(--color_disabled);
+    --border-color: var(--border-color_disabled);
+  }
 
-  // position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   box-sizing: border-box;
   white-space: nowrap;
-  cursor: pointer;
   text-decoration: none;
   /* 禁止左键选中 */
   user-select: none;
-  outline: none;
 }
 
-// 针对悬浮时背景颜色变化的样式
-.background_hover(@color_hover) {
-  &:hover:not(.disabled) {
-    --background-color: @color_hover;
-  }
-}
-// 针对悬浮时文本颜色变化的样式
-.text_hover(@color_hover) {
-  &:hover:not(.disabled) {
-    --color: @color_hover;
-  }
-}
-// 针对悬浮时背景颜色变化的样式，三者合一
-.focus_hover_active_background(@color_focus, @color_hover, @color_active) {
-  &:focus:not(.disabled) {
-    // transform: translateY(2px);
-    box-shadow: 0 3px 5px @color_focus; /* 在活动状态下改变阴影颜色 */
-  }
-  .background_hover(@color_hover);
-  &:active:not(.disabled) {
-    transform: translateY(2px);
-    box-shadow: 0 3px 4px @color_active; /* 在活动状态下改变阴影颜色 */
-  }
-}
-// 针对悬浮时文本颜色变化的样式，三者合一
-.focus_hover_active_text(@color_focus, @color_hover, @color_active) {
-  &:focus:not(.disabled) {
-    // transform: translateY(2px);
-    box-shadow: 0 3px 5px @color_focus; /* 在活动状态下改变阴影颜色 */
-  }
-  .text_hover(@color_hover);
-  &:active:not(.disabled) {
-    transform: translateY(2px);
-    box-shadow: 0 3px 4px @color_active; /* 在活动状态下改变阴影颜色 */
-  }
-}
-.status_mixins(@color_status,@background_color_status,@background_color_hover) {
-  --color: @color_status;
-  --background-color: @background_color_status;
-}
-
-.primary {
-  --border-style: none;
-  &.normal {
-    .status_mixins(@color-white,@color-normal-dark,@color-normal-hover-primary);
-    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-primary,@color-normal-dark);
-  }
-  &.success {
-    .status_mixins(@color-white,@color-success-dark,@color-success-hover-primary);
-    .focus_hover_active_background(@color-success-dark,@color-success-hover-primary,@color-success-dark);
-  }
-  &.warning {
-    .status_mixins(@color-white,@color-warning-dark,@color-warning-hover-primary);
-    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-primary,@color-warning-dark);
-  }
-  &.danger {
-    .status_mixins(@color-white,@color-danger-dark,@color-danger-hover-primary);
-    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-primary,@color-danger-dark);
-  }
-}
-.default {
+// primary 类型按钮及其各种状态
+.@{components-prefix}btn-type-primary {
   --border-style: solid;
-  &.normal {
-    .status_mixins(@color-normal-dark,@color-normal-light,@color-normal-hover-default-dashed);
-    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-default-dashed,@color-normal-dark);
+  // primary 按钮的 normal 状态
+  &.@{components-prefix}btn-status-normal {
+    --background-color: var(@btn-primary-color-bg_normal);
+    --color: var(@btn-primary-color-text_normal);
+    --border-color: var(@btn-primary-color-border_normal);
+
+    &:hover {
+      --background-color_hover: var(@btn-primary-color-bg_normal_hover);
+      --color_hover: var(@btn-primary-color-text_normal_hover);
+      --border-color_hover: var(@btn-primary-color-border_normal_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-primary-color-bg_normal_active);
+      --color_active: var(@btn-primary-color-text_normal_active);
+      --border-color_active: var(@btn-primary-color-border_normal_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-primary-color-outline_normal_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-primary-color-bg_normal_disabled);
+      --color_disabled: var(@btn-primary-color-text_normal_disabled);
+      --border-color_disabled: var(@btn-primary-color-border_normal_disabled);
+    }
   }
-  &.success {
-    .status_mixins(@color-success-dark,@color-success-light,@color-success-hover-default-dashed);
-    .focus_hover_active_background(@color-success-dark,@color-success-hover-default-dashed,@color-success-dark);
+  // primary 按钮的 success 状态
+  &.@{components-prefix}btn-status-success {
+    --background-color: var(@btn-primary-color-bg_success);
+    --color: var(@btn-primary-color-text_success);
+    --border-color: var(@btn-primary-color-border_success);
+    &:hover {
+      --background-color_hover: var(@btn-primary-color-bg_success_hover);
+      --color_hover: var(@btn-primary-color-text_success_hover);
+      --border-color_hover: var(@btn-primary-color-border_success_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-primary-color-bg_success_active);
+      --color_active: var(@btn-primary-color-text_success_active);
+      --border-color_active: var(@btn-primary-color-border_success_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-primary-color-outline_success_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-primary-color-bg_success_disabled);
+      --color_disabled: var(@btn-primary-color-text_success_disabled);
+      --border-color_disabled: var(@btn-primary-color-border_success_disabled);
+    }
   }
-  &.warning {
-    .status_mixins(@color-warning-dark,@color-warning-light,@color-warning-hover-default-dashed);
-    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-default-dashed,@color-warning-dark);
+  // primary 按钮的 warning 状态
+  &.@{components-prefix}btn-status-warning {
+    --background-color: var(@btn-primary-color-bg_warning);
+    --color: var(@btn-primary-color-text_warning);
+    --border-color: var(@btn-primary-color-border_warning);
+    &:hover {
+      --background-color_hover: var(@btn-primary-color-bg_warning_hover);
+      --color_hover: var(@btn-primary-color-text_warning_hover);
+      --border-color_hover: var(@btn-primary-color-border_warning_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-primary-color-bg_warning_active);
+      --color_active: var(@btn-primary-color-text_warning_active);
+      --border-color_active: var(@btn-primary-color-border_warning_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-primary-color-outline_warning_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-primary-color-bg_warning_disabled);
+      --color_disabled: var(@btn-primary-color-text_warning_disabled);
+      --border-color_disabled: var(@btn-primary-color-border_warning_disabled);
+    }
   }
-  &.danger {
-    .status_mixins(@color-danger-dark,@color-danger-light,@color-danger-hover-default-dashed);
-    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-default-dashed,@color-danger-dark);
+  // primary 按钮的 danger 状态
+  &.@{components-prefix}btn-status-danger {
+    --background-color: var(@btn-primary-color-bg_danger);
+    --color: var(@btn-primary-color-text_danger);
+    --border-color: var(@btn-primary-color-border_danger);
+    &:hover {
+      --background-color_hover: var(@btn-primary-color-bg_danger_hover);
+      --color_hover: var(@btn-primary-color-text_danger_hover);
+      --border-color_hover: var(@btn-primary-color-border_danger_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-primary-color-bg_danger_active);
+      --color_active: var(@btn-primary-color-text_danger_active);
+      --border-color_active: var(@btn-primary-color-border_danger_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-primary-color-outline_danger_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-primary-color-bg_danger_disabled);
+      --color_disabled: var(@btn-primary-color-text_danger_disabled);
+      --border-color_disabled: var(@btn-primary-color-border_danger_disabled);
+    }
   }
 }
-.dashed {
+// default 类型按钮及其各种状态
+.@{components-prefix}btn-type-default {
+  --border-style: solid;
+  // default 按钮的 normal 状态
+  &.@{components-prefix}btn-status-normal {
+    --background-color: var(@btn-default-color-bg_normal);
+    --color: var(@btn-default-color-text_normal);
+    --border-color: var(@btn-default-color-border_normal);
+    &:hover {
+      --background-color_hover: var(@btn-default-color-bg_normal_hover);
+      --color_hover: var(@btn-default-color-text_normal_hover);
+      --border-color_hover: var(@btn-default-color-border_normal_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-default-color-bg_normal_active);
+      --color_active: var(@btn-default-color-text_normal_active);
+      --border-color_active: var(@btn-default-color-border_normal_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-default-color-outline_normal_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-default-color-bg_normal_disabled);
+      --color_disabled: var(@btn-default-color-text_normal_disabled);
+      --border-color_disabled: var(@btn-default-color-border_normal_disabled);
+    }
+  }
+  // default 按钮的 success 状态
+  &.@{components-prefix}btn-status-success {
+    --background-color: var(@btn-default-color-bg_success);
+    --color: var(@btn-default-color-text_success);
+    --border-color: var(@btn-default-color-border_success);
+    &:hover {
+      --background-color_hover: var(@btn-default-color-bg_success_hover);
+      --color_hover: var(@btn-default-color-text_success_hover);
+      --border-color_hover: var(@btn-default-color-border_success_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-default-color-bg_success_active);
+      --color_active: var(@btn-default-color-text_success_active);
+      --border-color_active: var(@btn-default-color-border_success_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-default-color-outline_success_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-default-color-bg_success_disabled);
+      --color_disabled: var(@btn-default-color-text_success_disabled);
+      --border-color_disabled: var(@btn-default-color-border_success_disabled);
+    }
+  }
+  // default 按钮的 warning 状态
+  &.@{components-prefix}btn-status-warning {
+    --background-color: var(@btn-default-color-bg_warning);
+    --color: var(@btn-default-color-text_warning);
+    --border-color: var(@btn-default-color-border_warning);
+    &:hover {
+      --background-color_hover: var(@btn-default-color-bg_warning_hover);
+      --color_hover: var(@btn-default-color-text_warning_hover);
+      --border-color_hover: var(@btn-default-color-border_warning_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-default-color-bg_warning_active);
+      --color_active: var(@btn-default-color-text_warning_active);
+      --border-color_active: var(@btn-default-color-border_warning_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-default-color-outline_success_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-default-color-bg_warning_disabled);
+      --color_disabled: var(@btn-default-color-text_warning_disabled);
+      --border-color_disabled: var(@btn-default-color-border_warning_disabled);
+    }
+  }
+  // default 按钮的 danger 状态
+  &.@{components-prefix}btn-status-danger {
+    --background-color: var(@btn-default-color-bg_danger);
+    --color: var(@btn-default-color-text_danger);
+    --border-color: var(@btn-default-color-border_danger);
+    &:hover {
+      --background-color_hover: var(@btn-default-color-bg_danger_hover);
+      --color_hover: var(@btn-default-color-text_danger_hover);
+      --border-color_hover: var(@btn-default-color-border_danger_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-default-color-bg_danger_active);
+      --color_active: var(@btn-default-color-text_danger_active);
+      --border-color_active: var(@btn-default-color-border_danger_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-default-color-outline_danger_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-default-color-bg_danger_disabled);
+      --color_disabled: var(@btn-default-color-text_danger_disabled);
+      --border-color_disabled: var(@btn-default-color-border_danger_disabled);
+    }
+  }
+}
+// dashed 类型按钮及其各种状态
+.@{components-prefix}btn-type-dashed {
   --border-style: dashed;
-  &.normal {
-    .status_mixins(@color-normal-dark,@color-normal-light,@color-normal-hover-default-dashed);
-    .focus_hover_active_background(@color-normal-dark,@color-normal-hover-default-dashed,@color-normal-dark);
+  // dashed 按钮的 normal 状态
+  &.@{components-prefix}btn-status-normal {
+    --background-color: var(@btn-dashed-color-bg_normal);
+    --color: var(@btn-dashed-color-text_normal);
+    --border-color: var(@btn-dashed-color-border_normal);
+    &:hover {
+      --background-color_hover: var(@btn-dashed-color-bg_normal_hover);
+      --color_hover: var(@btn-dashed-color-text_normal_hover);
+      --border-color_hover: var(@btn-dashed-color-border_normal_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-dashed-color-bg_normal_active);
+      --color_active: var(@btn-dashed-color-text_normal_active);
+      --border-color_active: var(@btn-dashed-color-border_normal_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-dashed-color-outline_normal_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-dashed-color-bg_normal_disabled);
+      --color_disabled: var(@btn-dashed-color-text_normal_disabled);
+      --border-color_disabled: var(@btn-dashed-color-border_normal_disabled);
+    }
   }
-  &.success {
-    .status_mixins(@color-success-dark,@color-success-light,@color-success-hover-default-dashed);
-    .focus_hover_active_background(@color-success-dark,@color-success-hover-default-dashed,@color-success-dark);
+  // dashed 按钮的 success 状态
+  &.@{components-prefix}btn-status-success {
+    --background-color: var(@btn-dashed-color-bg_success);
+    --color: var(@btn-dashed-color-text_success);
+    --border-color: var(@btn-dashed-color-border_success);
+    &:hover {
+      --background-color_hover: var(@btn-dashed-color-bg_success_hover);
+      --color_hover: var(@btn-dashed-color-text_success_hover);
+      --border-color_hover: var(@btn-dashed-color-border_success_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-dashed-color-bg_success_active);
+      --color_active: var(@btn-dashed-color-text_success_active);
+      --border-color_active: var(@btn-dashed-color-border_success_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-dashed-color-outline_success_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-dashed-color-bg_success_disabled);
+      --color_disabled: var(@btn-dashed-color-text_success_disabled);
+      --border-color_disabled: var(@btn-dashed-color-border_success_disabled);
+    }
   }
-  &.warning {
-    .status_mixins(@color-warning-dark,@color-warning-light,@color-warning-hover-default-dashed);
-    .focus_hover_active_background(@color-warning-dark,@color-warning-hover-default-dashed,@color-warning-dark);
+  // dashed 按钮的 warning 状态
+  &.@{components-prefix}btn-status-warning {
+    --background-color: var(@btn-dashed-color-bg_warning);
+    --color: var(@btn-dashed-color-text_warning);
+    --border-color: var(@btn-dashed-color-border_warning);
+    &:hover {
+      --background-color_hover: var(@btn-dashed-color-bg_warning_hover);
+      --color_hover: var(@btn-dashed-color-text_warning_hover);
+      --border-color_hover: var(@btn-dashed-color-border_warning_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-dashed-color-bg_warning_active);
+      --color_active: var(@btn-dashed-color-text_warning_active);
+      --border-color_active: var(@btn-dashed-color-border_warning_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-dashed-color-outline_warning_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-dashed-color-bg_warning_disabled);
+      --color_disabled: var(@btn-dashed-color-text_warning_disabled);
+      --border-color_disabled: var(@btn-dashed-color-border_warning_disabled);
+    }
   }
-  &.danger {
-    .status_mixins(@color-danger-dark,@color-danger-light,@color-danger-hover-default-dashed);
-    .focus_hover_active_background(@color-danger-dark,@color-danger-hover-default-dashed,@color-danger-dark);
+  // dashed 按钮的 danger 状态
+  &.@{components-prefix}btn-status-danger {
+    --background-color: var(@btn-dashed-color-bg_danger);
+    --color: var(@btn-dashed-color-text_danger);
+    --border-color: var(@btn-dashed-color-border_danger);
+    &:hover {
+      --background-color_hover: var(@btn-dashed-color-bg_danger_hover);
+      --color_hover: var(@btn-dashed-color-text_danger_hover);
+      --border-color_hover: var(@btn-dashed-color-border_danger_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-dashed-color-bg_danger_active);
+      --color_active: var(@btn-dashed-color-text_danger_active);
+      --border-color_active: var(@btn-dashed-color-border_danger_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-dashed-color-outline_danger_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-dashed-color-bg_danger_disabled);
+      --color_disabled: var(@btn-dashed-color-text_danger_disabled);
+      --border-color_disabled: var(@btn-dashed-color-border_danger_disabled);
+    }
   }
 }
-.text {
+// text 类型按钮及其各种状态
+.@{components-prefix}btn-type-text {
   --border-style: none;
-  // .focus_hover_active(@color-text-hover-light,@color-text-hover,@color-text-hover-light);
-  &.normal {
-    --color: @color-normal-dark;
-    .focus_hover_active_background(@color-normal-dark,@color-text-hover,@color-normal-dark);
+  // text 按钮的 normal 状态
+  &.@{components-prefix}btn-status-normal {
+    --background-color: var(@btn-text-color-bg_normal);
+    --color: var(@btn-text-color-text_normal);
+    --border-color: var(@btn-text-color-border_normal);
+    &:hover {
+      --background-color_hover: var(@btn-text-color-bg_normal_hover);
+      --color_hover: var(@btn-text-color-text_normal_hover);
+      --border-color_hover: var(@btn-text-color-border_normal_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-text-color-bg_normal_active);
+      --color_active: var(@btn-text-color-text_normal_active);
+      --border-color_active: var(@btn-text-color-border_normal_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-text-color-outline_normal_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-text-color-bg_normal_disabled);
+      --color_disabled: var(@btn-text-color-text_normal_disabled);
+      --border-color_disabled: var(@btn-text-color-border_normal_disabled);
+    }
   }
-  &.success {
-    --color: @color-success-dark;
-    .focus_hover_active_background(@color-success-dark,@color-text-hover,@color-success-dark);
+  // text 按钮的 success 状态
+  &.@{components-prefix}btn-status-success {
+    --background-color: var(@btn-text-color-bg_success);
+    --color: var(@btn-text-color-text_success);
+    --border-color: var(@btn-text-color-border_success);
+    &:hover {
+      --background-color_hover: var(@btn-text-color-bg_success_hover);
+      --color_hover: var(@btn-text-color-text_success_hover);
+      --border-color_hover: var(@btn-text-color-border_success_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-text-color-bg_success_active);
+      --color_active: var(@btn-text-color-text_success_active);
+      --border-color_active: var(@btn-text-color-border_success_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-text-color-outline_success_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-text-color-bg_success_disabled);
+      --color_disabled: var(@btn-text-color-text_success_disabled);
+      --border-color_disabled: var(@btn-text-color-border_success_disabled);
+    }
   }
-  &.warning {
-    --color: @color-warning-dark;
-    .focus_hover_active_background(@color-warning-dark,@color-text-hover,@color-warning-dark);
+  // text 按钮的 warning 状态
+  &.@{components-prefix}btn-status-warning {
+    --background-color: var(@btn-text-color-bg_warning);
+    --color: var(@btn-text-color-text_warning);
+    --border-color: var(@btn-text-color-border_warning);
+    &:hover {
+      --background-color_hover: var(@btn-text-color-bg_warning_hover);
+      --color_hover: var(@btn-text-color-text_warning_hover);
+      --border-color_hover: var(@btn-text-color-border_warning_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-text-color-bg_warning_active);
+      --color_active: var(@btn-text-color-text_warning_active);
+      --border-color_active: var(@btn-text-color-border_warning_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-text-color-outline_warning_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-text-color-bg_warning_disabled);
+      --color_disabled: var(@btn-text-color-text_warning_disabled);
+      --border-color_disabled: var(@btn-text-color-border_warning_disabled);
+    }
   }
-  &.danger {
-    --color: @color-danger-dark;
-    .focus_hover_active_background(@color-danger-dark,@color-text-hover,@color-danger-dark);
+  // text 按钮的 danger 状态
+  &.@{components-prefix}btn-status-danger {
+    --background-color: var(@btn-text-color-bg_danger);
+    --color: var(@btn-text-color-text_danger);
+    --border-color: var(@btn-text-color-border_danger);
+    &:hover {
+      --background-color_hover: var(@btn-text-color-bg_danger_hover);
+      --color_hover: var(@btn-text-color-text_danger_hover);
+      --border-color_hover: var(@btn-text-color-border_danger_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-text-color-bg_danger_active);
+      --color_active: var(@btn-text-color-text_danger_active);
+      --border-color_active: var(@btn-text-color-border_danger_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-text-color-outline_danger_focus);
+    }
+    &:disabled {
+      --cursor: not-allowed;
+      --background-color_disabled: var(@btn-text-color-bg_danger_disabled);
+      --color_disabled: var(@btn-text-color-text_danger_disabled);
+      --border-color_disabled: var(@btn-text-color-border_danger_disabled);
+    }
   }
 }
-.link {
+// link 类型按钮及其各种状态
+.@{components-prefix}btn-type-link {
   --border-style: none;
-  &.normal {
-    --color: @color-normal-dark;
-    .focus_hover_active_text(@color-normal-dark,@color-normal-hover-link,@color-normal-dark);
+  // link 按钮的 normal 状态
+  &.@{components-prefix}btn-status-normal {
+    --background-color: var(@btn-link-color-bg_normal);
+    --color: var(@btn-link-color-text_normal);
+    --border-color: var(@btn-link-color-border_normal);
+    &:hover:not(.aer-disabled) {
+      --background-color_hover: var(@btn-link-color-bg_normal_hover);
+      --color_hover: var(@btn-link-color-text_normal_hover);
+      --border-color_hover: var(@btn-link-color-border_normal_hover);
+    }
+    &:active:not(.aer-disabled) {
+      --background-color_active: var(@btn-link-color-bg_normal_active);
+      --color_active: var(@btn-link-color-text_normal_active);
+      --border-color_active: var(@btn-link-color-border_normal_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-link-color-outline_normal_focus);
+    }
+    &.@{components-prefix}btn-disabled {
+      //a标签缺少disabled伪类，所以要修改平时的状态(--background-color)，而不是(--background-color_disabled)
+      --outline-style: none;
+      --background-color: var(@btn-link-color-bg_normal_disabled);
+      --color: var(@btn-link-color-text_normal_disabled);
+      --border-color: var(@btn-link-color-border_normal_disabled);
+      //将禁止状态下的两种事件状态设置和禁止的一样
+      &:hover {
+        --cursor: not-allowed;
+        --background-color_hover: var(@btn-link-color-bg_normal_disabled);
+        --color_hover: var(@btn-link-color-text_normal_disabled);
+        --border-color_hover: var(@btn-link-color-border_normal_disabled);
+      }
+      &:active {
+        --background-color_active: var(@btn-link-color-bg_normal_disabled);
+        --color_active: var(@btn-link-color-text_normal_disabled);
+        --border-color_active: var(@btn-link-color-border_normal_disabled);
+      }
+    }
   }
-  &.success {
-    --color: @color-success-dark;
-    .focus_hover_active_text(@color-success-dark,@color-success-hover-link,@color-success-dark);
+  // link 按钮的 success 状态
+  &.@{components-prefix}btn-status-success {
+    --background-color: var(@btn-link-color-bg_success);
+    --color: var(@btn-link-color-text_success);
+    --border-color: var(@btn-link-color-border_success);
+    &:hover {
+      --background-color_hover: var(@btn-link-color-bg_success_hover);
+      --color_hover: var(@btn-link-color-text_success_hover);
+      --border-color_hover: var(@btn-link-color-border_success_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-link-color-bg_success_active);
+      --color_active: var(@btn-link-color-text_success_active);
+      --border-color_active: var(@btn-link-color-border_success_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-link-color-outline_success_focus);
+    }
+    &.@{components-prefix}btn-disabled {
+      //a标签缺少disabled伪类，所以要修改平时的状态(--background-color)，而不是(--background-color_disabled)
+      --outline-style: none;
+      --background-color: var(@btn-link-color-bg_success_disabled);
+      --color: var(@btn-link-color-text_success_disabled);
+      --border-color: var(@btn-link-color-border_success_disabled);
+      //将禁止状态下的两种事件状态设置和禁止的一样
+      &:hover {
+        --cursor: not-allowed;
+        --background-color_hover: var(@btn-link-color-bg_success_disabled);
+        --color_hover: var(@btn-link-color-text_success_disabled);
+        --border-color_hover: var(@btn-link-color-border_success_disabled);
+      }
+      &:active {
+        --background-color_active: var(@btn-link-color-bg_success_disabled);
+        --color_active: var(@btn-link-color-text_success_disabled);
+        --border-color_active: var(@btn-link-color-border_success_disabled);
+      }
+    }
   }
-  &.warning {
-    --color: @color-warning-dark;
-    .focus_hover_active_text(@color-warning-dark,@color-warning-hover-link,@color-warning-dark);
+  // link 按钮的 warning 状态
+  &.@{components-prefix}btn-status-warning {
+    --background-color: var(@btn-link-color-bg_warning);
+    --color: var(@btn-link-color-text_warning);
+    --border-color: var(@btn-link-color-border_warning);
+    &:hover {
+      --background-color_hover: var(@btn-link-color-bg_warning_hover);
+      --color_hover: var(@btn-link-color-text_warning_hover);
+      --border-color_hover: var(@btn-link-color-border_warning_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-link-color-bg_warning_active);
+      --color_active: var(@btn-link-color-text_warning_active);
+      --border-color_active: var(@btn-link-color-border_warning_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-link-color-outline_warning_focus);
+    }
+    &.@{components-prefix}btn-disabled {
+      //a标签缺少disabled伪类，所以要修改平时的状态(--background-color)，而不是(--background-color_disabled)
+      --outline-style: none;
+      --background-color: var(@btn-link-color-bg_warning_disabled);
+      --color: var(@btn-link-color-text_warning_disabled);
+      --border-color: var(@btn-link-color-border_warning_disabled);
+      //将禁止状态下的两种事件状态设置和禁止的一样
+      &:hover {
+        --cursor: not-allowed;
+        --background-color_hover: var(@btn-link-color-bg_warning_disabled);
+        --color_hover: var(@btn-link-color-text_warning_disabled);
+        --border-color_hover: var(@btn-link-color-border_warning_disabled);
+      }
+      &:active {
+        --background-color_active: var(@btn-link-color-bg_warning_disabled);
+        --color_active: var(@btn-link-color-text_warning_disabled);
+        --border-color_active: var(@btn-link-color-border_warning_disabled);
+      }
+    }
   }
-  &.danger {
-    --color: @color-danger-dark;
-    .focus_hover_active_text(@color-danger-dark,@color-danger-hover-link,@color-danger-dark);
+  // link 按钮的 danger 状态
+  &.@{components-prefix}btn-status-danger {
+    --background-color: var(@btn-link-color-bg_danger);
+    --color: var(@btn-link-color-text_danger);
+    --border-color: var(@btn-link-color-border_danger);
+    &:hover {
+      --background-color_hover: var(@btn-link-color-bg_danger_hover);
+      --color_hover: var(@btn-link-color-text_danger_hover);
+      --border-color_hover: var(@btn-link-color-border_danger_hover);
+    }
+    &:active {
+      --background-color_active: var(@btn-link-color-bg_danger_active);
+      --color_active: var(@btn-link-color-text_danger_active);
+      --border-color_active: var(@btn-link-color-border_danger_active);
+    }
+    &:focus {
+      --outline-color_focus: var(@btn-link-color-outline_danger_focus);
+    }
+    &.@{components-prefix}btn-disabled {
+      //a标签缺少disabled伪类，所以要修改平时的状态(--background-color)，而不是(--background-color_disabled)
+      --outline-style: none;
+      --background-color: var(@btn-link-color-bg_danger_disabled);
+      --color: var(@btn-link-color-text_danger_disabled);
+      --border-color: var(@btn-link-color-border_danger_disabled);
+      //将禁止状态下的两种事件状态设置和禁止的一样
+      &:hover {
+        --cursor: not-allowed;
+        --background-color_hover: var(@btn-link-color-bg_danger_disabled);
+        --color_hover: var(@btn-link-color-text_danger_disabled);
+        --border-color_hover: var(@btn-link-color-border_danger_disabled);
+      }
+      &:active {
+        --background-color_active: var(@btn-link-color-bg_danger_disabled);
+        --color_active: var(@btn-link-color-text_danger_disabled);
+        --border-color_active: var(@btn-link-color-border_danger_disabled);
+      }
+    }
   }
 }
-
-.square {
-  border-radius: 0%;
+// 按钮的大小、字体尺寸
+.@{components-prefix}btn-size {
+  &-mini {
+    height: @btn-height-1;
+    font-size: @btn-font-size-1;
+  }
+  &-small {
+    height: @btn-height-2;
+    font-size: @btn-font-size-2;
+  }
+  &-medium {
+    height: @btn-height-3;
+    font-size: @btn-font-size-3;
+  }
+  &-large {
+    height: @btn-height-4;
+    font-size: @btn-font-size-4;
+  }
 }
-.circle {
-  border-radius: 10px;
-}
-.round {
-  border-radius: 500px;
-}
-
-.mini {
-  --height: 24px;
-  --font-size: x-small;
-}
-.small {
-  --height: 28px;
-  --font-size: small;
-}
-.medium {
-  --height: 32px;
-  --font-size: medium;
-}
-.large {
-  --height: 36px;
-  --font-size: large;
-}
-
-.disabled {
-  opacity: 0.5; /* 降低不透明度 */
-  cursor: not-allowed; /* 更改光标样式 */
+// 按钮的形状
+.@{components-prefix}btn-shape {
+  &-square {
+    border-radius: @btn-border-radius-square;
+  }
+  &-circle {
+    border-radius: @btn-border-radius-circle;
+  }
+  &-round {
+    border-radius: @btn-border-radius-round;
+  }
 }

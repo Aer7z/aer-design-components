@@ -6,11 +6,21 @@
   <Button type="text" size="large" @click="foo">我是text按钮</Button>
   <Button type="default" size="small">我是default按钮</Button>
   <h1>test</h1>
-
-  <Button type="primary" shape="square">我是primary按钮</Button>
+  <br />
+  <br />
+  <Button type="primary" @click="foo" disabled>我是primary按钮</Button>
+  <Button type="default" @click="foo" disabled>我是default按钮</Button>
+  <Button type="dashed" @click="foo" disabled>我是dashed按钮</Button>
+  <Button type="text" @click="foo" disabled>我是text按钮</Button>
+  <Button type="link" @click="foo" disabled>我是link按钮</Button>
+  <br />
+  <br />
+  <span class="element">
+    <Button type="primary" shape="square">我是primary按钮</Button>
+  </span>
   <Button type="primary" shape="square" status="success">我是primary按钮</Button>
-  <Button type="primary" shape="square" status="warning">我是primary按钮</Button>
-  <Button type="primary" shape="square" status="danger">我是primary按钮</Button>
+  <Button type="primary" shape="circle" status="warning">我是primary按钮</Button>
+  <Button type="primary" shape="round" status="danger">我是primary按钮</Button>
   <br />
   <br />
   <Button type="default">我是default按钮</Button>
@@ -38,7 +48,6 @@
   <Button type="link" status="danger">我是link按钮</Button>
   <!-- <Button type="default" shape="circle">我是default按钮</Button>
   <Button type="default" shape="round">我</Button> -->
-  
 </template>
 
 <script setup lang="ts">
@@ -50,4 +59,8 @@ function foo(): void {
 }
 </script>
 
-<style></style>
+<style>
+.element {
+  background-color: #000000;
+}
+</style>

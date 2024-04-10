@@ -1,6 +1,6 @@
 <template>
   <template v-if="target">
-    <a :class="[styleClass]" :href="target" @click="handleClick">
+    <a :class="[styleClass]" :href="target" @click="handleClick" :tabindex="aIsDisabled">
       <slot />
       <!-- 图标在文字等内容的后头 -->
       <span v-if="loading"><slot name="icon" /> </span>
@@ -18,9 +18,10 @@
 
 <script setup lang="ts">
 // import type { PropType } from 'vue'
-import { computed } from 'vue'
+import { computed, onBeforeMount } from 'vue'
 //console.log(getCurrentInstance())
 import type { ButtonProps, ButtonEmits } from './interface'
+import { getComponentsClassPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Button'
@@ -37,26 +38,40 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 const emits = defineEmits<ButtonEmits>()
 
 const styleClass = computed(() => [
-  'element',
-  `${props.size ?? 'medium'}`,
-  `${props.shape ?? 'square'}`,
-  `${props.status ?? 'normal'}`,
-  `${props.type ?? 'default'}`,
-  {
-    disabled: props.disabled
-  }
+  `${getComponentsClassPrefix()}btn`,
+  `${getComponentsClassPrefix()}btn-size-${props.size ?? 'medium'}`,
+  `${getComponentsClassPrefix()}btn-shape-${props.shape ?? 'square'}`,
+  `${getComponentsClassPrefix()}btn-status-${props.status ?? 'normal'}`,
+  `${getComponentsClassPrefix()}btn-type-${props.type ?? 'default'}`,
+  //通过布尔值参数值的类样式处理
+  `${props.disabled ? getComponentsClassPrefix() + 'btn-disabled' : ''}`
+  // {
+  //   'aer-disabled': props.disabled
+  // }
 ])
 
-// const cls = computed(() => [])
+const aIsDisabled = computed(() => {
+  if (props.disabled) return -1
+  return 0
+})
 
+// const cls = computed(() => [])
 function handleClick(ev: MouseEvent): void {
   if (props.loading || props.disabled) {
     ev.preventDefault()
+
+    // ;(ev.target as HTMLLabelElement).blur()
     return
   }
   ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }
+
+// onBeforeMount(() => {
+//   if (props.disabled) {
+//     ;(ev.target as HTMLElement).setAttribute('tabIndex', '-1')
+//   }
+// })
 </script>
 
-<style lang="less" src="./style/button.less" scoped></style>
+<style lang="less" src="./style/button.less"></style>
