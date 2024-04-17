@@ -1,25 +1,51 @@
 @import '../../style/theme.less';
+@import '../../style/color/index.less';
+@import './token.less';
 
-.cls {
-  position: relative;
-}
-
-.newInput {
+// Input组件包裹层的样式
+.@{components-prefix}input-wrapper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   // background-color: @color-normal-dark;
   border: solid;
+  border-radius: 4px;
   white-space: nowrap;
 }
-
-input {
+// Input组件中的input的样式
+.@{components-prefix}input {
   box-sizing: border-box;
   margin: 0 0.4em;
   width: 100px;
   border: none;
   outline: none;
+  // :disabled {
+  //   opacity: 0.5; /* 降低不透明度 */
+  //   cursor: not-allowed; /* 更改光标样式 */
+  // }
 }
+// Input组件中前缀元素的样式
+.@{components-prefix}input-prefix {
+  //或许就根本不用加入，传参的时候加入
+  //我该如何同步状态呢？需要同步吗
+  //统一设置就行给wrapper设置
+  .styleCommon;
+  margin-left: 0.3em;
+}
+// Input组件中后缀元素的样式
+.@{components-prefix}input-suffix {
+  .styleCommon;
+  margin-right: 0.3em;
+}
+// Input组件中前置标签的样式
+.@{components-prefix}input-prepend {
+  .styleCommon;
+}
+// Input组件中后置标签的样式
+.@{components-prefix}input-append {
+  .styleCommon;
+}
+
 .styleCommon() {
   display: inline-flex;
   align-items: center;
@@ -29,12 +55,14 @@ input {
   // border: solid;
   user-select: none;
 }
-.styleCount {
+// Input组件中字数统计的样式
+.@{components-prefix}input-count-area {
   .styleCommon;
   margin-right: 0.6em;
   font-size: x-small;
 }
-.styleClear {
+// Input组件中字数清零按钮的样式
+.@{components-prefix}input-clear-btn {
   .styleCommon;
   margin-right: 0.6em;
   cursor: pointer;
@@ -42,44 +70,35 @@ input {
   opacity: 0;
   transition: opacity 0.3s ease;
   /* 添加过渡效果 */
-  &:hover {
+  &:hover:not(&-disabled) {
     opacity: 1;
+  }
+  &-disabled {
+    cursor: not-allowed; /* 更改光标样式 */
   }
 }
 
-.prefix {
-  .styleCommon;
-  margin-left: 0.3em;
-}
-.suffix {
-  .styleCommon;
-  margin-right: 0.3em;
-}
-
-.disabled {
+.@{components-prefix}input-disabled {
   opacity: 0.5; /* 降低不透明度 */
   cursor: not-allowed; /* 更改光标样式 */
   // user-select: none;
 }
 
-.size {
-  // background: black;
-  // background: black;
-}
-
-.mini {
-  height: 24px;
-  font-size: x-small;
-}
-.small {
-  height: 28px;
-  font-size: small;
-}
-.medium {
-  height: 32px;
-  font-size: medium;
-}
-.large {
-  height: 36px;
-  font-size: large;
+.@{components-prefix}input-size {
+  &-mini {
+    height: @input-height-1;
+    font-size: @input-font-size-1;
+  }
+  &-small {
+    height: @input-height-2;
+    font-size: @input-font-size-2;
+  }
+  &-medium {
+    height: @input-height-3;
+    font-size: @input-font-size-3;
+  }
+  &-large {
+    height: @input-height-4;
+    font-size: @input-font-size-4;
+  }
 }

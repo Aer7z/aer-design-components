@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 // import type { PropType } from 'vue'
-import { computed, onBeforeMount } from 'vue'
+import { computed } from 'vue'
 //console.log(getCurrentInstance())
 import type { ButtonProps, ButtonEmits } from './interface'
 import { getComponentsClassPrefix } from '../_utils/global-config'
@@ -59,19 +59,11 @@ const aIsDisabled = computed(() => {
 function handleClick(ev: MouseEvent): void {
   if (props.loading || props.disabled) {
     ev.preventDefault()
-
-    // ;(ev.target as HTMLLabelElement).blur()
     return
   }
   ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }
-
-// onBeforeMount(() => {
-//   if (props.disabled) {
-//     ;(ev.target as HTMLElement).setAttribute('tabIndex', '-1')
-//   }
-// })
 </script>
 
-<style lang="less" src="./style/button.less"></style>
+<style lang="less" src="./style/index.less"></style>
