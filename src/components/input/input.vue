@@ -1,27 +1,31 @@
 <template>
-  <span :class="[styleClassWrapper]">
+  <span :class="[styleClassWrapperAll]">
     <span v-if="$slots.prepend" :class="[styleClassInputPrepend]">
       <slot name="prepend" />
     </span>
-    <span v-if="$slots.prefix" :class="[styleClassInputPrefix]">
-      <slot name="prefix" />
-    </span>
-    <input
-      v-model="model"
-      :class="[styleClassInput]"
-      :disabled="disabled"
-      :placeholder="placeholder"
-      :maxlength="maxLength"
-      @blur="handleBlur"
-      @change="handleChange"
-      @focus="handleFocus"
-      @input="handleInput"
-      @keydown.enter="handlePressEnter"
-    />
-    <span v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</span>
-    <span v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)">x</span>
-    <span v-if="$slots.suffix" :class="[styleClassInputSuffix]">
-      <slot name="suffix" />
+    <span :class="[styleClassWrapper]">
+      <span v-if="$slots.prefix" :class="[styleClassInputPrefix]">
+        <slot name="prefix" />
+      </span>
+      <input
+        v-model="model"
+        :class="[styleClassInput]"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        :maxlength="maxLength"
+        @blur="handleBlur"
+        @change="handleChange"
+        @focus="handleFocus"
+        @input="handleInput"
+        @keydown.enter="handlePressEnter"
+      />
+      <span v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</span>
+      <span v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)"
+        >x</span
+      >
+      <span v-if="$slots.suffix" :class="[styleClassInputSuffix]">
+        <slot name="suffix" />
+      </span>
     </span>
     <span v-if="$slots.append" :class="[styleClassInputAppend]">
       <slot name="append" />
@@ -64,9 +68,14 @@ const styleClassWrapper = computed(() => [
   styleClassCommon.value,
   `${getComponentsClassPrefix()}input-wrapper`
 ])
+// Input组件包裹层的样式
+const styleClassWrapperAll = computed(() => [
+  styleClassCommon.value,
+  `${getComponentsClassPrefix()}input-wrapper-all`
+])
 // Input组件中的input的样式
 const styleClassInput = computed(() => [
-  styleClassCommon.value,
+  `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input`
 ])
 // Input组件中字数统计的样式
@@ -145,9 +154,6 @@ onMounted(() => {
   if (props.maxLength != 100) {
     model.value = String(model.value).slice(0, props.maxLength)
   }
-  // if (props.disabled) {
-  //   document.getElementsByName('prefix')[0].setAttribute('disabled', 'true')
-  // }
 })
 </script>
 
