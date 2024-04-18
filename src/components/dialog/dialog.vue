@@ -1,23 +1,3 @@
-<!-- <template>
-  <div class="dialogWrapper" v-show="visibleDialog">
-    包裹
-    <div class="dialog">
-      <div class="dialogHeader">
-        <span class="dialogHeaderTitle">{{ title }}</span
-        ><button class="dialogHeaderButton" @click="visibleDialog = !visibleDialog">x</button>
-      </div>
-      <div class="dialogBody">
-        <div>{{ value }}</div>
-      </div>
-      <div class="dialogFooter">
-        <button class="dialogFooterButton">取消</button>
-        <button class="dialogFooterButton">确定</button>
-      </div>
-    </div>
-    <div>对照</div>
-  </div>
-</template> -->
-
 <template>
   <button @click="handleClick(true)">Open Modal</button>
   <div :class="[dialogWrapper]" v-show="visible" tabindex="-1">
@@ -81,11 +61,11 @@ const handleClick = (isVisible: boolean = true) => {
 }
 const emits = defineEmits<DialogEmits>()
 
-const handleOk = (ev: MouseEvent) => {
+const handleOk: Function = (ev: MouseEvent) => {
   visible.value = false
   emits('ok', ev)
 }
-const handleCancel = (ev: MouseEvent) => {
+const handleCancel: Function = (ev: MouseEvent) => {
   visible.value = false
   emits('cancel', ev)
 }

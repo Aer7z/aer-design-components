@@ -4,7 +4,7 @@
 
 ## 目前进展
 
-完成了button组件、input组件，正在进行dialog组件的编写
+完成了button组件、input组件、dialog组件
 
 思想/技术详情：
 

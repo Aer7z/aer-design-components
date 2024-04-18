@@ -59,88 +59,84 @@ const props = withDefaults(defineProps<InputProps>(), {
 const emits = defineEmits<InputEmits>()
 
 // 普遍适用的class样式，如尺寸、是否禁用
-const styleClassCommon = computed(() => [
+const styleClassCommon: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-size-${props.size ?? 'medium'}`,
   `${props.disabled ? getComponentsClassPrefix() + 'input-disabled' : ''}`
-])
+]).value
 // Input组件包裹层的样式
-const styleClassWrapper = computed(() => [
-  styleClassCommon.value,
+const styleClassWrapper: Array<string | string[]> = computed(() => [
+  styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-part`
-])
+]).value
 // Input组件包裹层的样式
-const styleClassWrapperAll = computed(() => [
-  styleClassCommon.value,
+const styleClassWrapperAll: Array<string | string[]> = computed(() => [
+  styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-all`
-])
+]).value
 // Input组件中的input的样式
-const styleClassInput = computed(() => [
+const styleClassInput: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input`
-])
+]).value
 // Input组件中字数统计的样式
-const styleClassInputCountArea = computed(() => [
+const styleClassInputCountArea: Array<string> = computed(() => [
   // styleClassCommon.value,
   `${getComponentsClassPrefix()}input-count-area`
-])
+]).value
 // Input组件中字数清零按钮的样式
-const styleClassInputClearBtn = computed(() => [
+const styleClassInputClearBtn: Array<string> = computed(() => [
   `${props.disabled ? getComponentsClassPrefix() + 'input-clear-btn-disabled' : ''}`,
   `${getComponentsClassPrefix()}input-clear-btn`
-])
+]).value
 // Input组件中前缀元素的样式
-const styleClassInputPrefix = computed(() => [
-  // styleClassCommon.value,
+const styleClassInputPrefix: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-prefix`
-])
+]).value
 // Input组件中后缀元素的样式
-const styleClassInputSuffix = computed(() => [
-  // styleClassCommon.value,
+const styleClassInputSuffix: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-suffix`
-])
+]).value
 // Input组件中前置标签的样式
-const styleClassInputPrepend = computed(() => [
-  // styleClassCommon.value,
+const styleClassInputPrepend: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-prepend`
-])
+]).value
 // Input组件中后置标签的样式
-const styleClassInputAppend = computed(() => [
-  // styleClassCommon.value,
+const styleClassInputAppend: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}input-append`
-])
+]).value
 
-const countRate = computed(() => {
+const countRate: string = computed(() => {
   const InputStr: string = String(model.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
   return `${InputStr.length}/${props.maxLength}`
-})
+}).value
 
 //失焦的时候触发的回调函数
-const handleBlur = (ev: FocusEvent) => {
+const handleBlur: Function = (ev: FocusEvent) => {
   emits('blur', ev)
 }
 //修改的时候触发的回调函数
-const handleChange = (ev: Event) => {
+const handleChange: Function = (ev: Event) => {
   const value = (ev.target as HTMLInputElement).value
   emits('change', value, ev)
 }
 //点击清除按钮的时候触发的回调函数
-const handleClear = (ev: MouseEvent) => {
+const handleClear: Function = (ev: MouseEvent) => {
   if (!props.disabled) {
     model.value = ''
     emits('clear', ev)
   }
 }
 //聚焦的时候触发的回调函数
-const handleFocus = (ev: FocusEvent) => {
+const handleFocus: Function = (ev: FocusEvent) => {
   emits('focus', ev)
 }
 //输入完毕的时候触发的回调函数
-const handleInput = (ev: Event) => {
+const handleInput: Function = (ev: Event) => {
   const value = (ev.target as HTMLInputElement).value
   emits('input', value, ev)
 }
 //按下回车的时候触发的回调函数
-const handlePressEnter = (ev: KeyboardEvent) => {
+const handlePressEnter: Function = (ev: KeyboardEvent) => {
   emits('pressEnter', ev)
 }
 

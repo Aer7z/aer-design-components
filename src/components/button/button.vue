@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 })
 const emits = defineEmits<ButtonEmits>()
 
-const styleClass = computed(() => [
+const styleClass: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}btn`,
   `${getComponentsClassPrefix()}btn-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}btn-shape-${props.shape ?? 'square'}`,
@@ -48,15 +48,15 @@ const styleClass = computed(() => [
   // {
   //   'aer-disabled': props.disabled
   // }
-])
+]).value
 
-const aIsDisabled = computed(() => {
+const aIsDisabled: number = computed(() => {
   if (props.disabled) return -1
   return 0
-})
+}).value
 
 // const cls = computed(() => [])
-function handleClick(ev: MouseEvent): void {
+const handleClick: Function = (ev: MouseEvent): void => {
   if (props.loading || props.disabled) {
     ev.preventDefault()
     return
