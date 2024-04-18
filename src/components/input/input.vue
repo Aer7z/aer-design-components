@@ -66,7 +66,7 @@ const styleClassCommon = computed(() => [
 // Input组件包裹层的样式
 const styleClassWrapper = computed(() => [
   styleClassCommon.value,
-  `${getComponentsClassPrefix()}input-wrapper`
+  `${getComponentsClassPrefix()}input-wrapper-part`
 ])
 // Input组件包裹层的样式
 const styleClassWrapperAll = computed(() => [
