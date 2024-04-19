@@ -48,6 +48,10 @@
   <Button type="link" status="danger">我是link按钮</Button>
   <!-- <Button type="default" shape="circle">我是default按钮</Button>
   <Button type="default" shape="round">我</Button> -->
+  <select>
+    <option>1</option>
+    <option>2</option>
+  </select>
 </template>
 
 <script setup lang="ts">

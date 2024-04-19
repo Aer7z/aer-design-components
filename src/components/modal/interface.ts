@@ -1,12 +1,12 @@
-//Dialog的事件列表
-export interface DialogEmits {
+//Modal的事件列表
+export interface ModalEmits {
   [key: string]: any // 添加索引签名
   ok: (ev: MouseEvent) => true
   cancel: (ev: MouseEvent) => true
 }
 
-//Dialog的事件列表
-export interface DialogProps {
+//Modal的事件列表
+export interface ModalProps {
   title?: string
   body?: string
 }

@@ -4,7 +4,7 @@
 
 ## 目前进展
 
-完成了button组件、input组件、dialog组件
+完成了button组件、input组件、modal组件
 
 思想/技术详情：
 

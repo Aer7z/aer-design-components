@@ -1,0 +1,51 @@
+@import '../../style/theme.less';
+@import '../../style/color/index.less';
+@import './token.less';
+
+.@{components-prefix}modal-wrapper {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(@modal-wrapper-background-color, 0.5);
+
+
+  z-index: 0;
+}
+
+.@{components-prefix}modal-content {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  width: 40vw;
+  padding: @modal-content-padding-height @modal-content-padding-width;
+
+  opacity: 1;
+  background-color: var(@modal-content-background-color);
+}
+.@{components-prefix}modal-header {
+  box-sizing: border-box;
+  margin: 0 0 @modal-content-padding-height 0;
+}
+.@{components-prefix}modal-header-button {
+  position: absolute;
+  top: @modal-content-padding-height;
+  right: @modal-content-padding-width;
+}
+.@{components-prefix}modal-body {
+  box-sizing: border-box;
+  margin: 0 0 @modal-content-padding-height 0;
+}
+.@{components-prefix}modal-footer {
+  position: relative;
+  box-sizing: border-box;
+  text-align: right;
+}
+.@{components-prefix}modal-footer-button {
+  &:first-child {
+    margin-right: 12px;
+  }
+}
