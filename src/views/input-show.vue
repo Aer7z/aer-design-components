@@ -63,11 +63,4 @@ import { ref } from 'vue'
 var str = ref('我没变')
 </script>
 
-<style scoped>
-div {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-}
-</style>
+<style></style>

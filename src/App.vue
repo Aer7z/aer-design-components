@@ -3,7 +3,8 @@
   <div>
     <button><router-link to="/Button">Button</router-link></button>
     <button><router-link to="/Input">Input</router-link></button>
-    <button><router-link to="Dialog">Dialog</router-link></button>
+    <button><router-link to="/Modal">Modal</router-link></button>
+    <button><router-link to="/Trigger">Trigger</router-link></button>
     <AerButton>我</AerButton>
     <!-- <Aer></Aer> -->
     <!-- <Aer_Button></Aer_Button> -->

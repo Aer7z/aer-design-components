@@ -111,32 +111,32 @@ const countRate: string = computed(() => {
 }).value
 
 //失焦的时候触发的回调函数
-const handleBlur: Function = (ev: FocusEvent) => {
+const handleBlur: (ev: FocusEvent) => void = (ev: FocusEvent): void => {
   emits('blur', ev)
 }
 //修改的时候触发的回调函数
-const handleChange: Function = (ev: Event) => {
+const handleChange: (ev: Event) => void = (ev: Event): void => {
   const value = (ev.target as HTMLInputElement).value
   emits('change', value, ev)
 }
 //点击清除按钮的时候触发的回调函数
-const handleClear: Function = (ev: MouseEvent) => {
+const handleClear: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   if (!props.disabled) {
     model.value = ''
     emits('clear', ev)
   }
 }
 //聚焦的时候触发的回调函数
-const handleFocus: Function = (ev: FocusEvent) => {
+const handleFocus: (ev: FocusEvent) => void = (ev: FocusEvent): void => {
   emits('focus', ev)
 }
 //输入完毕的时候触发的回调函数
-const handleInput: Function = (ev: Event) => {
+const handleInput: (ev: Event) => void = (ev: Event): void => {
   const value = (ev.target as HTMLInputElement).value
   emits('input', value, ev)
 }
 //按下回车的时候触发的回调函数
-const handlePressEnter: Function = (ev: KeyboardEvent) => {
+const handlePressEnter: (ev: KeyboardEvent) => void = (ev: KeyboardEvent): void => {
   emits('pressEnter', ev)
 }
 

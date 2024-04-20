@@ -1,12 +1,13 @@
 import type { Router } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { ButtonShow, DialogShow, InputShow } from '../views/index'
+import { ButtonShow, InputShow, ModalShow, TriggerShow } from '../views/index'
 
 const routes = [
   { path: '/', component: ButtonShow },
   { path: '/Button', component: ButtonShow },
   { path: '/Input', component: InputShow },
-  { path: '/Dialog', component: DialogShow }
+  { path: '/Modal', component: ModalShow },
+  { path: '/Trigger', component: TriggerShow }
 ]
 
 const router: Router = createRouter({

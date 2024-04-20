@@ -1,22 +1,22 @@
 <template>
   <button @click="handleClick(true)">Open Modal</button>
-  <div :class="[modalWrapper]" v-show="visible" tabindex="-1">
-    <!-- 包裹 -->
-    <div :class="[modalContent]">
-      <button :class="[modalHeaderButton]" @click="handleClick(false)">x</button>
-      <div :class="[modalHeader]">
-        {{ title }}
-      </div>
-      <div :class="[modalBody]">
-        {{ body }}
-      </div>
-      <div :class="[modalFooter]">
-        <button :class="[modalFooterButton]" @click="handleOk">取消</button>
-        <button :class="[modalFooterButton]" @click="handleCancel">确定</button>
+  <Teleport to="body">
+    <div :class="[modalWrapper]" v-show="visible" tabindex="-1">
+      <div :class="[modalContent]">
+        <button :class="[modalHeaderButton]" @click="handleClick(false)">x</button>
+        <div :class="[modalHeader]">
+          {{ title }}
+        </div>
+        <div :class="[modalBody]">
+          {{ body }}
+        </div>
+        <div :class="[modalFooter]">
+          <button :class="[modalFooterButton]" @click="handleOk">取消</button>
+          <button :class="[modalFooterButton]" @click="handleCancel">确定</button>
+        </div>
       </div>
     </div>
-    <!-- <div>对照</div> -->
-  </div>
+  </Teleport>
 </template>
 
 <script lang="ts" setup>
@@ -56,16 +56,16 @@ const modalFooterButton: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}modal-footer-button`
 ]).value
 
-const handleClick = (isVisible: boolean = true) => {
+const handleClick: (isVisible: boolean) => void = (isVisible: boolean = true): void => {
   visible.value = isVisible
 }
 const emits = defineEmits<ModalEmits>()
 
-const handleOk: (ev: MouseEvent) => void = (ev: MouseEvent) => {
+const handleOk: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   visible.value = false
   emits('ok', ev)
 }
-const handleCancel: (ev: MouseEvent) => void = (ev: MouseEvent) => {
+const handleCancel: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   visible.value = false
   emits('cancel', ev)
 }

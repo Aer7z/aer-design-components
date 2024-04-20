@@ -63,8 +63,4 @@ function foo(): void {
 }
 </script>
 
-<style>
-.element {
-  background-color: #000000;
-}
-</style>
+<style></style>

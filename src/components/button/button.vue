@@ -56,7 +56,7 @@ const aIsDisabled: number = computed(() => {
 }).value
 
 // const cls = computed(() => [])
-const handleClick: Function = (ev: MouseEvent): void => {
+const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   if (props.loading || props.disabled) {
     ev.preventDefault()
     return
