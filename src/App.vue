@@ -5,6 +5,7 @@
     <button><router-link to="/Input">Input</router-link></button>
     <button><router-link to="/Modal">Modal</router-link></button>
     <button><router-link to="/Trigger">Trigger</router-link></button>
+    <button><router-link to="/Test">Test</router-link></button>
     <AerButton>我</AerButton>
     <!-- <Aer></Aer> -->
     <!-- <Aer_Button></Aer_Button> -->

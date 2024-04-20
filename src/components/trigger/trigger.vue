@@ -1,6 +1,6 @@
 <template>
   <div ref="triggerRef" :class="[styleClassTrigger]">
-    <div @click="handleClick">
+    <div v-on="EventList">
       <slot />
     </div>
     <Teleport to="body">
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import type { Ref, CSSProperties } from 'vue'
 import { getComponentsClassPrefix } from '../_utils/global-config'
 import type { TriggerEmits, TriggerProps } from './interface'
@@ -36,6 +36,8 @@ const props = withDefaults(defineProps<TriggerProps>(), {
   position: 'bottom',
   trigger: 'click'
 })
+
+// const setTriggerWay: Function = () => {}
 
 // 这些计算属性用于生成不同组件的样式类。
 // 每个属性都利用 `getComponentsClassPrefix()` 函数确保类名前缀的一致性。
@@ -77,18 +79,104 @@ const handleShow: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   // 发射显示事件
   emits('show', ev)
 }
-// 定义处理点击事件的函数
+
+// 定义处理触发器的点击事件的函数
 const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
-  // 切换触发器下拉框的可见性状态
-  visible.value = !visible.value
-  // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
-  if (visible.value) {
-    handleShow(ev)
-  } else {
-    handleHide(ev)
+  if (props.trigger === 'click') {
+    // 切换触发器下拉框的可见性状态
+    visible.value = !visible.value
+    // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
+    if (visible.value) {
+      //添加点击触发器外部区域关闭下拉框的函数
+      document.addEventListener('click', closePopupOnClickOutside)
+      handleShow(ev)
+    } else {
+      //移除点击触发器外部区域关闭下拉框的函数
+      document.removeEventListener('click', closePopupOnClickOutside)
+      handleHide(ev)
+    }
+    // 执行可见性改变事件处理函数
+    handleVisibleChange(ev)
   }
-  // 执行可见性改变事件处理函数
-  handleVisibleChange(ev)
+}
+// 定义鼠标移入触发器时的函数
+const handleMouseEnter: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
+  // 切换触发器下拉框的可见性状态
+  if (props.trigger === 'hover') {
+    // 切换触发器下拉框的可见性状态
+    visible.value = !visible.value
+    // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
+    if (visible.value) {
+      handleShow(ev)
+    } else {
+      handleHide(ev)
+    }
+    // 执行可见性改变事件处理函数
+    handleVisibleChange(ev)
+  }
+}
+// 定义鼠标移出触发器时的函数
+const handleMouseLeave: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
+  // 切换触发器下拉框的可见性状态
+  if (props.trigger === 'hover') {
+    // 切换触发器下拉框的可见性状态
+    visible.value = !visible.value
+    // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
+    if (visible.value) {
+      handleShow(ev)
+    } else {
+      handleHide(ev)
+    }
+    // 执行可见性改变事件处理函数
+    handleVisibleChange(ev)
+  }
+}
+// 定义触发器聚焦时的函数
+const handleFocusIn: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
+  // 切换触发器下拉框的可见性状态
+  if (props.trigger === 'focus') {
+    // 切换触发器下拉框的可见性状态
+    visible.value = !visible.value
+    // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
+    if (visible.value) {
+      handleShow(ev)
+    } else {
+      handleHide(ev)
+    }
+    // 执行可见性改变事件处理函数
+    handleVisibleChange(ev)
+  }
+}
+// 定义触发器失焦时的函数
+const handleFocusOut: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
+  // 切换触发器下拉框的可见性状态
+  if (props.trigger === 'focus') {
+    // 切换触发器下拉框的可见性状态
+    visible.value = !visible.value
+    // 如果可见性为真，则执行显示事件处理函数；否则执行隐藏事件处理函数
+    if (visible.value) {
+      handleShow(ev)
+    } else {
+      handleHide(ev)
+    }
+    // 执行可见性改变事件处理函数
+    handleVisibleChange(ev)
+  }
+}
+// 如果点击了触发器以外的区域则关闭触发器的下拉框
+const closePopupOnClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) => {
+  if (!(triggerRef.value as HTMLElement).contains(ev.target as HTMLElement)) {
+    visible.value = false
+    // console.log(2223)
+  }
+}
+
+const EventList = {
+  click: handleClick,
+  mouseenter: handleMouseEnter,
+  mouseleave: handleMouseLeave,
+  focusin: handleFocusIn,
+  focusout: handleFocusOut
 }
 
 //获取触发器Trigger的位置大小信息的函数
@@ -152,6 +240,11 @@ const getPopupRecWithPosition: Function = (triggerRec: DOMRect) => {
 
 onMounted(() => {
   updatePopupStyle()
+})
+
+onBeforeUnmount(() => {
+  //在卸载的时候移出事件监听器
+  document.removeEventListener('click', closePopupOnClickOutside)
 })
 </script>
 
