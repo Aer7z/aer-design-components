@@ -1,15 +1,22 @@
 <template>
-  <div></div>
+  <Trigger>
+    <Button>test</Button>
+    <template v-slot:content>
+      <label>测试</label>
+    </template>
+  </Trigger>
 </template>
 
 <script lang="ts" setup>
+import Trigger from '../trigger/index'
+import Button from '../button/index'
 import { ref, computed } from 'vue'
-import type { DialogEmits, DialogProps } from './interface'
+// import type { DialogEmits, DialogProps } from './interface'
 import { getComponentsClassPrefix } from '../_utils/global-config'
 
-// defineOptions({
-//   name: 'Dialog'
-// })
+defineOptions({
+  name: 'Dropdown'
+})
 
 // const props = withDefaults(defineProps<DialogProps>(), {
 //   title: '暂无内容',

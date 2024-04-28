@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import Input from '@/components/input'
+import Input from '../components/input'
 import { ref } from 'vue'
 
 var str = ref('我没变')

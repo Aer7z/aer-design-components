@@ -1,3 +1,5 @@
+import type { PositionType, TriggerType } from './constans'
+
 export interface TriggerEmits {
   [key: string]: any // 添加索引签名
   hide: () => true
@@ -8,6 +10,6 @@ export interface TriggerEmits {
 export interface TriggerProps {
   clickOutsideToClose?: boolean
   disabled?: boolean
-  position?: string
-  trigger?: string
+  position?: PositionType
+  trigger?: TriggerType
 }
