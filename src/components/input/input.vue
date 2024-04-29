@@ -1,12 +1,12 @@
 <template>
-  <span :class="[styleClassWrapperAll]">
-    <span v-if="$slots.prepend" :class="[styleClassInputPrepend]">
+  <div :class="[styleClassInputWrapperAll]">
+    <div v-if="$slots.prepend" :class="[styleClassInputPrepend]">
       <slot name="prepend" />
-    </span>
-    <span :class="[styleClassWrapper]">
-      <span v-if="$slots.prefix" :class="[styleClassInputPrefix]">
+    </div>
+    <div :class="[styleClassInputWrapper]">
+      <div v-if="$slots.prefix" :class="[styleClassInputPrefix]">
         <slot name="prefix" />
-      </span>
+      </div>
       <input
         v-model="model"
         :class="[styleClassInput]"
@@ -19,18 +19,18 @@
         @input="handleInput"
         @keydown.enter="handlePressEnter"
       />
-      <span v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</span>
-      <span v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)"
-        >x</span
+      <div v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</div>
+      <div v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)"
+        >x</div
       >
-      <span v-if="$slots.suffix" :class="[styleClassInputSuffix]">
+      <div v-if="$slots.suffix" :class="[styleClassInputSuffix]">
         <slot name="suffix" />
-      </span>
-    </span>
-    <span v-if="$slots.append" :class="[styleClassInputAppend]">
+      </div>
+    </div>
+    <div v-if="$slots.append" :class="[styleClassInputAppend]">
       <slot name="append" />
-    </span>
-  </span>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -60,22 +60,24 @@ const props = withDefaults(defineProps<InputProps>(), {
 const emits = defineEmits<InputEmits>()
 
 // 普遍适用的class样式，如尺寸、是否禁用
-const styleClassCommon: ComputedRef<string[]> = computed(() => [
+const styleClassCommon: string[] = [
   `${getComponentsClassPrefix()}input-size-${props.size ?? 'medium'}`,
   `${props.disabled ? getComponentsClassPrefix() + 'input-disabled' : ''}`
-])
-// Input组件包裹层的样式
-const styleClassWrapper: ComputedRef<(string | ComputedRef<string[]>)[]> = computed(() => [
+]
+
+// Input组件内层包裹层的样式
+const styleClassInputWrapper = computed(() => [
   styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-part`
 ])
-// Input组件包裹层的样式
-const styleClassWrapperAll: ComputedRef<(string | ComputedRef<string[]>)[]> = computed(() => [
+// Input组件最外层包裹层的样式
+const styleClassInputWrapperAll = computed(() => [
   styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-all`
 ])
 // Input组件中的input的样式
 const styleClassInput: ComputedRef<string[]> = computed(() => [
+  // `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input`
 ])
@@ -106,7 +108,7 @@ const styleClassInputAppend: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-append`
 ])
 
-const countRate: ComputedRef<string>= computed(() => {
+const countRate: ComputedRef<string> = computed(() => {
   const InputStr: string = String(model.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
   return `${InputStr.length}/${props.maxLength}`
 })
