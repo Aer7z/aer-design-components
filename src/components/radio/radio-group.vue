@@ -12,4 +12,4 @@ defineOptions({
 })
 </script>
 
-<style lang="less" src="./style/dropdown.less"></style>
+<style lang="less" src="./style/index.less"></style>

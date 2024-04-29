@@ -5,6 +5,7 @@ import {
   DropdownShow,
   InputShow,
   ModalShow,
+  RadioShow,
   TriggerShow,
   TestShow
 } from '../views/index'
@@ -15,6 +16,7 @@ const routes = [
   { path: '/Dropdown', component: DropdownShow },
   { path: '/Input', component: InputShow },
   { path: '/Modal', component: ModalShow },
+  { path: '/Radio', component: RadioShow },
   { path: '/Trigger', component: TriggerShow },
   { path: '/Test', component: TestShow }
 ]

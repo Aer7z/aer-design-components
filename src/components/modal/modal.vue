@@ -21,6 +21,7 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { ModalEmits, ModalProps } from './interface'
 import { getComponentsClassPrefix } from '../_utils/global-config'
 
@@ -35,26 +36,26 @@ const props = withDefaults(defineProps<ModalProps>(), {
 
 let visible = ref(false)
 
-const modalWrapper: Array<string> = computed(() => [
+const modalWrapper: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-wrapper`
-]).value
+])
 
-const modalContent: Array<string> = computed(() => [
+const modalContent: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-content`
-]).value
-const modalHeader: Array<string> = computed(() => [
+])
+const modalHeader: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-header`
-]).value
-const modalHeaderButton: Array<string> = computed(() => [
+])
+const modalHeaderButton: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-header-button`
-]).value
-const modalBody: Array<string> = computed(() => [`${getComponentsClassPrefix()}modal-body`]).value
-const modalFooter: Array<string> = computed(() => [
+])
+const modalBody: ComputedRef<string[]> = computed(() => [`${getComponentsClassPrefix()}modal-body`])
+const modalFooter: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-footer`
-]).value
-const modalFooterButton: Array<string> = computed(() => [
+])
+const modalFooterButton: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}modal-footer-button`
-]).value
+])
 
 const handleClick: (isVisible: boolean) => void = (isVisible: boolean = true): void => {
   visible.value = isVisible

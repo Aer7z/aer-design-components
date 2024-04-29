@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-// import type { PropType } from 'vue'
 import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 //console.log(getCurrentInstance())
 import type { ButtonProps, ButtonEmits } from './interface'
 import { getComponentsClassPrefix } from '../_utils/global-config'
@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 })
 const emits = defineEmits<ButtonEmits>()
 
-const styleClass: Array<string> = computed(() => [
+const styleClass: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}btn`,
   `${getComponentsClassPrefix()}btn-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}btn-shape-${props.shape ?? 'square'}`,
@@ -45,17 +45,13 @@ const styleClass: Array<string> = computed(() => [
   `${getComponentsClassPrefix()}btn-type-${props.type ?? 'default'}`,
   //通过布尔值参数值的类样式处理
   `${props.disabled ? getComponentsClassPrefix() + 'btn-disabled' : ''}`
-  // {
-  //   'aer-disabled': props.disabled
-  // }
-]).value
+])
 
-const aIsDisabled: number = computed(() => {
+const aIsDisabled: ComputedRef<number> = computed((): number => {
   if (props.disabled) return -1
   return 0
-}).value
+})
 
-// const cls = computed(() => [])
 const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   if (props.loading || props.disabled) {
     ev.preventDefault()

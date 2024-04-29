@@ -36,6 +36,7 @@
 <script setup lang="ts">
 // console.log(getCurrentInstance())
 import { computed, onMounted } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { InputEmits, InputProps } from './interface'
 import { getComponentsClassPrefix } from '../_utils/global-config'
 
@@ -59,56 +60,56 @@ const props = withDefaults(defineProps<InputProps>(), {
 const emits = defineEmits<InputEmits>()
 
 // 普遍适用的class样式，如尺寸、是否禁用
-const styleClassCommon: Array<string> = computed(() => [
+const styleClassCommon: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-size-${props.size ?? 'medium'}`,
   `${props.disabled ? getComponentsClassPrefix() + 'input-disabled' : ''}`
-]).value
+])
 // Input组件包裹层的样式
-const styleClassWrapper: Array<string | string[]> = computed(() => [
+const styleClassWrapper: ComputedRef<(string | ComputedRef<string[]>)[]> = computed(() => [
   styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-part`
-]).value
+])
 // Input组件包裹层的样式
-const styleClassWrapperAll: Array<string | string[]> = computed(() => [
+const styleClassWrapperAll: ComputedRef<(string | ComputedRef<string[]>)[]> = computed(() => [
   styleClassCommon,
   `${getComponentsClassPrefix()}input-wrapper-all`
-]).value
+])
 // Input组件中的input的样式
-const styleClassInput: Array<string> = computed(() => [
+const styleClassInput: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input`
-]).value
+])
 // Input组件中字数统计的样式
-const styleClassInputCountArea: Array<string> = computed(() => [
+const styleClassInputCountArea: ComputedRef<string[]> = computed(() => [
   // styleClassCommon.value,
   `${getComponentsClassPrefix()}input-count-area`
-]).value
+])
 // Input组件中字数清零按钮的样式
-const styleClassInputClearBtn: Array<string> = computed(() => [
+const styleClassInputClearBtn: ComputedRef<string[]> = computed(() => [
   `${props.disabled ? getComponentsClassPrefix() + 'input-clear-btn-disabled' : ''}`,
   `${getComponentsClassPrefix()}input-clear-btn`
-]).value
+])
 // Input组件中前缀元素的样式
-const styleClassInputPrefix: Array<string> = computed(() => [
+const styleClassInputPrefix: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-prefix`
-]).value
+])
 // Input组件中后缀元素的样式
-const styleClassInputSuffix: Array<string> = computed(() => [
+const styleClassInputSuffix: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-suffix`
-]).value
+])
 // Input组件中前置标签的样式
-const styleClassInputPrepend: Array<string> = computed(() => [
+const styleClassInputPrepend: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-prepend`
-]).value
+])
 // Input组件中后置标签的样式
-const styleClassInputAppend: Array<string> = computed(() => [
+const styleClassInputAppend: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}input-append`
-]).value
+])
 
-const countRate: string = computed(() => {
+const countRate: ComputedRef<string>= computed(() => {
   const InputStr: string = String(model.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
   return `${InputStr.length}/${props.maxLength}`
-}).value
+})
 
 //失焦的时候触发的回调函数
 const handleBlur: (ev: FocusEvent) => void = (ev: FocusEvent): void => {

@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import type { Ref, CSSProperties } from 'vue'
+import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getComponentsClassPrefix } from '../_utils/global-config'
 import type { TriggerEmits, TriggerProps } from './interface'
 
@@ -42,21 +42,17 @@ const props = withDefaults(defineProps<TriggerProps>(), {
 // 这些计算属性用于生成不同组件的样式类。
 // 每个属性都利用 `getComponentsClassPrefix()` 函数确保类名前缀的一致性。
 // `styleClassTrigger` 提供了触发器的样式类。
-const styleClassTrigger: Array<string> = computed(() => [
+const styleClassTrigger: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}trigger`
-]).value
+])
 // `styleClassTriggerPopup` 提供了触发器弹出窗口的样式类。
-const styleClassTriggerPopup: Array<string> = computed(() => [
+const styleClassTriggerPopup: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}trigger-popup`
-]).value
+])
 // `styleClassTriggerPopupWrapper` 提供了触发器弹出窗口的包装器的样式类。
-const styleClassTriggerPopupWrapper: Array<string> = computed(() => [
+const styleClassTriggerPopupWrapper: ComputedRef<string[]> = computed(() => [
   `${getComponentsClassPrefix()}trigger-popup-wrapper`
-]).value
-
-// const styleClassTriggerPopupContent: Array<string> = computed(() => [
-//   `${getComponentsClassPrefix()}trigger-popup-content`
-// ]).value
+])
 
 const emits = defineEmits<TriggerEmits>()
 
