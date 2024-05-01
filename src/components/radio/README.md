@@ -2,13 +2,14 @@
 
 ## `<Radio>` Props说明
 
-|     参数名     |                描述                |             类型              | 默认值  |
-| :------------: | :--------------------------------: | :---------------------------: | :-----: |
-| defaultChecked |            默认是否选中            |           `boolean`           | `false` |
-|    disabled    |              是否禁用              |           `boolean`           | `false` |
-|   modelValue   |        整个组件当前的绑定值        | `'string','number','boolean'` |   ---   |
-|      type      | 单选组件的类型`('button','radio')` |          `RadioType`          | `radio` |
-|     value      |            选项的 value            | `'string','number','boolean'` | `true`  |
+|     参数名     |                       描述                        |             类型              |  默认值  |
+| :------------: | :-----------------------------------------------: | :---------------------------: | :------: |
+| defaultChecked |                   默认是否选中                    |           `boolean`           | `false`  |
+|    disabled    |                     是否禁用                      |           `boolean`           | `false`  |
+|   modelValue   |               整个组件当前的绑定值                | `'string','number','boolean'` |   ---    |
+|      size      | 单选组件的尺寸`('mini','small','medium','large')` |       `RadioGroupSize`        | `medium` |
+|      type      |        单选组件的类型`('button','radio')`         |          `RadioType`          | `radio`  |
+|     value      |                   选项的 value                    | `'string','number','boolean'` |  `true`  |
 
 ## `<Radio>` Event说明
 

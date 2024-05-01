@@ -77,7 +77,6 @@ const styleClassInputWrapperAll = computed(() => [
 ])
 // Input组件中的input的样式
 const styleClassInput: ComputedRef<string[]> = computed(() => [
-  // `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
   `${getComponentsClassPrefix()}input`
 ])

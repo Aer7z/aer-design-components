@@ -1,7 +1,5 @@
 <template>
-  <div ref="outerDiv" tabindex="0" @focus="handleFocus" @focusin="f">
-    <button>test按钮</button>
-  </div>
+  <label>Option 1</label>
 </template>
 
 <script setup lang="ts">
