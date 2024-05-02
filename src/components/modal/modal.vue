@@ -1,18 +1,18 @@
 <template>
   <button @click="handleClick(true)">Open Modal</button>
   <Teleport to="body">
-    <div :class="[modalWrapper]" v-show="visible" tabindex="-1">
-      <div :class="[modalContent]">
-        <button :class="[modalHeaderButton]" @click="handleClick(false)">x</button>
-        <div :class="[modalHeader]">
+    <div :class="[clsModalWrapper]" v-show="visible" tabindex="-1">
+      <div :class="[clsModalContent]">
+        <button :class="[clsModalHeaderButton]" @click="handleClick(false)">x</button>
+        <div :class="[clsModalHeader]">
           {{ title }}
         </div>
-        <div :class="[modalBody]">
+        <div :class="[clsModalBody]">
           {{ body }}
         </div>
-        <div :class="[modalFooter]">
-          <button :class="[modalFooterButton]" @click="handleOk">取消</button>
-          <button :class="[modalFooterButton]" @click="handleCancel">确定</button>
+        <div :class="[clsModalFooter]">
+          <button :class="[clsModalFooterButton]" @click="handleOk">取消</button>
+          <button :class="[clsModalFooterButton]" @click="handleCancel">确定</button>
         </div>
       </div>
     </div>
@@ -36,24 +36,16 @@ const props = withDefaults(defineProps<ModalProps>(), {
 
 let visible = ref(false)
 
-const modalWrapper: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}modal-wrapper`
-])
+const clsModalWrapper: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-wrapper`])
 
-const modalContent: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}modal-content`
-])
-const modalHeader: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}modal-header`
-])
-const modalHeaderButton: ComputedRef<string[]> = computed(() => [
+const clsModalContent: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-content`])
+const clsModalHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header`])
+const clsModalHeaderButton: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}modal-header-button`
 ])
-const modalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])
-const modalFooter: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}modal-footer`
-])
-const modalFooterButton: ComputedRef<string[]> = computed(() => [
+const clsModalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])
+const clsModalFooter: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-footer`])
+const clsModalFooterButton: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}modal-footer-button`
 ])
 

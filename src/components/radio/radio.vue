@@ -49,7 +49,7 @@ const radioSize: string | undefined = inject('radioGroupSize', undefined) || pro
 const radioType: string | undefined = inject('radioGroupType', undefined) || props.type
 const radioChecked: string | undefined = inject('radioGroupDefaultCheckedValue', undefined)
 
-const setInitialChecked = () => {
+const setInitialChecked: () => void = () => {
   if (radioChecked === props.value) isChecked.value = true
 }
 

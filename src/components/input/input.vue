@@ -8,7 +8,7 @@
         <slot name="prefix" />
       </div>
       <input
-        v-model="model"
+        v-model="inputModel"
         :class="[clsInput]"
         :disabled="disabled"
         :placeholder="placeholder"
@@ -41,8 +41,8 @@ import { getClsPrefix } from '../_utils/global-config'
 defineOptions({
   name: 'Input'
 })
-const model = defineModel()
-// console.log(model.value)
+const inputModel = defineModel()
+// console.log(inputModel.value)
 
 const props = withDefaults(defineProps<InputProps>(), {
   disabled: false,
@@ -91,24 +91,16 @@ const clsInputClearBtn: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}input-clear-btn`
 ])
 // Input组件中前缀元素的样式
-const clsInputPrefix: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}input-prefix`
-])
+const clsInputPrefix: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-prefix`])
 // Input组件中后缀元素的样式
-const clsInputSuffix: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}input-suffix`
-])
+const clsInputSuffix: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-suffix`])
 // Input组件中前置标签的样式
-const clsInputPrepend: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}input-prepend`
-])
+const clsInputPrepend: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-prepend`])
 // Input组件中后置标签的样式
-const clsInputAppend: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}input-append`
-])
+const clsInputAppend: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-append`])
 
 const countRate: ComputedRef<string> = computed(() => {
-  const InputStr: string = String(model.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
+  const InputStr: string = String(inputModel.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
   return `${InputStr.length}/${props.maxLength}`
 })
 
@@ -124,7 +116,7 @@ const handleChange: (ev: Event) => void = (ev: Event): void => {
 //点击清除按钮的时候触发的回调函数
 const handleClear: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
   if (!props.disabled) {
-    model.value = ''
+    inputModel.value = ''
     emits('clear', ev)
   }
 }
@@ -142,11 +134,11 @@ const handlePressEnter: (ev: KeyboardEvent) => void = (ev: KeyboardEvent): void 
   emits('pressEnter', ev)
 }
 
-const setDefaultValue = () => {
-  model.value = props.defaultValue || model.value
+const setDefaultValue: () => void = () => {
+  inputModel.value = props.defaultValue || inputModel.value
 
   if (props.maxLength != 100) {
-    model.value = String(model.value).slice(0, props.maxLength)
+    inputModel.value = String(inputModel.value).slice(0, props.maxLength)
   }
 }
 

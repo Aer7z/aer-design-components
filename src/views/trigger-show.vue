@@ -52,7 +52,8 @@
       </template>
     </Trigger>
   </div>
-  <div>不同触发方式的触发器</div>
+  <br /><br />
+  <div>不同触发方式的触发器 Button</div>
   <div>
     <Trigger trigger="click">
       <button>Open</button>
@@ -85,6 +86,8 @@
       </template>
     </Trigger>
   </div>
+  <br /><br />
+  <div>不同触发方式的触发器 Input</div>
   <div>
     <Trigger trigger="click">
       <input placeholder="click" />
