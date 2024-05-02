@@ -20,9 +20,7 @@
         @keydown.enter="handlePressEnter"
       />
       <div v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</div>
-      <div v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)"
-        >x</div
-      >
+      <div v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)">x</div>
       <div v-if="$slots.suffix" :class="[styleClassInputSuffix]">
         <slot name="suffix" />
       </div>
@@ -142,16 +140,20 @@ const handlePressEnter: (ev: KeyboardEvent) => void = (ev: KeyboardEvent): void 
   emits('pressEnter', ev)
 }
 
-onMounted(() => {
-  //默认值和双向绑定数值之间该做什么样的取舍?
-  //优先选择设置了默认值的默认数值
-
-  //因此，先看看有无设置默认值，有就先将input的内容设置为默认值
+const setDefaultValue = () => {
   model.value = props.defaultValue || model.value
 
   if (props.maxLength != 100) {
     model.value = String(model.value).slice(0, props.maxLength)
   }
+}
+
+onMounted(() => {
+  //默认值和双向绑定数值之间该做什么样的取舍?
+  //优先选择设置了默认值的默认数值
+
+  //因此，先看看有无设置默认值，有就先将input的内容设置为默认值
+  setDefaultValue()
 })
 </script>
 

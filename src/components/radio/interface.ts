@@ -3,12 +3,12 @@ import type { RadioSize, RadioGroupDirection, RadioGroupSize, RadioGroupType } f
 
 export interface RadioEmits {
   [key: string]: any // 添加索引签名
-  change: (ev: MouseEvent) => true
+  radioChecked: (value: string | number | boolean) => true
 }
 export interface RadioProps {
   defaultChecked?: boolean
   disabled?: boolean
-  modelValue?: string | number | boolean
+  // modelValue?: string | number | boolean
   size?: RadioSize
   type?: RadioType
   value?: string | number | boolean
@@ -16,14 +16,13 @@ export interface RadioProps {
 
 export interface RadioGroupEmits {
   [key: string]: any // 添加索引签名
-  change: (ev: MouseEvent) => true
+  checkedChange: (value: string | number | boolean) => true
 }
 export interface RadioGroupProps {
-  defaultChecked?: boolean
+  defaultValue?: string | number | boolean
   direction?: RadioGroupDirection
   disabled?: boolean
   modelValue?: string | number | boolean
   size?: RadioGroupSize
   type?: RadioGroupType
-  value?: string | number | boolean
 }
