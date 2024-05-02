@@ -1,3 +1,3 @@
 export const getComponentsPrefix = () => 'Aer'
 
-export const getComponentsClassPrefix = () => 'aer-'
+export const getClsPrefix = () => 'aer-'

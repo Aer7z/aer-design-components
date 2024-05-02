@@ -1,13 +1,13 @@
 <template>
   <template v-if="target">
-    <a :class="[styleClass]" :href="target" @click="handleClick" :tabindex="aIsDisabled">
+    <a :class="[cls]" :href="target" @click="handleClick" :tabindex="isTagADisabled">
       <slot />
       <!-- 图标在文字等内容的后头 -->
       <span v-if="loading"><slot name="icon" /> </span>
     </a>
   </template>
   <template v-else>
-    <button :class="[styleClass]" :disabled="disabled" @click="handleClick">
+    <button :class="[cls]" :disabled="disabled" @click="handleClick">
       <slot />
       <!-- 图标在文字等内容的后头 -->
       <span v-if="loading"><slot name="icon" /> </span>
@@ -19,9 +19,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-//console.log(getCurrentInstance())
 import type { ButtonProps, ButtonEmits } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Button'
@@ -37,17 +36,17 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 })
 const emits = defineEmits<ButtonEmits>()
 
-const styleClass: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}btn`,
-  `${getComponentsClassPrefix()}btn-size-${props.size ?? 'medium'}`,
-  `${getComponentsClassPrefix()}btn-shape-${props.shape ?? 'square'}`,
-  `${getComponentsClassPrefix()}btn-status-${props.status ?? 'normal'}`,
-  `${getComponentsClassPrefix()}btn-type-${props.type ?? 'default'}`,
+const cls: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}btn`,
+  `${getClsPrefix()}btn-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}btn-shape-${props.shape ?? 'square'}`,
+  `${getClsPrefix()}btn-status-${props.status ?? 'normal'}`,
+  `${getClsPrefix()}btn-type-${props.type ?? 'default'}`,
   //通过布尔值参数值的类样式处理
-  `${props.disabled ? getComponentsClassPrefix() + 'btn-disabled' : ''}`
+  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`
 ])
 
-const aIsDisabled: ComputedRef<number> = computed((): number => {
+const isTagADisabled: ComputedRef<number> = computed((): number => {
   if (props.disabled) return -1
   return 0
 })

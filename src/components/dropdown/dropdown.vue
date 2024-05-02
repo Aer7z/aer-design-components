@@ -12,7 +12,7 @@ import Trigger from '../trigger/index'
 import Button from '../button/index'
 import { ref, computed } from 'vue'
 // import type { DialogEmits, DialogProps } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Dropdown'

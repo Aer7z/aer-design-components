@@ -1,5 +1,5 @@
 <template>
-  <div :class="[styleClassRadioGroupContainer]" @change="handleChange($event)">
+  <div :class="[clsRadioGroupContainer]" @change="handleChange($event)">
     <slot> </slot>
   </div>
 </template>
@@ -8,8 +8,7 @@
 import { ref, computed, provide, onBeforeMount } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import type { RadioGroupProps, RadioGroupEmits } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
-import { emit } from 'process'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'RadioGroup'
@@ -24,9 +23,9 @@ const props = withDefaults(defineProps<RadioGroupProps>(), {
 })
 const model = defineModel()
 
-const styleClassRadioGroupContainer: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}radio-group-container-${props.direction}`,
-  `${getComponentsClassPrefix()}radio-group-container`
+const clsRadioGroupContainer: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}radio-group-container-${props.direction}`,
+  `${getClsPrefix()}radio-group-container`
 ])
 const emits = defineEmits<RadioGroupEmits>()
 

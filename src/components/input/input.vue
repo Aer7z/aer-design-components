@@ -1,15 +1,15 @@
 <template>
-  <div :class="[styleClassInputWrapperAll]">
-    <div v-if="$slots.prepend" :class="[styleClassInputPrepend]">
+  <div :class="[clsInputWrapper]">
+    <div v-if="$slots.prepend" :class="[clsInputPrepend]">
       <slot name="prepend" />
     </div>
-    <div :class="[styleClassInputWrapper]">
-      <div v-if="$slots.prefix" :class="[styleClassInputPrefix]">
+    <div :class="[clsInputContent]">
+      <div v-if="$slots.prefix" :class="[clsInputPrefix]">
         <slot name="prefix" />
       </div>
       <input
         v-model="model"
-        :class="[styleClassInput]"
+        :class="[clsInput]"
         :disabled="disabled"
         :placeholder="placeholder"
         :maxlength="maxLength"
@@ -19,13 +19,13 @@
         @input="handleInput"
         @keydown.enter="handlePressEnter"
       />
-      <div v-if="showCount" :class="[styleClassInputCountArea]">{{ countRate }}</div>
-      <div v-if="showClear" :class="[styleClassInputClearBtn]" @click="handleClear($event)">x</div>
-      <div v-if="$slots.suffix" :class="[styleClassInputSuffix]">
+      <div v-if="showCount" :class="[clsInputCountArea]">{{ countRate }}</div>
+      <div v-if="showClear" :class="[clsInputClearBtn]" @click="handleClear($event)">x</div>
+      <div v-if="$slots.suffix" :class="[clsInputSuffix]">
         <slot name="suffix" />
       </div>
     </div>
-    <div v-if="$slots.append" :class="[styleClassInputAppend]">
+    <div v-if="$slots.append" :class="[clsInputAppend]">
       <slot name="append" />
     </div>
   </div>
@@ -36,7 +36,7 @@
 import { computed, onMounted } from 'vue'
 import type { ComputedRef } from 'vue'
 import type { InputEmits, InputProps } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Input'
@@ -58,51 +58,53 @@ const props = withDefaults(defineProps<InputProps>(), {
 const emits = defineEmits<InputEmits>()
 
 // 普遍适用的class样式，如尺寸、是否禁用
-const styleClassCommon: string[] = [
-  `${getComponentsClassPrefix()}input-size-${props.size ?? 'medium'}`,
-  `${props.disabled ? getComponentsClassPrefix() + 'input-disabled' : ''}`
+const clsCommon: string[] = [
+  // `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
+  `${props.disabled ? getClsPrefix() + 'input-disabled' : ''}`
 ]
-
-// Input组件内层包裹层的样式
-const styleClassInputWrapper = computed(() => [
-  styleClassCommon,
-  `${getComponentsClassPrefix()}input-wrapper-part`
-])
 // Input组件最外层包裹层的样式
-const styleClassInputWrapperAll = computed(() => [
-  styleClassCommon,
-  `${getComponentsClassPrefix()}input-wrapper-all`
+const clsInputWrapper: ComputedRef<string[]> = computed(() => [
+  ...clsCommon,
+  `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input-wrapper`
 ])
+// Input组件内层包裹层的样式
+const clsInputContent: ComputedRef<string[]> = computed(() => [
+  ...clsCommon,
+  `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input-content`
+])
+
 // Input组件中的input的样式
-const styleClassInput: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}input-font-size-${props.size ?? 'medium'}`,
-  `${getComponentsClassPrefix()}input`
+const clsInput: ComputedRef<string[]> = computed(() => [
+  ...clsCommon,
+  `${getClsPrefix()}input-font-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input`
 ])
 // Input组件中字数统计的样式
-const styleClassInputCountArea: ComputedRef<string[]> = computed(() => [
-  // styleClassCommon.value,
-  `${getComponentsClassPrefix()}input-count-area`
+const clsInputCountArea: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}input-count-area`
 ])
 // Input组件中字数清零按钮的样式
-const styleClassInputClearBtn: ComputedRef<string[]> = computed(() => [
-  `${props.disabled ? getComponentsClassPrefix() + 'input-clear-btn-disabled' : ''}`,
-  `${getComponentsClassPrefix()}input-clear-btn`
+const clsInputClearBtn: ComputedRef<string[]> = computed(() => [
+  `${props.disabled ? getClsPrefix() + 'input-clear-btn-disabled' : ''}`,
+  `${getClsPrefix()}input-clear-btn`
 ])
 // Input组件中前缀元素的样式
-const styleClassInputPrefix: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}input-prefix`
+const clsInputPrefix: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}input-prefix`
 ])
 // Input组件中后缀元素的样式
-const styleClassInputSuffix: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}input-suffix`
+const clsInputSuffix: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}input-suffix`
 ])
 // Input组件中前置标签的样式
-const styleClassInputPrepend: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}input-prepend`
+const clsInputPrepend: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}input-prepend`
 ])
 // Input组件中后置标签的样式
-const styleClassInputAppend: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}input-append`
+const clsInputAppend: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}input-append`
 ])
 
 const countRate: ComputedRef<string> = computed(() => {

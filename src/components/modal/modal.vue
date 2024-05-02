@@ -23,7 +23,7 @@
 import { ref, computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import type { ModalEmits, ModalProps } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Modal'
@@ -37,24 +37,24 @@ const props = withDefaults(defineProps<ModalProps>(), {
 let visible = ref(false)
 
 const modalWrapper: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-wrapper`
+  `${getClsPrefix()}modal-wrapper`
 ])
 
 const modalContent: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-content`
+  `${getClsPrefix()}modal-content`
 ])
 const modalHeader: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-header`
+  `${getClsPrefix()}modal-header`
 ])
 const modalHeaderButton: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-header-button`
+  `${getClsPrefix()}modal-header-button`
 ])
-const modalBody: ComputedRef<string[]> = computed(() => [`${getComponentsClassPrefix()}modal-body`])
+const modalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])
 const modalFooter: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-footer`
+  `${getClsPrefix()}modal-footer`
 ])
 const modalFooterButton: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}modal-footer-button`
+  `${getClsPrefix()}modal-footer-button`
 ])
 
 const handleClick: (isVisible: boolean) => void = (isVisible: boolean = true): void => {

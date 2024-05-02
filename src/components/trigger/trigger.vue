@@ -1,12 +1,12 @@
 <template>
-  <div ref="triggerRef" :class="[styleClassTrigger]">
+  <div ref="triggerRef" :class="[clsTrigger]">
     <div v-on="EventList">
       <slot />
     </div>
     <Teleport to="body">
-      <div ref="popupRef" v-show="visible" :class="[styleClassTriggerPopup]">
-        <div :class="[styleClassTriggerPopupWrapper]" :style="[popupStyleRec]">
-          <!-- <div :class="[styleClassTriggerPopupContent]"> -->
+      <div ref="popupRef" v-show="visible" :class="[clsTriggerPopupWrapper]">
+        <div :class="[clsTriggerPopup]" :style="[popupStyleRec]">
+          <!-- <div :class="[clsTriggerPopupContent]"> -->
           <slot name="content" />
           <!-- </div> -->
         </div>
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 import type { TriggerEmits, TriggerProps } from './interface'
 
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
@@ -40,18 +40,14 @@ const props = withDefaults(defineProps<TriggerProps>(), {
 // const setTriggerWay: Function = () => {}
 
 // 这些计算属性用于生成不同组件的样式类。
-// 每个属性都利用 `getComponentsClassPrefix()` 函数确保类名前缀的一致性。
-// `styleClassTrigger` 提供了触发器的样式类。
-const styleClassTrigger: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}trigger`
-])
-// `styleClassTriggerPopup` 提供了触发器弹出窗口的样式类。
-const styleClassTriggerPopup: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}trigger-popup`
-])
-// `styleClassTriggerPopupWrapper` 提供了触发器弹出窗口的包装器的样式类。
-const styleClassTriggerPopupWrapper: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}trigger-popup-wrapper`
+// 每个属性都利用 `getClsPrefix()` 函数确保类名前缀的一致性。
+// `clsTrigger` 提供了触发器的样式类。
+const clsTrigger: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger`])
+// `clsTriggerPopup` 提供了触发器弹出窗口的样式类。
+const clsTriggerPopup: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger-popup`])
+// `clsTriggerPopupWrapper` 提供了触发器弹出窗口的包装器的样式类。
+const clsTriggerPopupWrapper: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}trigger-popup-wrapper`
 ])
 
 const emits = defineEmits<TriggerEmits>()

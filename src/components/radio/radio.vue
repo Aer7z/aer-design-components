@@ -1,8 +1,8 @@
 <template>
-  <label :class="[styleClassRadioWrapper]">
+  <label :class="[clsRadioWrapper]">
     <!-- <template v-if="radioType === 'button'">
-      <button :class="[styleClassRadio]" :disabled="props.disabled" :name="radioName">
-        <div :class="[styleClassRadioContent]">
+      <button :class="[clsRadio]" :disabled="props.disabled" :name="radioName">
+        <div :class="[clsRadioLabel]">
           <slot></slot>
         </div>
       </button>
@@ -11,13 +11,13 @@
     <input
       :type="radioType"
       :value="props.value"
-      :class="[styleClassRadio]"
+      :class="[clsRadio]"
       :disabled="props.disabled"
       :name="radioName"
       :checked="isChecked"
       @change="handleChange"
     />
-    <div :class="[styleClassRadioContent]">
+    <div :class="[clsRadioLabel]">
       <slot></slot>
     </div>
     <!-- </template> -->
@@ -27,7 +27,7 @@
 import { ref, computed, inject, onBeforeMount, onMounted } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import type { RadioProps, RadioEmits } from './interface'
-import { getComponentsClassPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Radio'
@@ -54,27 +54,27 @@ const setInitialChecked = () => {
 }
 
 // 定义单选组件的通用样式。
-const styleClassRadioCommon: string[] = [
-  `${getComponentsClassPrefix()}radio-hover`, // 悬停效果样式
-  `${props.disabled ? getComponentsClassPrefix() + 'radio-disabled' : ''}` // 禁用状态样式
+const clsRadioCommon: string[] = [
+  `${getClsPrefix()}radio-hover`, // 悬停效果样式
+  `${props.disabled ? getClsPrefix() + 'radio-disabled' : ''}` // 禁用状态样式
 ]
 
 // 单选组件的包装器样式。
-const styleClassRadioWrapper: ComputedRef<string[]> = computed(() => [
-  ...styleClassRadioCommon, // 包含通用样式
-  `${getComponentsClassPrefix()}radio-wrapper` // 特定的包装器样式
+const clsRadioWrapper: ComputedRef<string[]> = computed(() => [
+  ...clsRadioCommon, // 包含通用样式
+  `${getClsPrefix()}radio-wrapper` // 特定的包装器样式
 ])
 
 // 单选组件本身的样式。
-const styleClassRadio: ComputedRef<string[]> = computed(() => [
-  ...styleClassRadioCommon, // 包含通用样式
-  `${getComponentsClassPrefix()}radio` // 特定的单选样式
+const clsRadio: ComputedRef<string[]> = computed(() => [
+  ...clsRadioCommon, // 包含通用样式
+  `${getClsPrefix()}radio` // 特定的单选样式
 ])
 
 // 单选内容的样式。
-const styleClassRadioContent: ComputedRef<string[]> = computed(() => [
-  `${getComponentsClassPrefix()}radio-font-size-${radioSize ?? 'medium'}`, // 根据属性设置字体大小，或默认设置为中等大小
-  `${getComponentsClassPrefix()}radio-content` // 内容特定的样式
+const clsRadioLabel: ComputedRef<string[]> = computed(() => [
+  `${getClsPrefix()}radio-font-size-${radioSize ?? 'medium'}`, // 根据属性设置字体大小，或默认设置为中等大小
+  `${getClsPrefix()}radio-content` // 内容特定的样式
 ])
 const emits = defineEmits<RadioEmits>()
 
