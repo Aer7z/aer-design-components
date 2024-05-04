@@ -1,36 +1,92 @@
-// sum.test.js
+// button.test.js
+// vitest js-dom
 import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Button from '../components/button/index.js'
+import {
+  BUTTON_SIZES,
+  BUTTON_SHAPES,
+  BUTTON_STATUSES,
+  BUTTON_TYPES
+} from '../components/button/constants.js'
+import { getTagAProps, getTagCls, testComponentsClsContain } from './tess_utils.js'
 
-// test('adds 1 + 2 to equal 3', () => {
-//   expect(sum(1, 2)).toBe(3)
-// })
+// Button 组件的测试
 
-describe('button.vue test', () => {
-  test('status normal', async () => {
-    const status = 'normal'
-
-    // 挂载组件并传递相应的 props
-    const wrapper = mount(Button, {
-      props: { status }
+//默认状态另外再测
+describe('测试是否能根据状态生成对应类名', () => {
+  // Button 组件中识别为a标签的必备对象属性
+  const tagAProps: any = getTagAProps()
+  const clsPesfixButton: string = 'aer-btn-'
+  describe('测试 Button 组件自带样式', () => {
+    test('a 标签', () => {
+      // 挂载组件并传递相应的 props
+      const wrapper = mount(Button, {
+        props: { ...tagAProps }
+      })
+      // 获取组件的类名数组
+      const classNames = getTagCls(wrapper, 'a')
+      //断言类名中是否包含动态生成的类名
+      expect(classNames).toContain('aer-btn')
     })
-    // 等待组件更新
-    // await wrapper.vm.$nextTick();
-
-    // 断言组件是否存在
-    expect(wrapper.exists()).toBe(true)
-    // console.log(wrapper)
-
-    console.log(wrapper.html()) // 打印组件的 HTML 结构
-    const classNames = wrapper.find('button').classes() // 获取组件的类名数组
-    console.log(classNames)
-
-    // 断言类名中是否包含动态生成的类名
-    // expect(classNames).toContain('test');
-    // expect(classNames).toContain(`aer-btn-status-${status}`);
-    // expect(wrapper.classes()).toEqual(expect.arrayContaining(['aer-btn-status-normal']))
-    // expect(wrapper.classes()).toContain(['aer-btn-status-normal'])
-    // expect(wrapper.classes()).toContain('aer-btn-status-normal');
+    test('button 标签', () => {
+      // 挂载组件并传递相应的 props
+      const wrapper = mount(Button)
+      // 获取组件的类名数组
+      const classNames = getTagCls(wrapper, 'button')
+      // 断言类名中是否包含动态生成的类名
+      expect(classNames).toContain('aer-btn')
+    })
+  })
+  describe('测试 Button 组件的 disabled', () => {
+    test('a 标签', () => {
+      // 挂载组件并传递相应的 props
+      const wrapper = mount(Button, {
+        props: { disabled: true, ...tagAProps }
+      })
+      // 获取组件的类名数组
+      const classNames = getTagCls(wrapper, 'a')
+      // 断言类名中是否包含动态生成的类名
+      expect(classNames).toContain('aer-btn-disabled')
+    })
+    test('button 标签', () => {
+      // 挂载组件并传递相应的 props
+      const wrapper = mount(Button, {
+        props: { disabled: true }
+      })
+      // 获取组件的类名数组
+      const classNames = getTagCls(wrapper, 'button')
+      // 断言类名中是否包含动态生成的类名
+      expect(classNames).toContain('aer-btn-disabled')
+    })
+  })
+  describe('测试 Button 组件的 size', () => {
+    test('a 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'size', BUTTON_SIZES, 'a', tagAProps)
+    })
+    test('button 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'size', BUTTON_SIZES, 'button')
+    })
+  })
+  describe('测试 Button 组件的 shape', () => {
+    test('a 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'shape', BUTTON_SHAPES, 'a', tagAProps)
+    })
+    test('button 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'shape', BUTTON_SHAPES, 'button')
+    })
+  })
+  describe('测试 Button 组件的 status', () => {
+    test('a 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'status', BUTTON_STATUSES, 'a', tagAProps)
+    })
+    test('button 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'status', BUTTON_STATUSES, 'button')
+    })
+  })
+  describe('测试 Button 组件的 type', () => {
+    test('不区分 button 标签还是 a 标签', () => {
+      testComponentsClsContain(Button, clsPesfixButton, 'type', BUTTON_TYPES, 'button')
+    })
   })
 })

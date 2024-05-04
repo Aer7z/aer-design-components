@@ -1,5 +1,5 @@
 <template>
-  <template v-if="target">
+  <template v-if="isTagA">
     <a :class="[cls]" :href="target" @click="handleClick" :tabindex="isTagADisabled">
       <slot />
       <!-- 图标在文字等内容的后头 -->
@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   size: 'medium',
   shape: 'square',
   status: 'normal',
+  target: '',
   type: 'default'
 })
 const emits = defineEmits<ButtonEmits>()
@@ -45,6 +46,9 @@ const cls: ComputedRef<string[]> = computed(() => [
   //通过布尔值参数值的类样式处理
   `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`
 ])
+const isTagA: ComputedRef<boolean> = computed((): boolean => {
+  return props.target === '' ? false : true
+})
 
 const isTagADisabled: ComputedRef<number> = computed((): number => {
   if (props.disabled) return -1
