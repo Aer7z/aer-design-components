@@ -2,18 +2,15 @@
   <template v-if="isTagA">
     <a :class="[cls]" :href="target" @click="handleClick" :tabindex="isTagADisabled">
       <slot />
-      <!-- 图标在文字等内容的后头 -->
       <span v-if="loading"><slot name="icon" /> </span>
     </a>
   </template>
   <template v-else>
     <button :class="[cls]" :disabled="disabled" @click="handleClick">
       <slot />
-      <!-- 图标在文字等内容的后头 -->
       <span v-if="loading"><slot name="icon" /> </span>
     </button>
   </template>
-  <!-- <h3>{{ props }}</h3> -->
 </template>
 
 <script setup lang="ts">
@@ -39,10 +36,10 @@ const emits = defineEmits<ButtonEmits>()
 
 const cls: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}btn`,
-  `${getClsPrefix()}btn-size-${props.size ?? 'medium'}`,
-  `${getClsPrefix()}btn-shape-${props.shape ?? 'square'}`,
-  `${getClsPrefix()}btn-status-${props.status ?? 'normal'}`,
-  `${getClsPrefix()}btn-type-${props.type ?? 'default'}`,
+  `${getClsPrefix()}btn-size-${props.size}`,
+  `${getClsPrefix()}btn-shape-${props.shape}`,
+  `${getClsPrefix()}btn-status-${props.status}`,
+  `${getClsPrefix()}btn-type-${props.type}`,
   //通过布尔值参数值的类样式处理
   `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`
 ])
@@ -60,6 +57,7 @@ const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
     ev.preventDefault()
     return
   }
+  console.log('111')
   ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }

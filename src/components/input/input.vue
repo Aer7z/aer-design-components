@@ -65,20 +65,20 @@ const clsCommon: string[] = [
 // Input组件最外层包裹层的样式
 const clsInputWrapper: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
-  `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input-size-${props.size}`,
   `${getClsPrefix()}input-wrapper`
 ])
 // Input组件内层包裹层的样式
 const clsInputContent: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
-  `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input-size-${props.size}`,
   `${getClsPrefix()}input-content`
 ])
 
 // Input组件中的input的样式
 const clsInput: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
-  `${getClsPrefix()}input-font-size-${props.size ?? 'medium'}`,
+  `${getClsPrefix()}input-font-size-${props.size}`,
   `${getClsPrefix()}input`
 ])
 // Input组件中字数统计的样式

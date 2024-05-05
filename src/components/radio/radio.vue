@@ -73,7 +73,7 @@ const clsRadio: ComputedRef<string[]> = computed(() => [
 
 // 单选内容的样式。
 const clsRadioLabel: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}radio-font-size-${radioSize ?? 'medium'}`, // 根据属性设置字体大小，或默认设置为中等大小
+  `${getClsPrefix()}radio-font-size-${radioSize}`, // 根据属性设置字体大小，或默认设置为中等大小
   `${getClsPrefix()}radio-content` // 内容特定的样式
 ])
 const emits = defineEmits<RadioEmits>()

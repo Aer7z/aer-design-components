@@ -37,6 +37,7 @@ const testComponentsClsContain = (
     })
     // 获取组件的类名数组
     const classNames = wrapper.find(tagName).classes()
+    console.log(classNames)
     // 断言类名中是否包含动态生成的类名
     expect(classNames).toContain(`${componentClsPrefix + propsName}-${element}`)
   }
