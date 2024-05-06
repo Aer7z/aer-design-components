@@ -11,7 +11,7 @@ const Button = Object.assign(_Button, {
   }
 })
 
-export type ButtonInstance = InstanceType<typeof _Button>
+// export type ButtonInstance = InstanceType<typeof _Button>
 // export type ButtonGroupInstance = InstanceType<typeof _ButtonGroup>
 
 export { _ButtonGroup as ButtonGroup }

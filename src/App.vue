@@ -2,6 +2,7 @@
   <!-- <Button> </Button> -->
   <div>
     <button><router-link to="/Button">Button</router-link></button>
+    <button><router-link to="/ButtonSimple">ButtonSimple</router-link></button>
     <button><router-link to="/Dropdown">Dropdown</router-link></button>
     <button><router-link to="/Input">Input</router-link></button>
     <button><router-link to="/Modal">Modal</router-link></button>
