@@ -12,5 +12,5 @@ export interface ButtonSimpleProps {
   size?: ButtonSimpleSize
   shape?: ButtonSimpleShape
   target?: string
-  type?: ButtonSimpleVariant
+  variant?: ButtonSimpleVariant
 }

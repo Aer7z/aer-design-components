@@ -1,0 +1,123 @@
+@import './token.less';
+
+// 按钮基本样式
+.@{components-prefix}btn-simple {
+  cursor: pointer;
+  // cursor: var(--cursor, pointer);
+  border: var(--border);
+  // background-color: ;
+
+  // border-style: var(--border-style);
+  background-color: var(--background-color);
+  color: var(--color);
+  // outline-color: antiquewhite;
+  // border-color: var(--border-color);
+  // outline-color: var(--outline-color);
+  &:hover {
+    --background-color: var(--background-color-hover);
+    --color: var(--color-hover);
+    // --border-color: var(--border-color_hover);
+  }
+  &:active {
+    // --background-color: var(--background-color_active);
+    // --color: var(--color_active);
+    // --border-color: var(--border-color_active);
+  }
+  &:focus {
+    // --outline-color: var(--outline-color_focus);
+    // //只有聚焦状态显示轮廓
+    // outline-style: var(--outline-style, solid);
+    // outline-width: 4px;
+    // outline-offset: 1px;
+  }
+  &:disabled {
+    // --background-color: var(--background-color_disabled);
+    // --color: var(--color_disabled);
+    // --border-color: var(--border-color_disabled);
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-decoration: none;
+  /* 禁止左键选中 */
+  user-select: none;
+}
+
+.@{components-prefix}btn-simple-variant-primary {
+  --border: none;
+  --background-color: var(@btn-primary-bg-color);
+  --color: var(@btn-primary-text-color);
+  --background-color-hover: var(@btn-primary-bg-color-hover);
+  --color-hover: var(@btn-primary-text-color-hover);
+}
+.@{components-prefix}btn-simple-variant-secondary {
+  --border: none;
+  --background-color: var(@btn-secondary-bg-color);
+  --color: var(@btn-secondary-text-color);
+  --background-color-hover: var(@btn-secondary-bg-color-hover);
+  --color-hover: var(@btn-secondary-text-color-hover);
+}
+.@{components-prefix}btn-simple-variant-outline {
+  --border: solid;
+  --background-color: var(@btn-outline-bg-color);
+  --color: var(@btn-outline-text-color);
+  --background-color-hover: var(@btn-outline-bg-color-hover);
+  --color-hover: var(@btn-outline-text-color-hover);
+}
+.@{components-prefix}btn-simple-variant-text {
+  --border: none;
+  --background-color: var(@btn-text-bg-color);
+  --color: var(@btn-text-text-color);
+  --background-color-hover: var(@btn-text-bg-color-hover);
+  --color-hover: var(@btn-text-text-color-hover);
+}
+.@{components-prefix}btn-simple-variant-link {
+  --border: none;
+  --background-color: var(@btn-link-bg-color);
+  --color: var(@btn-link-text-color);
+  --background-color-hover: var(@btn-link-bg-color-hover);
+  --color-hover: var(@btn-link-text-color-hover);
+}
+.@{components-prefix}btn-simple-variant-destructive {
+  --border: none;
+  --background-color: var(@btn-destructive-bg-color);
+  --color: var(@btn-destructive-text-color);
+  --background-color-hover: var(@btn-destructive-bg-color-hover);
+  --color-hover: var(@btn-destructive-text-color-hover);
+}
+
+// 按钮的大小、字体尺寸
+.@{components-prefix}btn-simple-size {
+  &-mini {
+    height: @btn-height-1;
+    font-size: @btn-font-size-1;
+  }
+  &-small {
+    height: @btn-height-2;
+    font-size: @btn-font-size-2;
+  }
+  &-medium {
+    height: @btn-height-3;
+    font-size: @btn-font-size-3;
+  }
+  &-large {
+    height: @btn-height-4;
+    font-size: @btn-font-size-4;
+  }
+}
+// 按钮的形状
+.@{components-prefix}btn-simple-shape {
+  &-square {
+    border-radius: @btn-border-radius-square;
+  }
+  &-circle {
+    border-radius: @btn-border-radius-circle;
+  }
+  &-round {
+    border-radius: @btn-border-radius-round;
+  }
+}
