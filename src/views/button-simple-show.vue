@@ -2,9 +2,8 @@
   <ButtonSimple @click="foo">
     <span>Click me</span>
   </ButtonSimple>
-  <ButtonSimple disabled>
-    <span>disabled</span>
-  </ButtonSimple>
+  <br />
+  <br />
   <ButtonSimple variant="primary">
     <span>primary</span>
   </ButtonSimple>
@@ -17,10 +16,30 @@
   <ButtonSimple variant="text">
     <span>text</span>
   </ButtonSimple>
-  <ButtonSimple variant="link">
+  <ButtonSimple variant="link" target="http://www.baidu.com">
     <span>link</span>
   </ButtonSimple>
   <ButtonSimple variant="destructive">
+    <span>destructive</span>
+  </ButtonSimple>
+  <br />
+  <br />
+  <ButtonSimple variant="primary" disabled>
+    <span>primary</span>
+  </ButtonSimple>
+  <ButtonSimple variant="secondary" disabled>
+    <span>secondary</span>
+  </ButtonSimple>
+  <ButtonSimple variant="outline" disabled>
+    <span>outline</span>
+  </ButtonSimple>
+  <ButtonSimple variant="text" disabled>
+    <span>text</span>
+  </ButtonSimple>
+  <ButtonSimple variant="link" target="http://www.baidu.com" disabled>
+    <span>link</span>
+  </ButtonSimple>
+  <ButtonSimple variant="destructive" disabled>
     <span>destructive</span>
   </ButtonSimple>
 </template>
