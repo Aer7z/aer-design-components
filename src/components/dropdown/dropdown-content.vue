@@ -1,34 +1,31 @@
 <template>
   <!-- <div :class="cls"> -->
-    <slot name="trigger" />
-    <slot name="triggerContent" />
-    <div>23123</div>
+    <TriggerPopup :visible="popupVisible" :popupPosRec="triggerPopupPosRec">
+      <template v-slot:default>
+        <slot></slot>
+      </template>
+    </TriggerPopup>
   <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
-import Trigger from '../trigger/index'
-import { ref, computed, provide } from 'vue'
+import { TriggerPopup } from '../trigger/index'
+import { ref, computed, inject } from 'vue'
 import type { Ref } from 'vue'
 import type { PopupPosRec } from '../trigger/constants'
 // import type { DialogEmits, DialogProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Dropdown'
+  name: 'DropdownContent'
 })
 
-const triggerPopupPosRec: Ref<PopupPosRec> = ref({
-  top: '',
-  left: '',
-  bottom: '',
-  right: ''
-})
-provide('triggerPopupPosRec', triggerPopupPosRec)
-const popupVisible: Ref<boolean> = ref(false)
-provide('triggerPopupVisible', popupVisible)
+const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(
+  inject('triggerPopupPosRec', undefined)
+)
+const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
-// const cls = computed(() => [`${getClsPrefix()}dropdown`])
+// const cls = computed(() => [`${getClsPrefix()}dropdown-content`])
 
 // const props = withDefaults(defineProps<DialogProps>(), {
 //   title: '暂无内容',

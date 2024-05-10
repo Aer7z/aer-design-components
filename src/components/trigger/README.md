@@ -1,4 +1,4 @@
-# API
+# API 无渲染组件
 
 ## `<Trigger>` Props说明
 
