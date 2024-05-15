@@ -8,13 +8,11 @@ export interface TriggerEmits {
 }
 
 export interface TriggerProps {
-  clickOutsideToClose?: boolean
   disabled?: boolean
   position?: PositionType
   trigger?: TriggerType
 }
 
 export interface TriggerPopupProps {
-  popupPosRec: PopupPosRec
-  visible: boolean
+  clickOutsideToClose?: boolean
 }

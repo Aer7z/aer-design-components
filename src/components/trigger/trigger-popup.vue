@@ -1,21 +1,18 @@
 <template>
   <Teleport to="body">
-    <div ref="popupRef" :class="[clsTriggerPopupWrapper]" v-show="popupVisible">
-      <div :class="[clsTriggerPopup]" :style="[triggerPopupPosRec]">
-        <!-- <div :class="[clsTriggerPopupContent]"> -->
-        <slot></slot>
-        <!-- </div> -->
-      </div>
+    <div
+      :class="[clsTriggerPopup]"
+      ref="popupRef"
+      :style="[triggerPopupPosRec]"
+      v-show="popupVisible"
+    >
+      <slot></slot>
     </div>
   </Teleport>
 </template>
 
-<!-- <template>
-  <slot :turnOnOrOff="click"></slot>l,
-</template> -->
-
 <script lang="ts" setup>
-import { ref, computed, onMounted, onBeforeUnmount, inject } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount, inject } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
 import type { TriggerEmits, TriggerPopupProps } from './interface'
@@ -29,13 +26,35 @@ const triggerPopupPosRec: Ref<PopupPosRec> = ref(
     right: ''
   })
 )
+
+const props = withDefaults(defineProps<TriggerPopupProps>(), {
+  clickOutsideToClose: true
+})
+
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
+watch(popupVisible, (newVal: boolean, oldVal: boolean) => {
+  if (props.clickOutsideToClose === false) {
+    return
+  }
+  if (newVal === true) {
+    document.addEventListener('click', closePopupWhenClickOutside)
+  } else {
+    document.removeEventListener('click', closePopupWhenClickOutside)
+  }
+})
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
-// const triggerRef: Ref = ref<HTMLElement>()
 const popupRef: Ref = ref<HTMLElement>()
-// const visible: Ref = ref(false)
-// let triggerPositionRec: DOMRect = new DOMRect()
+
+const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) => {
+  // 检查点击的区域是否在触发器外部
+  let isClickAreaOutOfPopup = !(popupRef.value as HTMLElement).contains(ev.target as HTMLElement)
+  // 如果点击的区域不在触发器内部
+  if (isClickAreaOutOfPopup) {
+    // 关闭弹出框
+    popupVisible.value = false
+  }
+}
 
 defineOptions({
   name: 'TriggerPopup'
@@ -43,15 +62,6 @@ defineOptions({
 
 // `clsTriggerPopup` 提供了触发器弹出窗口的样式类。
 const clsTriggerPopup: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger-popup`])
-// `clsTriggerPopupWrapper` 提供了触发器弹出窗口的包装器的样式类。
-const clsTriggerPopupWrapper: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}trigger-popup-wrapper`
-])
-
-const props = withDefaults(defineProps<TriggerPopupProps>(), {
-  // popupPosRec: DOMRect,
-  visible: false
-})
 
 // let popupStyleRec: Ref<CSSProperties> = ref<CSSProperties>({})
 
@@ -76,6 +86,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   //在卸载的时候移出事件监听器
-  // document.removeEventListener('click', closePopupWhenClickOutside)
+  document.removeEventListener('click', closePopupWhenClickOutside)
 })
 </script>

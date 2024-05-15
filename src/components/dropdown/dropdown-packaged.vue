@@ -1,3 +1,4 @@
+<!-- /* */
 <template>
   <Dropdown>
     <template v-slot:trigger>
@@ -6,8 +7,8 @@
       </DropdownTrigger>
     </template>
     <template v-slot:triggerContent>
-      <DropdownContent >
-        <label style="background-color: aliceblue;">测试</label>
+      <DropdownContent>
+        <label style="background-color: aliceblue">测试</label>
       </DropdownContent>
     </template>
   </Dropdown>
@@ -15,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import Dropdown from '../components/dropdown/index'
-import { DropdownTrigger, DropdownContent } from '../components/dropdown/index'
+import Dropdown from './index'
+import { DropdownTrigger, DropdownContent } from './index'
 
 // import Button from '../components/button/index'
 </script>
 
-<style></style>
+<style></style> -->

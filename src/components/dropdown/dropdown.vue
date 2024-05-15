@@ -1,18 +1,13 @@
 <template>
-  <!-- <div :class="cls"> -->
     <slot name="trigger" />
     <slot name="triggerContent" />
     <div>23123</div>
-  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
-import Trigger from '../trigger/index'
 import { ref, computed, provide } from 'vue'
 import type { Ref } from 'vue'
 import type { PopupPosRec } from '../trigger/constants'
-// import type { DialogEmits, DialogProps } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'Dropdown'

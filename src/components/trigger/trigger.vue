@@ -1,5 +1,5 @@
 <template>
-  <div ref="triggerRef" v-on="EventList" >
+  <div ref="triggerRef" v-on="EventList" :class="clsTrigger" @click.stop>
     <!-- <slot name="trigger" /> -->
     <slot></slot>
   </div>
@@ -15,6 +15,7 @@ import type { PopupPosRec } from './constants'
 const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(
   inject('triggerPopupPosRec', undefined)
 )
+
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
@@ -28,7 +29,6 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<TriggerProps>(), {
-  clickOutsideToClose: true,
   disabled: false,
   position: 'bottom',
   trigger: 'click'
@@ -66,6 +66,8 @@ const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
     //   : document.removeEventListener('click', closePopupWhenClickOutside)
   }
 }
+
+const clsTrigger: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger`])
 
 // 点击外部关闭弹出框的函数
 // const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) => {
