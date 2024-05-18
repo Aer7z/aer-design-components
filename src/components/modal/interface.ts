@@ -10,3 +10,4 @@ export interface ModalProps {
   title?: string
   body?: string
 }
+

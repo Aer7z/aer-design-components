@@ -2,7 +2,7 @@
   <Teleport to="body">
     <div
       :class="[clsTriggerPopup]"
-      ref="popupRef"
+      ref="triggerPopupRef"
       :style="[triggerPopupPosRec]"
       v-show="popupVisible"
     >
@@ -44,11 +44,11 @@ watch(popupVisible, (newVal: boolean, oldVal: boolean) => {
   }
 })
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
-const popupRef: Ref = ref<HTMLElement>()
+const triggerPopupRef: Ref = ref<HTMLElement>()
 
 const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) => {
   // 检查点击的区域是否在触发器外部
-  let isClickAreaOutOfPopup = !(popupRef.value as HTMLElement).contains(ev.target as HTMLElement)
+  let isClickAreaOutOfPopup = !(triggerPopupRef.value as HTMLElement).contains(ev.target as HTMLElement)
   // 如果点击的区域不在触发器内部
   if (isClickAreaOutOfPopup) {
     // 关闭弹出框
