@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App,ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Radio from './radio.vue'
 import _RadioGroup from './radio-group.vue'
@@ -11,8 +11,8 @@ const Radio = Object.assign(_Radio, {
   }
 })
 
-export type RadioInstance = InstanceType<typeof _Radio>
-// export type RadioGroupInstance = InstanceType<typeof _RadioGroup>
+export type RadioInstance = ComponentPublicInstance<typeof _Radio>
+export type RadioGroupInstance = ComponentPublicInstance<typeof _RadioGroup>
 
 export { _RadioGroup as RadioGroup }
 export default Radio

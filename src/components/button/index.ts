@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App,ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Button from './button.vue'
 import _ButtonGroup from './button-group.vue'
@@ -11,8 +11,8 @@ const Button = Object.assign(_Button, {
   }
 })
 
-// export type ButtonInstance = InstanceType<typeof _Button>
-// export type ButtonGroupInstance = InstanceType<typeof _ButtonGroup>
+export type ButtonInstance = ComponentPublicInstance<typeof _Button>
+export type ButtonGroupInstance = ComponentPublicInstance<typeof _ButtonGroup>
 
 export { _ButtonGroup as ButtonGroup }
 export default Button

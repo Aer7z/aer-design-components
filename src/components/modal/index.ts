@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App,ComponentPublicInstance  } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Modal from './modal.vue'
 import _ModalTrigger from './modal-trigger.vue'
@@ -18,12 +18,12 @@ const Modal = Object.assign(_Modal, {
   }
 })
 
-export type ModalType = InstanceType<typeof _Modal>
-export type ModalTriggerType = InstanceType<typeof _ModalTrigger>
-export type ModalTriggerPopupType = InstanceType<typeof _ModalTriggerPopup>
-export type ModalHeaderType = InstanceType<typeof _ModalHeader>
-export type ModalBodyType = InstanceType<typeof _ModalBody>
-export type ModalFooterType = InstanceType<typeof _ModalFooter>
+export type ModalType = ComponentPublicInstance<typeof _Modal>
+export type ModalTriggerType = ComponentPublicInstance<typeof _ModalTrigger>
+export type ModalTriggerPopupType = ComponentPublicInstance<typeof _ModalTriggerPopup>
+export type ModalHeaderType = ComponentPublicInstance<typeof _ModalHeader>
+export type ModalBodyType = ComponentPublicInstance<typeof _ModalBody>
+export type ModalFooterType = ComponentPublicInstance<typeof _ModalFooter>
 
 export {
   _ModalTrigger as ModalTrigger,

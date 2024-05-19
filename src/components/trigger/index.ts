@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App, ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Trigger from './trigger.vue'
 import _TriggerPopup from './trigger-popup.vue'
@@ -13,8 +13,8 @@ const Trigger = Object.assign(_Trigger, {
   }
 })
 
-// export type TriggerType = InstanceType<typeof _Trigger>
-// export type TriggerPopupType = InstanceType<typeof _TriggerPopup>
+export type TriggerType = ComponentPublicInstance<typeof _Trigger>
+export type TriggerPopupType = ComponentPublicInstance<typeof _TriggerPopup>
 
 export { _TriggerPopup as TriggerPopup }
 export default Trigger
