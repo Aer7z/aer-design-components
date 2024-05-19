@@ -1,6 +1,5 @@
 <template>
-  <slot name="trigger" />
-  <slot name="triggerPopup" />
+  <slot></slot>
   <!-- <div>23123</div> -->
 </template>
 

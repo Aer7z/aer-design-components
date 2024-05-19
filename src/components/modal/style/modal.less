@@ -10,7 +10,6 @@
 
   background-color: rgba(@modal-wrapper-background-color, 0.5);
 
-
   z-index: 1001;
 }
 
@@ -43,7 +42,11 @@
   text-align: right;
 }
 .@{components-prefix}modal-footer-button {
+  display: inline-block;
   &:first-child {
     margin-right: 12px;
+  }
+  &:only-child{
+    margin-right: 0;
   }
 }

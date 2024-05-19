@@ -14,7 +14,7 @@ const Dropdown = Object.assign(_Dropdown, {
 
 export type DropdownType = typeof _Dropdown
 export type DropdownTriggerType = typeof _DropdownTrigger
-export type DropdownContentType = typeof _DropdownTriggerPopup
+export type _DropdownTriggerPopupType = typeof _DropdownTriggerPopup
 
 // export type DropdownType = InstanceType<typeof _Dropdown>
 // export type DropdownTriggerType = InstanceType<typeof _DropdownTrigger>
