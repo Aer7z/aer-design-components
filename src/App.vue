@@ -13,12 +13,13 @@
     <!-- <Aer></Aer> -->
     <!-- <Aer_Button></Aer_Button> -->
   </div>
-
   <br /><br />
   <router-view></router-view>
 </template>
 
 <script setup lang="ts">
+// import Modal from './components/modal';
+
 // import ButtonGroup from './components/button/button-group.vue';
 // import Button from './components/button/button.vue'
 

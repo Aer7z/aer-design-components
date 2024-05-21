@@ -1,4 +1,4 @@
-import type { App,ComponentPublicInstance  } from 'vue'
+import type { App, ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Modal from './modal.vue'
 import _ModalTrigger from './modal-trigger.vue'
@@ -14,7 +14,18 @@ const Modal = Object.assign(_Modal, {
   Body: _ModalBody,
   Footer: _ModalFooter,
   install: (app: App) => {
-    app.component(getComponentsPrefix() + _Modal.name, _Modal)
+    const components = [
+      _Modal,
+      _ModalTrigger,
+      _ModalTriggerPopup,
+      _ModalHeader,
+      _ModalBody,
+      _ModalFooter
+    ]
+    components.forEach((component) => {
+      // 在应用中注册组件
+      app.component(getComponentsPrefix() + component.name, component)
+    })
   }
 })
 

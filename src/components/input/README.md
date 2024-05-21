@@ -1,3 +1,6 @@
+**目录**
+[toc]
+
 # API
 
 ## `<Input>` Props说明
@@ -17,20 +20,20 @@
 
 ## `<Input>` Event说明
 
-| 事件名     | 描述                           | 参数                         |
-| ---------- | ------------------------------ | ---------------------------- |
-| blur       | 输入框失去焦点时触发           | ev: `FocusEvent`             |
-| change     | 仅在输入框失焦或按下回车时触发 | value: `string`, ev: `Event` |
-| clear      | 用户点击清除按钮时触发         | ev: `MouseEvent`             |
-| input      | 用户输入时触发                 | value: `string`, ev: `Event` |
-| pressEnter | 用户按下回车时触发             | ev: `KeyboardEvent`          |
-| focus      | 输入框获取焦点时触发           | ev: `FocusEvent`             |
+|   事件名   |              描述              |             参数             |
+| :--------: | :----------------------------: | :--------------------------: |
+|    blur    |      输入框失去焦点时触发      |       ev: `FocusEvent`       |
+|   change   | 仅在输入框失焦或按下回车时触发 | value: `string`, ev: `Event` |
+|   clear    |     用户点击清除按钮时触发     |       ev: `MouseEvent`       |
+|   input    |         用户输入时触发         | value: `string`, ev: `Event` |
+| pressEnter |       用户按下回车时触发       |     ev: `KeyboardEvent`      |
+|   focus    |      输入框获取焦点时触发      |       ev: `FocusEvent`       |
 
 ## `<Input>` Slots说明
 
 | 插槽名  |   描述   | 参数 |
-| ------- | :------: | ---- |
-| append  | 后置标签 | -    |
-| prepend | 前置标签 | -    |
-| suffix  | 后缀元素 | -    |
-| prefix  | 前缀元素 | -    |
+| :-----: | :------: | :--: |
+| append  | 后置标签 | ---- |
+| prepend | 前置标签 | ---- |
+| suffix  | 后缀元素 | ---- |
+| prefix  | 前缀元素 | ---- |
