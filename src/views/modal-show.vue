@@ -48,6 +48,57 @@
       </template>
     </AerModalTriggerPopup>
   </AerModal>
+  <div>遮蔽层是否可以关闭显示</div>
+  <Modal :mask="false">
+    <Modal.Trigger>
+      <button>打开</button>
+    </Modal.Trigger>
+    <Modal.TriggerPopup>
+      <template v-slot:default>
+        <Modal.Header>
+          <span>标题在此</span>
+        </Modal.Header>
+        <Modal.Body>
+          <div>如果我拿指甲剪剔牙会怎么样</div>
+          <div>我是天才</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <template v-slot:ok>
+            <button>确定</button>
+          </template>
+          <!-- <template #cancel>
+            <button>取消</button>
+          </template> -->
+        </Modal.Footer>
+      </template>
+    </Modal.TriggerPopup>
+  </Modal>
+
+  <div>点击遮蔽层是否可以关闭弹出框</div>
+  <Modal :maskClosable="true">
+    <Modal.Trigger>
+      <button>打开</button>
+    </Modal.Trigger>
+    <Modal.TriggerPopup>
+      <template v-slot:default>
+        <Modal.Header>
+          <span>标题在此</span>
+        </Modal.Header>
+        <Modal.Body>
+          <div>如果我拿指甲剪剔牙会怎么样</div>
+          <div>我是天才</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <template v-slot:ok>
+            <button>确定</button>
+          </template>
+          <!-- <template #cancel>
+            <button>取消</button>
+          </template> -->
+        </Modal.Footer>
+      </template>
+    </Modal.TriggerPopup>
+  </Modal>
 </template>
 
 <script setup lang="ts">

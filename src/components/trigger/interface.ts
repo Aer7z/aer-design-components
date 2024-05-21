@@ -1,3 +1,4 @@
+import type { Ref } from 'vue'
 import type { PositionType, TriggerType, PopupPosRec } from './constants'
 
 export interface TriggerEmits {
@@ -15,4 +16,5 @@ export interface TriggerProps {
 
 export interface TriggerPopupProps {
   clickOutsideToClose?: boolean
+  innerElementRef?: HTMLElement | undefined
 }

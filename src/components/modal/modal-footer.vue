@@ -34,11 +34,11 @@ const clsModalFooterButton: ComputedRef<string[]> = computed(() => [
 ])
 const instance = getCurrentInstance()
 const isOkShow: ComputedRef<boolean> = computed(() => {
-  console.log(!!instance?.slots.ok)
+  // console.log(!!instance?.slots.ok)
   return !!instance?.slots.ok
 })
 const isCancelShow: ComputedRef<boolean> = computed(() => {
-  console.log(!!instance?.slots.cancel)
+  // console.log(!!instance?.slots.cancel)
   return !!instance?.slots.cancel
 })
 const handleOk: (ev: MouseEvent) => void = (ev: MouseEvent): void => {

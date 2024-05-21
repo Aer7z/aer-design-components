@@ -3,17 +3,24 @@
 .@{components-prefix}modal-wrapper {
   position: fixed;
   inset: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  // 取消拦截遮蔽层点击事件
+  pointer-events: none;
 
-  background-color: rgba(@modal-wrapper-background-color, 0.5);
-
-  z-index: 1001;
+  &-mask {
+    // 有遮蔽层后恢复拦截点击事件
+    pointer-events: auto;
+    background-color: rgba(@modal-wrapper-background-color, 0.5);
+    z-index: 1001;
+  }
 }
 
 .@{components-prefix}modal-content {
+  // 设置pointer-events 避免收到来自遮蔽层该属性的影响
+  pointer-events: auto;
+
   position: relative;
   box-sizing: border-box;
   height: auto;
@@ -46,7 +53,7 @@
   &:first-child {
     margin-right: 12px;
   }
-  &:only-child{
+  &:only-child {
     margin-right: 0;
   }
 }

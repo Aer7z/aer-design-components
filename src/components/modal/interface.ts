@@ -1,13 +1,14 @@
 //Modal的事件列表
 export interface ModalEmits {
   [key: string]: any // 添加索引签名
-  ok: (ev: MouseEvent) => true
   cancel: (ev: MouseEvent) => true
+  closed: (ev: MouseEvent) => true
+  ok: (ev: MouseEvent) => true
+  opened: (ev: MouseEvent) => true
 }
 
 //Modal的事件列表
 export interface ModalProps {
-  title?: string
-  body?: string
+  mask?: boolean
+  maskClosable?: boolean
 }
-
