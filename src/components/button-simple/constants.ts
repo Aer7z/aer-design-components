@@ -1,4 +1,11 @@
-export const BUTTON_SIMPLE_VARIANTS = ['primary', 'secondary', 'outline', 'text', 'link','destructive'] as const
+export const BUTTON_SIMPLE_VARIANTS = [
+  'primary',
+  'secondary',
+  'outline',
+  'text',
+  'link',
+  'destructive'
+] as const
 export type ButtonSimpleVariant = (typeof BUTTON_SIMPLE_VARIANTS)[number]
 
 export const BUTTON_SIMPLE_SHAPES = ['square', 'circle', 'round'] as const

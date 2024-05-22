@@ -8,7 +8,7 @@
   <template v-else>
     <button :class="[cls]" :disabled="disabled" @click="handleClick">
       <slot />
-      <span v-if="loading"><slot name="icon" /> </span>
+      <template v-if="loading"><slot name="icon" /> </template>
     </button>
   </template>
 </template>
@@ -57,7 +57,7 @@ const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
     ev.preventDefault()
     return
   }
-  console.log('111')
+  // console.log('111')
   ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }

@@ -1,4 +1,4 @@
-import type { App,ComponentPublicInstance } from 'vue'
+import type { App, ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Radio from './radio.vue'
 import _RadioGroup from './radio-group.vue'

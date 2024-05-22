@@ -1,4 +1,4 @@
-import type { App,ComponentPublicInstance } from 'vue'
+import type { App, ComponentPublicInstance } from 'vue'
 import { getComponentsPrefix } from '../_utils/global-config'
 import _Button from './button.vue'
 import _ButtonGroup from './button-group.vue'

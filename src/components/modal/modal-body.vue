@@ -17,7 +17,6 @@ defineOptions({
 
 let visible = ref(false)
 
-
 const emits = defineEmits<ModalEmits>()
 
 const clsModalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])

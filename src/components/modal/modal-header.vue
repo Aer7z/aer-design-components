@@ -17,9 +17,7 @@ defineOptions({
 
 let visible = ref(false)
 
-
 const emits = defineEmits<ModalEmits>()
-
 
 const clsModalHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header`])
 </script>

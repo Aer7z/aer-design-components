@@ -16,4 +16,3 @@ export interface ButtonProps {
   target?: string
   type?: ButtonType
 }
-

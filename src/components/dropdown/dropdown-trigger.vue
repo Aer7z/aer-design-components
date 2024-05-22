@@ -12,7 +12,6 @@ import Trigger from '../trigger/index'
 defineOptions({
   name: 'DropdownTrigger'
 })
-
 </script>
 
 <style lang="less" src="./style/index.less"></style>

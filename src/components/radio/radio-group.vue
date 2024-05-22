@@ -31,7 +31,7 @@ const emits = defineEmits<RadioGroupEmits>()
 
 const handleChange = (ev: Event) => {
   const element: HTMLInputElement = ev.target as HTMLInputElement
-  model.value=element.value
+  model.value = element.value
   // console.log('the radio-group now checked value is ', element?.value)
   emits('checkedChange', element?.value)
 }
@@ -49,7 +49,6 @@ const radioPropsInject = () => {
   provide('radioGroupType', props.type)
   provide('radioGroupDirection', props.direction)
   provide('radioGroupDefaultCheckedValue', props.defaultValue)
-
 }
 // 在父组件的生命周期钩子函数 onBeforeMount 中执行 provideRadioGroupName 函数，
 // 父组件的onBeforeMount生命周期在子组件的setup生命周期之前，确保在子组件的 setup 生命周期之前就提供了数据给子组件

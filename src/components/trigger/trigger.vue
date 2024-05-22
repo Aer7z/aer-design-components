@@ -12,8 +12,6 @@ import { getClsPrefix } from '../_utils/global-config'
 import type { TriggerEmits, TriggerProps } from './interface'
 import type { PopupPosRec } from './constants'
 
-
-
 const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(
   inject('triggerPopupPosRec', undefined)
 )

@@ -2,7 +2,7 @@
   <Trigger>
     <template v-slot:default>
       <span>
-      <!-- <span @click="handleClick(true)"> -->
+        <!-- <span @click="handleClick(true)"> -->
         <slot></slot>
       </span>
     </template>
@@ -24,10 +24,6 @@ defineOptions({
 //   title: '暂无内容',
 //   body: '暂无内容'
 // })
-
-
-
-
 </script>
 
 <style lang="less" src="./style/modal.less"></style>
