@@ -9,8 +9,9 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   width="200"
   height="200"
+  style="transform-origin:center center"
 >
-  <symbol id="loading-icon" viewBox="0 0 1024 1024">
+  <!-- <symbol id="loading-icon" viewBox="0 0 1024 1024"> -->
   <path
     d="M512 337.322667a26.666667 26.666667 0 0 1-26.666667-26.666667V197.333333a26.666667 26.666667 0 1 1 53.333334 0v113.322667c0 14.762667-11.946667 26.666667-26.666667 26.666667z"
     fill="#000000"
@@ -86,10 +87,12 @@
       attributeName="transform"
       attributeType="XML"
       type="rotate"
-      from="0 512 512"
-      to="360 512 512"
+      from="0 0 0"
+      to="360 0 0"
+      begin="0s"
       dur="2s"
       repeatCount="indefinite"
     />
-    </symbol>
+    <!-- </symbol>
+    <use xlink:href="#loading-icon" /> -->
 </svg>
