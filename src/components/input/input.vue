@@ -151,4 +151,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="less" src="./style/input.less"></style>
+<style lang="less" src="./style/Input.less"></style>

@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { ButtonSimpleProps, ButtonSimpleEmits } from './interface'
+// import type { ButtonSimpleProps, ButtonSimpleEmits } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
