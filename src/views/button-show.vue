@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import Button from '../components/button/index'
-import {iconLoading} from '../components/icon/index'
+import { iconLoading } from '../components/icon/index'
 // import { iconLoading } from '../components/icon/index'
 // import  '../components/button/index'
 
