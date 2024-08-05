@@ -8,10 +8,13 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting',
-    //自己加的
     'prettier',
+    'plugin:storybook/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
+  },
+  rules: {
+    'vue/multi-word-component-names': 'off',
   },
 }

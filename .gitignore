@@ -1,2 +1,7 @@
 /node_modules
 /coverage
+
+
+# story 的测试部分不上传
+*storybook.log
+# /src/stories
