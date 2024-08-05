@@ -11,7 +11,7 @@ const ButtonSimple = Object.assign(_ButtonSimple, {
     app.component(getComponentsPrefix() + _ButtonSimple.name, _ButtonSimple)
     app.component(getComponentsPrefix() + _ButtonSimpleGroup.name, _ButtonSimpleGroup)
     app.component(getComponentsPrefix() + _ButtonSimpleLoading.name, _ButtonSimpleLoading)
-  }
+  },
 })
 
 export type ButtonInstance = ComponentPublicInstance<typeof _ButtonSimple>

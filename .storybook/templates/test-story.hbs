@@ -1,0 +1,31 @@
+import  from "../{{pascalCase componentName}}.vue"
+import Preview from "./preview.vue"
+
+export default {
+  title: '{{pascalCase componentName}}', //组件总名称
+  component: {{pascalCase componentName}}, //用以提供组件的所有相关属性、事件控制
+}
+
+const PreviewTemplate: IStory = (args) => ({
+  components: { Preview },
+  setup() {
+    return { args };
+  },
+  template: '<preview v-bind="args" />',
+});
+
+export const PreviewInstance = PreviewTemplate.bind({});
+PreviewInstance.storyName = "预览";
+PreviewInstance.args = {};
+
+const Template = (args: ButtonSimpleProps) => ({
+  components: { {{pascalCase componentName}} },
+  setup() {
+    return { args }
+  },
+  template: '<{{componentName}} v-bind="args"></{{componentName}}>',
+})
+
+export const Instance = template.bind({})
+Instance.storyName = '暂定'
+Instance.args = {}
