@@ -19,3 +19,7 @@
 ## 使用方法
 
 import 引入后再app.use(Modal)
+
+## 如何测试组件
+
+根目录输入指令: pnpm story
