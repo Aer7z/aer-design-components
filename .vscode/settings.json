@@ -1,6 +1,8 @@
 {
   "editor.formatOnSave": true,
-
+  "eslint.options": {
+    "configFile": "/.eslintrc.cjs" // 指定项目根目录下的 ESLint 配置文件
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

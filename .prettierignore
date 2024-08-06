@@ -1,0 +1,12 @@
+
+
+# 忽略plop的生成模版
+.storybook/templates/*
+**/*.hbs
+
+dist/
+node_modules/
+pnpm-lock.yaml
+
+
+

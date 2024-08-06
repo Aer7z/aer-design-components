@@ -35,6 +35,11 @@ export default function (plop) {
       },
       {
         type: 'add',
+        path: 'src/components/{{componentName}}/interface.ts',
+        templateFile: './.storybook/templates/interface-ts.hbs',
+      },
+      {
+        type: 'add',
         path: 'src/components/{{componentName}}/README.md',
         templateFile: './.storybook/templates/README.hbs',
       },
