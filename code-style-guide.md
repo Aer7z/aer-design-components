@@ -23,9 +23,11 @@
 
 ## 组件编写部分
 
-组件库中关于组件 props 的约定 1.组件中的属性传递在前、绑定事件传递在后
-组件目录下的index.ts 负责合并导入导出本部分内的组件
-constants.ts定义类型约定，interface.ts 定义 props 及 emit 接口
+组件库中关于组件 props 的约定
+
+1. 组件中的属性传递在前、绑定事件传递在后
+2. 组件目录下的index.ts 负责合并导入导出本部分内的组件
+3. constants.ts 定义类型约定，interface.ts 定义 props 及 emit 接口
 
 ## CSS部分
 

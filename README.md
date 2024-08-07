@@ -16,10 +16,10 @@ Trigger
 
 ## 思想/技术详情：
 
-1. 全局样式解决方案：CSS变量 + 类名切换 + less, 详情设计和组织见[code-style-guide.md](./code-style-guide.md)
+1. 全局样式解决方案：CSS变量 + 类名切换 + less, 详情设计和组织见 [code-style-guide.md](./code-style-guide.md)
 2. 将面向接口的思想融入代码设计, 提取 props、emits 的类型约定到 interface.ts
-3. 结构化组件设计(如dropdown组件), 层次结构分别书写, 组合成dropdown组件, 语义清晰, 拓展性强
-4. 自动化测试: vitest + jsdom + vue-test-utils, 使用npm run coverage即可获取代码覆盖率, 工作量大, 正在逐步提高代码覆盖率
+3. 结构化组件设计(如 dropdown 组件), 层次结构分别书写, 组合成 dropdown 组件, 语义清晰, 拓展性强
+4. 自动化测试: vitest + jsdom + vue-test-utils, 使用`npm run coverage`即可获取代码覆盖率, 工作量大, 正在逐步提高代码覆盖率
 
 ## 使用方法
 
@@ -28,4 +28,4 @@ Trigger
 ## 组件样式测试流程
 
 切换版本至node18.12以上
-根目录输入指令: pnpm story
+根目录输入指令: `pnpm story`
