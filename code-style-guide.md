@@ -29,7 +29,7 @@ constants.ts定义类型约定，interface.ts 定义 props 及 emit 接口
 
 ## CSS部分
 
-CSS全局样式解决方案：CSS变量 + 类名切换 + Less, 需要CSS class命名上的规范
+CSS全局样式解决方案：CSS变量 + 类名切换 + Less, 需要CSS class命名上的规范, 以避免使用vue中自带的scoped
 
 （全局样式存放于 /src/components/style/theme/index.less ）
 如何使用：全局样式导入到 token.less 中进行定制，组件具体样式 xxx.less 在导入 token.less 后进行编写， index.less 聚合所有组件样式，最后使用 index.ts 再包裹一层
