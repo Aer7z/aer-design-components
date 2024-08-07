@@ -1,12 +1,13 @@
 import  {{pascalCase componentName}} from "../{{componentName}}.vue"
 import Preview from "./preview.vue"
+import type { {{pascalCase componentName}}Props } from '../interface'
 
 export default {
   title: '{{pascalCase componentName}}', //组件总名称
   component: {{pascalCase componentName}}, //用以提供组件的所有相关属性、事件控制
 }
 
-const PreviewTemplate: any = (args) => ({
+const PreviewTemplate: any = (args:{{pascalCase componentName}}Props) => ({
   components: { Preview },
   setup() {
     return { args };
@@ -15,10 +16,10 @@ const PreviewTemplate: any = (args) => ({
 });
 
 export const PreviewInstance = PreviewTemplate.bind({});
-PreviewInstance.storyName = "预览";
+PreviewInstance.storyName = "默认预览";
 PreviewInstance.args = {};
 
-const Template = (args: any) => ({
+const Template = (args: {{pascalCase componentName}}Props) => ({
   components: { {{pascalCase componentName}} },
   setup() {
     return { args }

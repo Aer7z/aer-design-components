@@ -1,9 +1,9 @@
 <template>
-  <Button_><slot /></Button_>
+  <ButtonSimple>默认按钮</ButtonSimple>
 </template>
 
 <script lang="ts" setup>
-import Button_ from '../index'
+import ButtonSimple from '../index'
 </script>
 
 <style></style>

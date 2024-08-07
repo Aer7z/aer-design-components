@@ -16,7 +16,7 @@ const PreviewTemplate = (args: ButtonProps) => ({
 })
 
 export const PreviewInstance: any = PreviewTemplate.bind({})
-PreviewInstance.storyName = '默认状态'
+PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
 const Template = (args: ButtonProps) => ({
@@ -26,10 +26,10 @@ const Template = (args: ButtonProps) => ({
   },
   template:
     '<Button v-bind="args"> 按钮默认状态 </Button><br/><br/>' +
-    '<Button v-bind="args" status="normal"> normal按钮 </Button><br/><br/>' +
-    '<Button v-bind="args" status="success"> success按钮 </Button><br/><br/>' +
-    '<Button v-bind="args" status="danger"> danger按钮 </Button><br/><br/>' +
-    '<Button v-bind="args" status="warning"> warning按钮 </Button>',
+    '<Button v-bind="args" status="normal"> normal状态 </Button><br/><br/>' +
+    '<Button v-bind="args" status="success"> success状态 </Button><br/><br/>' +
+    '<Button v-bind="args" status="danger"> danger状态 </Button><br/><br/>' +
+    '<Button v-bind="args" status="warning"> warning状态 </Button>',
 })
 
 export const PrimaryInstance: any = Template.bind({})

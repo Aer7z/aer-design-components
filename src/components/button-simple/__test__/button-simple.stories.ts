@@ -7,17 +7,17 @@ export default {
   component: ButtonSimple, //用以提供组件的所有相关属性、事件控制
 }
 
-// const Previewtemplate = (args: ButtonProps) => ({
-//   components: { Preview },
-//   setup() {
-//     return { args }
-//   },
-//   template: '<Preview v-bind="args"> 按钮 </Preview>',
-// })
+const PreviewTemplate = (args: ButtonSimpleProps) => ({
+  components: { Preview },
+  setup() {
+    return { args }
+  },
+  template: '<Preview v-bind="args"></Preview>',
+})
 
-// export const PreviewInstance = Previewtemplate.bind({})
-// PreviewInstance.storyName = '默认状态'
-// PreviewInstance.args = {}
+export const PreviewInstance: any = PreviewTemplate.bind({})
+PreviewInstance.storyName = '默认状态'
+PreviewInstance.args = {}
 
 const template = (args: ButtonSimpleProps) => ({
   components: { ButtonSimple },

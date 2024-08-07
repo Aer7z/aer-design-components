@@ -23,7 +23,7 @@ Trigger
 
 ## 使用方法
 
-以Modal组件为例，import 引入后再app.use(Modal)
+以Modal组件为例，import 引入后再 `app.use(Modal)`
 
 ## 组件样式测试流程
 

@@ -1,9 +1,9 @@
 <template>
-  <Button>默认按钮</Button>
+  <Checkbox>勾选框</Checkbox>
 </template>
 
 <script lang="ts" setup>
-import Button from '../index'
+import Checkbox from '../index'
 </script>
 
 <style></style>
