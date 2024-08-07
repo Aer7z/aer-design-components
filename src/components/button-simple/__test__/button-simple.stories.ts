@@ -16,7 +16,7 @@ const PreviewTemplate = (args: ButtonSimpleProps) => ({
 })
 
 export const PreviewInstance: any = PreviewTemplate.bind({})
-PreviewInstance.storyName = '默认状态'
+PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
 const template = (args: ButtonSimpleProps) => ({
@@ -24,9 +24,15 @@ const template = (args: ButtonSimpleProps) => ({
   setup() {
     return { args }
   },
-  template: '<ButtonSimple v-bind="args"> 按钮 </ButtonSimple>',
+  template:
+    '<ButtonSimple v-bind="args" variant="primary"> primary按钮 </ButtonSimple><br/><br/>' +
+    '<ButtonSimple v-bind="args" variant="secondary"> secondary按钮 </ButtonSimple><br/><br/>' +
+    '<ButtonSimple v-bind="args" variant="outline"> outline按钮 </ButtonSimple><br/><br/>' +
+    '<ButtonSimple v-bind="args" variant="text"> text按钮 </ButtonSimple><br/><br/>' +
+    '<ButtonSimple v-bind="args" variant="link"> link按钮 </ButtonSimple><br/><br/>' +
+    '<ButtonSimple v-bind="args" variant="destructive"> destructive按钮 </ButtonSimple><br/><br/>',
 })
 
-export const primaryInstance = template.bind({})
-primaryInstance.storyName = '主要按钮'
-primaryInstance.args = { type: 'primary' }
+export const primaryInstance: any = template.bind({})
+primaryInstance.storyName = '按钮列表'
+primaryInstance.args = {}

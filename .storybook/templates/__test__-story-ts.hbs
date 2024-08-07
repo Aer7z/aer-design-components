@@ -24,7 +24,7 @@ const Template = (args: {{pascalCase componentName}}Props) => ({
   setup() {
     return { args }
   },
-  template: '<{{componentName}} v-bind="args"></{{componentName}}>',
+  template: '<{{pascalCase componentName}} v-bind="args"></{{pascalCase componentName}}>',
 })
 
 export const Instance = Template.bind({})
