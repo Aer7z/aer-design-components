@@ -1,4 +1,4 @@
-import  from "../{{pascalCase componentName}}.vue"
+import  {{pascalCase componentName}} from "../{{componentName}}.vue"
 import Preview from "./preview.vue"
 
 export default {
@@ -6,7 +6,7 @@ export default {
   component: {{pascalCase componentName}}, //用以提供组件的所有相关属性、事件控制
 }
 
-const PreviewTemplate: IStory = (args) => ({
+const PreviewTemplate: any = (args) => ({
   components: { Preview },
   setup() {
     return { args };
@@ -18,7 +18,7 @@ export const PreviewInstance = PreviewTemplate.bind({});
 PreviewInstance.storyName = "预览";
 PreviewInstance.args = {};
 
-const Template = (args: ButtonSimpleProps) => ({
+const Template = (args: any) => ({
   components: { {{pascalCase componentName}} },
   setup() {
     return { args }
@@ -26,6 +26,6 @@ const Template = (args: ButtonSimpleProps) => ({
   template: '<{{componentName}} v-bind="args"></{{componentName}}>',
 })
 
-export const Instance = Tamplate.bind({})
+export const Instance = Template.bind({})
 Instance.storyName = '暂定'
 Instance.args = {}

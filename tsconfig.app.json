@@ -9,6 +9,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    // 允许道路路径以.ts为结尾
+    "allowImportingTsExtensions": true
   }
 }
