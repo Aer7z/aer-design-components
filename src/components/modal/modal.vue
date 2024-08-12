@@ -8,6 +8,7 @@ import type { ComputedRef, Ref } from 'vue'
 import { DEFAULT_MODAL_PROPS, type ModalEmits, type ModalProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 import type { ModalTriggerPopupPosRec } from './interface'
+import { useContext } from '../radio/context'
 
 defineOptions({
   name: 'Modal',
@@ -33,6 +34,7 @@ function initTrigger() {
   provide('triggerPopupPosRec', triggerPopupPosRec)
   const popupVisible: Ref<boolean> = ref(false)
   provide('triggerPopupVisible', popupVisible)
+  useContext()
 }
 onBeforeMount(() => {
   initTrigger()

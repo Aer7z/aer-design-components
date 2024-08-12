@@ -27,7 +27,7 @@
 
 1. 组件中的属性传递在前、绑定事件传递在后
 2. 组件目录下的index.ts 负责合并导入导出本部分内的组件
-3. constants.ts 定义类型约定，interface.ts 定义 props 及 emit 接口
+3. interface.ts 定义 props 及 emit 接口, 以及相关类型
 
 ## CSS部分
 

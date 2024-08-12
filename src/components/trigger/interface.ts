@@ -16,7 +16,6 @@ export interface TriggerProps {
 
 export interface TriggerPopupProps {
   clickOutsideToClose?: boolean
-  innerElementRef?: HTMLElement | undefined
 }
 
 export interface TriggerPopupPosRec {
@@ -26,6 +25,11 @@ export interface TriggerPopupPosRec {
   right: string
 }
 
+export interface TriggerPopupContext {
+  triggerPopupPosRec: Ref<TriggerPopupPosRec>
+  triggerPopupVisible: Ref<boolean>
+}
+
 export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
   disabled: false,
   position: 'bottom',
@@ -33,6 +37,5 @@ export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
 }
 
 export const DEFAULT_TRIGGER_POPUP_PROPS: TriggerPopupProps = {
-  clickOutsideToClose: true,
-  innerElementRef: undefined,
+  clickOutsideToClose: false,
 }

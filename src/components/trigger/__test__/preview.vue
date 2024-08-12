@@ -1,7 +1,13 @@
 <template>
-  <Trigger />
+  <div>
+    <Trigger><button>按钮</button></Trigger>
+    <TriggerPopup><div>展示页面</div></TriggerPopup>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import Trigger from '../index.ts'
+import { Trigger, TriggerPopup } from '../index.ts'
+import { createTriggerContext } from '../context.ts'
+
+createTriggerContext()
 </script>

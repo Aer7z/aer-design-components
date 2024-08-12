@@ -11,8 +11,6 @@ import Modal from './components/modal/index'
 const app = createApp(App)
 
 app.use(createPinia())
-app.use(Button)
-app.use(Modal)
 app.use(router)
 
 app.mount('#app')

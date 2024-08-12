@@ -17,14 +17,6 @@
   <router-view></router-view>
 </template>
 
-<script setup lang="ts">
-// import Modal from './components/modal';
-
-// import ButtonGroup from './components/button/button-group.vue';
-// import Button from './components/button/button.vue'
-
-// import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
