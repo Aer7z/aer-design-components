@@ -7,7 +7,7 @@ import { ref, computed, provide, onBeforeMount } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import { DEFAULT_MODAL_PROPS, type ModalEmits, type ModalProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
-import type { PopupPosRec } from '../trigger/constants'
+import type { ModalTriggerPopupPosRec } from './interface'
 
 defineOptions({
   name: 'Modal',
@@ -24,7 +24,7 @@ const handleClick: (isVisible: boolean) => void = (isVisible: boolean = true): v
 const emits = defineEmits<ModalEmits>()
 
 function initTrigger() {
-  const triggerPopupPosRec: Ref<PopupPosRec> = ref({
+  const triggerPopupPosRec: Ref<ModalTriggerPopupPosRec> = ref({
     top: '',
     left: '',
     bottom: '',

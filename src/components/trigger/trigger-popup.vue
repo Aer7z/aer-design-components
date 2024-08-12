@@ -11,9 +11,9 @@ import { ref, computed, watch, onMounted, onBeforeUnmount, inject } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
 import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerEmits, type TriggerPopupProps } from './interface'
-import type { PopupPosRec } from './constants'
+import type { TriggerPopupPosRec } from './interface'
 
-const triggerPopupPosRec: Ref<PopupPosRec> = ref(
+const triggerPopupPosRec: Ref<TriggerPopupPosRec> = ref(
   inject('triggerPopupPosRec', {
     top: '',
     left: '',
@@ -22,7 +22,7 @@ const triggerPopupPosRec: Ref<PopupPosRec> = ref(
   })
 )
 
-const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
+const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS as any)
 
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
@@ -30,7 +30,6 @@ watch(popupVisible, (newVal: boolean, oldVal: boolean) => {
   if (props.clickOutsideToClose === false) {
     return
   }
-  console.log('hhhhh')
   if (newVal === true) {
     document.addEventListener('click', closePopupWhenClickOutside)
   } else {
@@ -48,10 +47,8 @@ const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) =>
 
   let isClickAreaOutOfPopup = !(innerElementRef.value as HTMLElement).contains(ev.target as HTMLElement)
   // 如果点击的区域不在触发器内部
-  console.log('hh')
   if (isClickAreaOutOfPopup) {
     // 关闭弹出框
-    console.log('hh在里头')
     popupVisible.value = false
   }
 }

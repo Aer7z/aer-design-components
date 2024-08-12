@@ -6,19 +6,19 @@
 <script lang="ts" setup>
 import { ref, computed, provide, onMounted, onBeforeMount } from 'vue'
 import type { Ref } from 'vue'
-import type { PopupPosRec } from '../trigger/constants'
+import type { DropdownTriggerPopupPosRec } from './interface'
 
 defineOptions({
-  name: 'Dropdown'
+  name: 'Dropdown',
 })
 
 // 初始化trigger触发器，提供必要数据
 function initTrigger() {
-  const triggerPopupPosRec: Ref<PopupPosRec> = ref({
+  const triggerPopupPosRec: Ref<DropdownTriggerPopupPosRec> = ref({
     top: '',
     left: '',
     bottom: '',
-    right: ''
+    right: '',
   })
   provide('triggerPopupPosRec', triggerPopupPosRec)
   const popupVisible: Ref<boolean> = ref(false)

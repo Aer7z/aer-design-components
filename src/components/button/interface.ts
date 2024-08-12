@@ -1,5 +1,3 @@
-import type { ButtonType, ButtonShape, ButtonStatus, ButtonSize } from './constants'
-
 //Button的事件列表
 export interface ButtonEmits {
   [key: string]: any // 添加索引签名
@@ -10,11 +8,11 @@ export interface ButtonEmits {
 export interface ButtonProps {
   disabled?: boolean
   loading?: boolean
-  size?: ButtonSize
-  shape?: ButtonShape
-  status?: ButtonStatus
+  size?: 'mini' | 'small' | 'medium' | 'large'
+  shape?: 'square' | 'circle' | 'round'
+  status?: 'normal' | 'warning' | 'success' | 'danger'
   target?: string
-  type?: ButtonType
+  type?: 'default' | 'primary' | 'dashed' | 'text' | 'link'
 }
 
 export const DEFAULT_BUTTON_PROPS: ButtonProps = {

@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import type { PositionType, TriggerType, PopupPosRec } from './constants'
+// import type { PositionType, TriggerType, PopupPosRec } from './constants'
 
 export interface TriggerEmits {
   [key: string]: any // 添加索引签名
@@ -10,13 +10,20 @@ export interface TriggerEmits {
 
 export interface TriggerProps {
   disabled?: boolean
-  position?: PositionType
-  trigger?: TriggerType
+  position?: 'top' | 'bottom' | 'left' | 'right'
+  trigger?: 'hover' | 'click' | 'focus'
 }
 
 export interface TriggerPopupProps {
   clickOutsideToClose?: boolean
   innerElementRef?: HTMLElement | undefined
+}
+
+export interface TriggerPopupPosRec {
+  top: string
+  left: string
+  bottom: string
+  right: string
 }
 
 export const DEFAULT_TRIGGER_PROPS: TriggerProps = {

@@ -1,5 +1,3 @@
-import type { ButtonSimpleVariant, ButtonSimpleShape, ButtonSimpleSize } from './constants'
-
 //Button的事件列表
 export interface ButtonSimpleEmits {
   [key: string]: any // 添加索引签名
@@ -9,10 +7,10 @@ export interface ButtonSimpleEmits {
 //Button的参数列表
 export interface ButtonSimpleProps {
   disabled?: boolean
-  size?: ButtonSimpleSize
-  shape?: ButtonSimpleShape
+  size?: 'mini' | 'small' | 'medium' | 'large'
+  shape?: 'square' | 'circle' | 'round'
   target?: string
-  variant?: ButtonSimpleVariant
+  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'link' | 'destructive'
 }
 
 export const DEFAULT_BUTTON_SIMPLE_PROPS: ButtonSimpleProps = {

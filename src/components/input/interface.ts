@@ -1,4 +1,4 @@
-import type { InputSize, InputStatus, InputType } from './constants'
+// import type { InputSize, InputStatus, InputType } from './constants'
 
 export interface InputEmits {
   [key: string]: any // 添加索引签名
@@ -18,9 +18,9 @@ export interface InputProps {
   readOnly?: boolean
   showClear?: boolean
   showCount?: boolean
-  size?: InputSize
-  status?: InputStatus
-  type?: InputType
+  size?: 'mini' | 'small' | 'medium' | 'large'
+  status?: 'normal' | 'error' | 'warning'
+  type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'erl'
 }
 
 export const DEFAULT_INPUT_PROPS: InputProps = {

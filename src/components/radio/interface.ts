@@ -1,6 +1,3 @@
-import type { RadioType } from './constants'
-import type { RadioSize, RadioGroupDirection, RadioGroupSize, RadioGroupType } from './constants'
-
 export interface RadioEmits {
   [key: string]: any // 添加索引签名
   radioChecked: (value: string | number | boolean) => true
@@ -9,8 +6,8 @@ export interface RadioProps {
   defaultChecked?: boolean
   disabled?: boolean
   // modelValue?: string | number | boolean
-  size?: RadioSize
-  type?: RadioType
+  size?: 'mini' | 'small' | 'medium' | 'large'
+  type?: 'button' | 'radio'
   value?: string | number | boolean
 }
 
@@ -20,11 +17,18 @@ export interface RadioGroupEmits {
 }
 export interface RadioGroupProps {
   defaultValue?: string | number | boolean
-  direction?: RadioGroupDirection
+  direction?: 'horizontal' | 'vertical'
   disabled?: boolean
   modelValue?: string | number | boolean
-  size?: RadioGroupSize
-  type?: RadioGroupType
+  size?: 'mini' | 'small' | 'medium' | 'large'
+  type?: 'button' | 'radio'
+}
+
+export interface RadioContext {
+  groupName?: string
+  groupType?: string
+  groupDirection?: string
+  defaultCheckedValue?: string
 }
 
 export const DEFAULT_RADIO_PROPS: RadioProps = {

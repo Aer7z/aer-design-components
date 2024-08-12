@@ -1,6 +1,5 @@
 <template>
   <div ref="triggerRef" v-on="EventList" :class="clsTrigger" @click.stop>
-    <!-- <slot name="trigger" /> -->
     <slot></slot>
   </div>
 </template>
@@ -10,9 +9,9 @@ import { ref, computed, onMounted, onBeforeUnmount, inject } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
 import { DEFAULT_TRIGGER_PROPS, type TriggerEmits, type TriggerProps } from './interface'
-import type { PopupPosRec } from './constants'
+import type { TriggerPopupPosRec } from './interface'
 
-const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(inject('triggerPopupPosRec', undefined))
+const triggerPopupPosRec: Ref<TriggerPopupPosRec | undefined> = ref(inject('triggerPopupPosRec', undefined))
 
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
@@ -117,8 +116,8 @@ const getTriggerPositionRec: () => DOMRect = () => {
 }
 
 //根据参数position调整获得的数据的函数
-const getPopupRecWithPosition: (triggerRec: DOMRect) => PopupPosRec = (triggerRec: DOMRect) => {
-  let position: PopupPosRec = {
+const getPopupRecWithPosition: (triggerRec: DOMRect) => TriggerPopupPosRec = (triggerRec: DOMRect) => {
+  let position: TriggerPopupPosRec = {
     top: '',
     left: '',
     bottom: '',
