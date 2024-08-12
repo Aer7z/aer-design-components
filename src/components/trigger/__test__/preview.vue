@@ -8,6 +8,5 @@
 <script lang="ts" setup>
 import { Trigger, TriggerPopup } from '../index.ts'
 import { createTriggerContext } from '../context.ts'
-
 createTriggerContext()
 </script>

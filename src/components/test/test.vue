@@ -1,5 +1,5 @@
 <template>
-  <div ref="hello">小猪课堂</div>
+  <div ref="hello">测试</div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'

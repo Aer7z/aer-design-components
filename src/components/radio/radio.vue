@@ -9,11 +9,11 @@
     </template>
     <template v-else> -->
     <input
-      :type="radioType"
+      :type="radioGroupType"
       :value="props.value"
       :class="[clsRadio]"
       :disabled="props.disabled"
-      :name="radioName"
+      :name="radioGroupName"
       :checked="isChecked"
       @change="handleChange"
     />
@@ -28,6 +28,7 @@ import { ref, computed, inject, onBeforeMount, onMounted } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import { type RadioProps, type RadioEmits, DEFAULT_RADIO_PROPS } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
+import { useRadioGroupContext } from './context'
 
 defineOptions({
   name: 'Radio',
@@ -38,13 +39,11 @@ const props = withDefaults(defineProps<RadioProps>(), DEFAULT_RADIO_PROPS)
 // radioModel.value = ref(props.value)
 let isChecked = ref(props.defaultChecked)
 
-const radioName: string | undefined = inject('radioGroupName', undefined)
-const radioSize: string | undefined = inject('radioGroupSize', undefined) || props.size
-const radioType: string | undefined = inject('radioGroupType', undefined) || props.type
-const radioChecked: string | undefined = inject('radioGroupDefaultCheckedValue', undefined)
+const { radioGroupDefaultValue, radioGroupDirection, radioGroupName, radioGroupSize, radioGroupType } =
+  useRadioGroupContext()
 
 const setInitialChecked: () => void = () => {
-  if (radioChecked === props.value) isChecked.value = true
+  if (radioGroupDefaultValue === props.value) isChecked.value = true
 }
 
 // 定义单选组件的通用样式。
@@ -67,7 +66,7 @@ const clsRadio: ComputedRef<string[]> = computed(() => [
 
 // 单选内容的样式。
 const clsRadioLabel: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}radio-font-size-${radioSize}`, // 根据属性设置字体大小，或默认设置为中等大小
+  `${getClsPrefix()}radio-font-size-${radioGroupSize}`, // 根据属性设置字体大小，或默认设置为中等大小
   `${getClsPrefix()}radio-content`, // 内容特定的样式
 ])
 const emits = defineEmits<RadioEmits>()

@@ -8,7 +8,7 @@ export interface RadioProps {
   // modelValue?: string | number | boolean
   size?: 'mini' | 'small' | 'medium' | 'large'
   type?: 'button' | 'radio'
-  value?: string | number | boolean
+  value?: string
 }
 
 export interface RadioGroupEmits {
@@ -16,19 +16,21 @@ export interface RadioGroupEmits {
   checkedChange: (value: string | number | boolean) => true
 }
 export interface RadioGroupProps {
-  defaultValue?: string | number | boolean
+  defaultValue?: string
   direction?: 'horizontal' | 'vertical'
   disabled?: boolean
   modelValue?: string | number | boolean
+  name?: string
   size?: 'mini' | 'small' | 'medium' | 'large'
   type?: 'button' | 'radio'
 }
 
-export interface RadioContext {
-  groupName?: string
-  groupType?: string
-  groupDirection?: string
-  defaultCheckedValue?: string
+export interface RadioGroupContext {
+  radioGroupDefaultValue?: string
+  radioGroupDirection?: 'horizontal' | 'vertical'
+  radioGroupName?: string
+  radioGroupSize?: 'mini' | 'small' | 'medium' | 'large'
+  radioGroupType?: 'button' | 'radio'
 }
 
 export const DEFAULT_RADIO_PROPS: RadioProps = {
@@ -36,13 +38,13 @@ export const DEFAULT_RADIO_PROPS: RadioProps = {
   disabled: false,
   size: 'medium',
   type: 'radio',
-  value: true,
 }
 
 export const DEFAULT_RADIO_GROUP_PROPS: RadioGroupProps = {
   direction: 'horizontal',
   disabled: false,
   // modelValue: '',
+  name: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
   size: 'medium',
   type: 'radio',
 }
