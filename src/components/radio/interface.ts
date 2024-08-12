@@ -26,3 +26,19 @@ export interface RadioGroupProps {
   size?: RadioGroupSize
   type?: RadioGroupType
 }
+
+export const DEFAULT_RADIO_PROPS: RadioProps = {
+  defaultChecked: false,
+  disabled: false,
+  size: 'medium',
+  type: 'radio',
+  value: true,
+}
+
+export const DEFAULT_RADIO_GROUP_PROPS: RadioGroupProps = {
+  direction: 'horizontal',
+  disabled: false,
+  // modelValue: '',
+  size: 'medium',
+  type: 'radio',
+}

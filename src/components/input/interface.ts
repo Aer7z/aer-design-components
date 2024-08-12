@@ -22,3 +22,14 @@ export interface InputProps {
   status?: InputStatus
   type?: InputType
 }
+
+export const DEFAULT_INPUT_PROPS: InputProps = {
+  disabled: false,
+  maxLength: 100,
+  readOnly: false,
+  showClear: false,
+  showCount: false,
+  size: 'medium',
+  status: 'normal',
+  type: 'text',
+}

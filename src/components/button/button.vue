@@ -16,22 +16,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { ButtonProps, ButtonEmits } from './interface'
+import { type ButtonProps, type ButtonEmits, DEFAULT_BUTTON_PROPS } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Button'
+  name: 'Button',
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  disabled: false,
-  loading: false,
-  size: 'medium',
-  shape: 'square',
-  status: 'normal',
-  target: '',
-  type: 'default'
-})
+const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
 const emits = defineEmits<ButtonEmits>()
 
 const cls: ComputedRef<string[]> = computed(() => [
@@ -41,7 +33,7 @@ const cls: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}btn-status-${props.status}`,
   `${getClsPrefix()}btn-type-${props.type}`,
   //通过布尔值参数值的类样式处理
-  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`
+  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`,
 ])
 const isTagA: ComputedRef<boolean> = computed((): boolean => {
   return props.target === '' ? false : true

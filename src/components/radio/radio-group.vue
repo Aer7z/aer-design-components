@@ -7,25 +7,19 @@
 <script lang="ts" setup>
 import { ref, computed, provide, onBeforeMount } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
-import type { RadioGroupProps, RadioGroupEmits } from './interface'
+import { type RadioGroupProps, type RadioGroupEmits, DEFAULT_RADIO_GROUP_PROPS } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'RadioGroup'
+  name: 'RadioGroup',
 })
 
-const props = withDefaults(defineProps<RadioGroupProps>(), {
-  direction: 'horizontal',
-  disabled: false,
-  // modelValue: '',
-  size: 'medium',
-  type: 'radio'
-})
+const props = withDefaults(defineProps<RadioGroupProps>(), DEFAULT_RADIO_GROUP_PROPS)
 const model = defineModel()
 
 const clsRadioGroupContainer: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}radio-group-container-${props.direction}`,
-  `${getClsPrefix()}radio-group-container`
+  `${getClsPrefix()}radio-group-container`,
 ])
 const emits = defineEmits<RadioGroupEmits>()
 
@@ -38,9 +32,7 @@ const handleChange = (ev: Event) => {
 
 const provideRadioGroupName = () => {
   // 创建一个唯一的 radioGroupName , 保证每组都独有
-  const radioGroupName = ref<string>(
-    Date.now().toString(36) + Math.random().toString(36).slice(2, 5)
-  )
+  const radioGroupName = ref<string>(Date.now().toString(36) + Math.random().toString(36).slice(2, 5))
   // 使用 provide 提供给子组件
   provide('radioGroupName', radioGroupName)
 }

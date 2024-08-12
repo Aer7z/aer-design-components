@@ -9,12 +9,10 @@
 import { ref, computed, onMounted, onBeforeUnmount, inject } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
-import type { TriggerEmits, TriggerProps } from './interface'
+import { DEFAULT_TRIGGER_PROPS, type TriggerEmits, type TriggerProps } from './interface'
 import type { PopupPosRec } from './constants'
 
-const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(
-  inject('triggerPopupPosRec', undefined)
-)
+const triggerPopupPosRec: Ref<PopupPosRec | undefined> = ref(inject('triggerPopupPosRec', undefined))
 
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
@@ -25,14 +23,10 @@ const popupRef: Ref = ref<HTMLElement>()
 // let triggerPositionRec: DOMRect = new DOMRect()
 
 defineOptions({
-  name: 'Trigger'
+  name: 'Trigger',
 })
 
-const props = withDefaults(defineProps<TriggerProps>(), {
-  disabled: false,
-  position: 'bottom',
-  trigger: 'click'
-})
+const props = withDefaults(defineProps<TriggerProps>(), DEFAULT_TRIGGER_PROPS)
 
 const emits = defineEmits<TriggerEmits>()
 
@@ -114,7 +108,7 @@ const EventList = {
   mouseenter: handleMouseEnterAndLeave,
   mouseleave: handleMouseEnterAndLeave,
   focusin: handleFocusInAndOut,
-  focusout: handleFocusInAndOut
+  focusout: handleFocusInAndOut,
 }
 
 //获取触发器Trigger的位置大小信息的函数
@@ -128,7 +122,7 @@ const getPopupRecWithPosition: (triggerRec: DOMRect) => PopupPosRec = (triggerRe
     top: '',
     left: '',
     bottom: '',
-    right: ''
+    right: '',
   }
   // position样式里的bottom和DomRect里的bottom，代表的是不同的计算距离方式
   // position里写的是浏览器布局中的top/left什么的，DomRect里的就不是了
@@ -137,14 +131,14 @@ const getPopupRecWithPosition: (triggerRec: DOMRect) => PopupPosRec = (triggerRe
     case 'bottom': {
       Object.assign(position, {
         top: `${triggerRec.bottom}px`,
-        left: `${triggerRec.left}px`
+        left: `${triggerRec.left}px`,
       })
       break
     }
     case 'top': {
       Object.assign(position, {
         top: `${triggerRec.top - triggerRec.height}px`,
-        left: `${triggerRec.left}px`
+        left: `${triggerRec.left}px`,
       })
       break
     }
@@ -152,7 +146,7 @@ const getPopupRecWithPosition: (triggerRec: DOMRect) => PopupPosRec = (triggerRe
     case 'left': {
       Object.assign(position, {
         top: `${triggerRec.bottom}px`,
-        left: `${0}px`
+        left: `${0}px`,
       })
       break
     }
@@ -160,7 +154,7 @@ const getPopupRecWithPosition: (triggerRec: DOMRect) => PopupPosRec = (triggerRe
     case 'right': {
       Object.assign(position, {
         top: `${triggerRec.bottom}px`,
-        right: `${0}px`
+        right: `${0}px`,
       })
       break
     }

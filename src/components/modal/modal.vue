@@ -5,18 +5,15 @@
 <script lang="ts" setup>
 import { ref, computed, provide, onBeforeMount } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
-import type { ModalEmits, ModalProps } from './interface'
+import { DEFAULT_MODAL_PROPS, type ModalEmits, type ModalProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 import type { PopupPosRec } from '../trigger/constants'
 
 defineOptions({
-  name: 'Modal'
+  name: 'Modal',
 })
 
-const props = withDefaults(defineProps<ModalProps>(), {
-  mask: true,
-  maskClosable: false
-})
+const props = withDefaults(defineProps<ModalProps>(), DEFAULT_MODAL_PROPS)
 provide('modalProps', props)
 
 let visible = ref(false)
@@ -31,7 +28,7 @@ function initTrigger() {
     top: '',
     left: '',
     bottom: '',
-    right: ''
+    right: '',
   })
   provide('triggerPopupPosRec', triggerPopupPosRec)
   const popupVisible: Ref<boolean> = ref(false)

@@ -1,11 +1,6 @@
 <template>
   <Teleport to="body">
-    <div
-      :class="[clsTriggerPopup]"
-      ref="triggerPopupRef"
-      :style="[triggerPopupPosRec]"
-      v-show="popupVisible"
-    >
+    <div v-show="popupVisible" :class="[clsTriggerPopup]" ref="triggerPopupRef" :style="[triggerPopupPosRec]">
       <slot></slot>
     </div>
   </Teleport>
@@ -15,7 +10,7 @@
 import { ref, computed, watch, onMounted, onBeforeUnmount, inject } from 'vue'
 import type { Ref, CSSProperties, ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
-import type { TriggerEmits, TriggerPopupProps } from './interface'
+import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerEmits, type TriggerPopupProps } from './interface'
 import type { PopupPosRec } from './constants'
 
 const triggerPopupPosRec: Ref<PopupPosRec> = ref(
@@ -23,14 +18,11 @@ const triggerPopupPosRec: Ref<PopupPosRec> = ref(
     top: '',
     left: '',
     bottom: '',
-    right: ''
+    right: '',
   })
 )
 
-const props = withDefaults(defineProps<TriggerPopupProps>(), {
-  clickOutsideToClose: true,
-  innerElementRef: undefined
-})
+const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
 
 const popupVisible: Ref<boolean> = ref(inject('triggerPopupVisible', false))
 
@@ -54,9 +46,7 @@ const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) =>
     props.innerElementRef ? props.innerElementRef : triggerPopupRef.value
   )
 
-  let isClickAreaOutOfPopup = !(innerElementRef.value as HTMLElement).contains(
-    ev.target as HTMLElement
-  )
+  let isClickAreaOutOfPopup = !(innerElementRef.value as HTMLElement).contains(ev.target as HTMLElement)
   // 如果点击的区域不在触发器内部
   console.log('hh')
   if (isClickAreaOutOfPopup) {
@@ -67,7 +57,7 @@ const closePopupWhenClickOutside: (ev: MouseEvent) => void = (ev: MouseEvent) =>
 }
 
 defineOptions({
-  name: 'TriggerPopup'
+  name: 'TriggerPopup',
 })
 
 // `clsTriggerPopup` 提供了触发器弹出窗口的样式类。

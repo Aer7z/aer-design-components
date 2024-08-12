@@ -14,3 +14,11 @@ export interface ButtonSimpleProps {
   target?: string
   variant?: ButtonSimpleVariant
 }
+
+export const DEFAULT_BUTTON_SIMPLE_PROPS: ButtonSimpleProps = {
+  disabled: false,
+  size: 'medium',
+  shape: 'circle',
+  target: '',
+  variant: 'primary',
+}

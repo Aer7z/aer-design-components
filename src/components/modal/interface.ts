@@ -12,3 +12,8 @@ export interface ModalProps {
   mask?: boolean
   maskClosable?: boolean
 }
+
+export const DEFAULT_MODAL_PROPS: ModalProps = {
+  mask: true,
+  maskClosable: false,
+}

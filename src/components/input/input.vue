@@ -35,60 +35,48 @@
 // console.log(getCurrentInstance())
 import { computed, onMounted } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { InputEmits, InputProps } from './interface'
+import { DEFAULT_INPUT_PROPS, type InputEmits, type InputProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Input'
+  name: 'Input',
 })
 const inputModel = defineModel()
-// console.log(inputModel.value)
 
-const props = withDefaults(defineProps<InputProps>(), {
-  disabled: false,
-  maxLength: 100,
-  readOnly: false,
-  showClear: false,
-  showCount: false,
-  size: 'medium',
-  status: 'normal',
-  type: 'text'
-})
+const props = withDefaults(defineProps<InputProps>(), DEFAULT_INPUT_PROPS)
 
 const emits = defineEmits<InputEmits>()
 
 // 普遍适用的class样式，如尺寸、是否禁用
 const clsCommon: string[] = [
   // `${getClsPrefix()}input-size-${props.size ?? 'medium'}`,
-  `${props.disabled ? getClsPrefix() + 'input-disabled' : ''}`
+  `${props.disabled ? getClsPrefix() + 'input-disabled' : ''}`,
 ]
 // Input组件最外层包裹层的样式
 const clsInputWrapper: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
   `${getClsPrefix()}input-size-${props.size}`,
-  `${getClsPrefix()}input-wrapper`
+  `${getClsPrefix()}input-wrapper`,
 ])
 // Input组件内层包裹层的样式
 const clsInputContent: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
   `${getClsPrefix()}input-size-${props.size}`,
-  `${getClsPrefix()}input-content`
+  `${getClsPrefix()}input-content`,
 ])
 
 // Input组件中的input的样式
 const clsInput: ComputedRef<string[]> = computed(() => [
   ...clsCommon,
   `${getClsPrefix()}input-font-size-${props.size}`,
-  `${getClsPrefix()}input`
+  `${getClsPrefix()}input`,
 ])
 // Input组件中字数统计的样式
-const clsInputCountArea: ComputedRef<string[]> = computed(() => [
-  `${getClsPrefix()}input-count-area`
-])
+const clsInputCountArea: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-count-area`])
 // Input组件中字数清零按钮的样式
 const clsInputClearBtn: ComputedRef<string[]> = computed(() => [
   `${props.disabled ? getClsPrefix() + 'input-clear-btn-disabled' : ''}`,
-  `${getClsPrefix()}input-clear-btn`
+  `${getClsPrefix()}input-clear-btn`,
 ])
 // Input组件中前缀元素的样式
 const clsInputPrefix: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-prefix`])

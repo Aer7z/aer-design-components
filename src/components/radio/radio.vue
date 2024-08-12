@@ -26,21 +26,15 @@
 <script lang="ts" setup>
 import { ref, computed, inject, onBeforeMount, onMounted } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
-import type { RadioProps, RadioEmits } from './interface'
+import { type RadioProps, type RadioEmits, DEFAULT_RADIO_PROPS } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Radio'
+  name: 'Radio',
 })
 // const radioModel = defineModel()
 
-const props = withDefaults(defineProps<RadioProps>(), {
-  defaultChecked: false,
-  disabled: false,
-  size: 'medium',
-  type: 'radio',
-  value: true
-})
+const props = withDefaults(defineProps<RadioProps>(), DEFAULT_RADIO_PROPS)
 // radioModel.value = ref(props.value)
 let isChecked = ref(props.defaultChecked)
 
@@ -56,25 +50,25 @@ const setInitialChecked: () => void = () => {
 // 定义单选组件的通用样式。
 const clsRadioCommon: string[] = [
   `${getClsPrefix()}radio-hover`, // 悬停效果样式
-  `${props.disabled ? getClsPrefix() + 'radio-disabled' : ''}` // 禁用状态样式
+  `${props.disabled ? getClsPrefix() + 'radio-disabled' : ''}`, // 禁用状态样式
 ]
 
 // 单选组件的包装器样式。
 const clsRadioWrapper: ComputedRef<string[]> = computed(() => [
   ...clsRadioCommon, // 包含通用样式
-  `${getClsPrefix()}radio-wrapper` // 特定的包装器样式
+  `${getClsPrefix()}radio-wrapper`, // 特定的包装器样式
 ])
 
 // 单选组件本身的样式。
 const clsRadio: ComputedRef<string[]> = computed(() => [
   ...clsRadioCommon, // 包含通用样式
-  `${getClsPrefix()}radio` // 特定的单选样式
+  `${getClsPrefix()}radio`, // 特定的单选样式
 ])
 
 // 单选内容的样式。
 const clsRadioLabel: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}radio-font-size-${radioSize}`, // 根据属性设置字体大小，或默认设置为中等大小
-  `${getClsPrefix()}radio-content` // 内容特定的样式
+  `${getClsPrefix()}radio-content`, // 内容特定的样式
 ])
 const emits = defineEmits<RadioEmits>()
 

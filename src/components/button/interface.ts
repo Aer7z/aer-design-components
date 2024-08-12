@@ -16,3 +16,13 @@ export interface ButtonProps {
   target?: string
   type?: ButtonType
 }
+
+export const DEFAULT_BUTTON_PROPS: ButtonProps = {
+  disabled: false,
+  loading: false,
+  size: 'medium',
+  shape: 'square',
+  status: 'normal',
+  target: '',
+  type: 'default',
+}

@@ -18,3 +18,14 @@ export interface TriggerPopupProps {
   clickOutsideToClose?: boolean
   innerElementRef?: HTMLElement | undefined
 }
+
+export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
+  disabled: false,
+  position: 'bottom',
+  trigger: 'click',
+}
+
+export const DEFAULT_TRIGGER_POPUP_PROPS: TriggerPopupProps = {
+  clickOutsideToClose: true,
+  innerElementRef: undefined,
+}
