@@ -1,25 +1,32 @@
 <template>
   <div :class="[clsModalHeader]">
+    <div v-if="isCancelShow" :class="clsModalHeaderButton" @click="handleCancel">
+      <slot name="cancel"></slot>
+    </div>
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { ModalEmits, ModalProps } from './interface'
+import type { ModalEmits } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
-import Trigger from '../trigger/index'
 
 defineOptions({
-  name: 'ModalHeader'
+  name: 'ModalHeader',
 })
-
-let visible = ref(false)
-
 const emits = defineEmits<ModalEmits>()
 
+const instance = getCurrentInstance()
+const isCancelShow = !!instance?.slots.cancel
+
+const handleCancel = (ev: MouseEvent) => {
+  emits('cancel', ev)
+}
+
 const clsModalHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header`])
+const clsModalHeaderButton: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header-button`])
 </script>
 
 <style lang="less" src="./style/modal.less"></style>

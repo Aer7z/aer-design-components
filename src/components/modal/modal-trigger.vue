@@ -1,25 +1,17 @@
 <template>
   <Trigger>
     <template v-slot:default>
-      <span>
-        <!-- <span @click="handleClick(true)"> -->
-        <slot></slot>
-      </span>
+      <slot></slot>
     </template>
   </Trigger>
 </template>
 
 <script lang="ts" setup>
-import Trigger from '../trigger/index'
+import { Trigger } from '../trigger/index'
 
 defineOptions({
   name: 'ModalTrigger',
 })
-
-// const props = withDefaults(defineProps<ModalProps>(), {
-//   title: '暂无内容',
-//   body: '暂无内容'
-// })
 </script>
 
 <style lang="less" src="./style/modal.less"></style>

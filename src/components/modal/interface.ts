@@ -10,12 +10,17 @@ export interface ModalEmits {
 
 //Modal的事件列表
 export interface ModalProps {
-  mask?: boolean
+  isMaskShow?: boolean
+  maskClosable?: boolean
+}
+
+export interface ModalContext {
+  isMaskShow?: boolean
   maskClosable?: boolean
 }
 
 export const DEFAULT_MODAL_PROPS: ModalProps = {
-  mask: true,
+  isMaskShow: true,
   maskClosable: false,
 }
 

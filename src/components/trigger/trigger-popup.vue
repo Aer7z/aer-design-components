@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount } from 'vue'
 import type { ComputedRef } from 'vue'
 import { getClsPrefix } from '../_utils/global-config'
 import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
@@ -23,4 +23,12 @@ const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POP
 
 // `clsTriggerPopup` 提供了触发器弹出窗口的样式类。
 const clsTriggerPopup: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger-popup`])
+
+function handleTurnPopupOff() {
+  triggerPopupVisible.value = false
+}
+
+onBeforeUnmount(() => {
+  handleTurnPopupOff()
+})
 </script>
