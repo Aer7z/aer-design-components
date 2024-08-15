@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import Trigger from '../trigger/index'
+import { Trigger } from '../trigger/index'
 
 defineOptions({
-  name: 'DropdownTrigger'
+  name: 'DropdownTrigger',
 })
 </script>
 

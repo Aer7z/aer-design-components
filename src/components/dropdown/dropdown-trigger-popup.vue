@@ -10,7 +10,7 @@
 import { TriggerPopup } from '../trigger/index'
 
 defineOptions({
-  name: 'DropdownTriggerPopup'
+  name: 'DropdownTriggerPopup',
 })
 </script>
 
