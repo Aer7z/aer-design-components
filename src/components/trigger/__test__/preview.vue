@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Trigger, TriggerPopup } from '../index.ts'
-import { createTriggerContext } from '../context.ts'
+import { Trigger, TriggerPopup } from '../index'
+import { createTriggerContext } from '../context'
 createTriggerContext()
 </script>

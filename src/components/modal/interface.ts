@@ -11,17 +11,14 @@ export interface ModalEmits {
 //Modal的事件列表
 export interface ModalProps {
   isMaskShow?: boolean
-  maskClosable?: boolean
 }
 
 export interface ModalContext {
   isMaskShow?: boolean
-  maskClosable?: boolean
 }
 
 export const DEFAULT_MODAL_PROPS: ModalProps = {
   isMaskShow: true,
-  maskClosable: false,
 }
 
 export interface ModalTriggerPopupPosRec extends TriggerPopupPosRec {}

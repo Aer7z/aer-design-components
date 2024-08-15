@@ -1,5 +1,5 @@
 <template>
-  <div ref="triggerRef" v-on="EventList" :class="clsTrigger" @click.stop>
+  <div ref="triggerRef" v-on="EventList" @click.stop>
     <slot></slot>
   </div>
 </template>
@@ -96,8 +96,6 @@ const setPopupRecWithPosition = (triggerRec: DOMRect) => {
   let position: TriggerPopupPosRec = getPopupRecWithPositionOfPlacement(triggerRec)
   triggerPopupPosRec.value = position
 }
-
-const clsTrigger: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger`])
 
 onMounted(() => {
   const triggerPositionRec: DOMRect = getTriggerPositionRec()

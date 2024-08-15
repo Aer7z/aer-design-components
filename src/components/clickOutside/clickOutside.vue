@@ -5,9 +5,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { Ref } from 'vue'
-import type { clickOutsideProps } from './interface'
+import type { ClickOutsideProps } from './interface'
 
-const { clickOutside } = defineProps<clickOutsideProps>()
+const { handleClickOutside } = defineProps<ClickOutsideProps>()
 
 const clickOutsideRef: Ref<HTMLElement | undefined> = ref<HTMLElement>()
 const isVisible: Ref<boolean> = ref(true)
@@ -23,7 +23,7 @@ const turnoff = (ev: MouseEvent) => {
 //处理点击事件，附带传入需处理事件
 const handleClick = (ev: MouseEvent) => {
   // 额外的外部传入的点击事件有就执行
-  clickOutside ? clickOutside(ev) : undefined
+  handleClickOutside ? handleClickOutside(ev) : undefined
   turnoff(ev)
 }
 </script>

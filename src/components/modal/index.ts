@@ -49,6 +49,7 @@
 export { default as Modal } from './modal.vue'
 export { default as ModalTrigger } from './modal-trigger.vue'
 export { default as ModalTriggerPopup } from './modal-trigger-popup.vue'
+export { default as ModalContent } from './modal-content.vue'
 export { default as ModalHeader } from './modal-header.vue'
 export { default as ModalBody } from './modal-body.vue'
 export { default as ModalFooter } from './modal-footer.vue'

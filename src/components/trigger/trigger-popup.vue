@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div v-if="triggerPopupVisible" :class="[clsTriggerPopup]" :style="[triggerPopupPosRec]">
+    <div v-if="triggerPopupVisible" :style="[triggerPopupPosRec]">
       <slot></slot>
     </div>
   </Teleport>
@@ -20,9 +20,6 @@ defineOptions({
 const { triggerPopupPosRec, triggerPopupVisible } = useTriggerContext()
 
 const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
-
-// `clsTriggerPopup` 提供了触发器弹出窗口的样式类。
-const clsTriggerPopup: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}trigger-popup`])
 
 function handleTurnPopupOff() {
   triggerPopupVisible.value = false

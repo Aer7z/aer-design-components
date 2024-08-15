@@ -11,7 +11,7 @@ const modalPropsContextKey = Symbol('modalPropsContextKey')
 export function createModalPropsContext(props: ModalProps) {
   provide<ModalContext>(modalPropsContextKey, {
     isMaskShow: props.isMaskShow,
-    maskClosable: props.maskClosable,
+    // maskClosable: props.maskClosable,
   })
 }
 

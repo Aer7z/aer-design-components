@@ -1,12 +1,16 @@
 import type { } from './constants'
 
 //Button的事件列表
-export interface {{componentName}}Emits {
+export interface {{pascalCase componentName}}Emits {
     [key: string]: any // 添加索引签名
     // click: (ev: MouseEvent) => true
 }
 
 //Button的参数列表
-export interface {{componentName}}Props {
+export interface {{pascalCase componentName}}Props {
 
 }
+
+
+// export const DEFAULT_{{pascalCase componentName}}_PROPS: {{pascalCase componentName}}Props = {
+// }

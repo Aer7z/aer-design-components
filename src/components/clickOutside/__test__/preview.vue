@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import ClickOutside from "../index.ts";
+import { ClickOutside } from '../index'
 </script>
