@@ -4,33 +4,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, provide, onMounted, onBeforeMount } from 'vue'
-import type { Ref } from 'vue'
-import type { DropdownTriggerPopupPosRec } from './interface'
 import { createDropdownTriggerContext } from './context'
 
 defineOptions({
   name: 'Dropdown',
 })
 
-// 初始化trigger触发器，提供必要数据
-// function initTrigger() {
-//   const triggerPopupPosRec: Ref<DropdownTriggerPopupPosRec> = ref({
-//     top: '',
-//     left: '',
-//     bottom: '',
-//     right: '',
-//   })
-//   provide('triggerPopupPosRec', triggerPopupPosRec)
-//   const popupVisible: Ref<boolean> = ref(false)
-//   provide('triggerPopupVisible', popupVisible)
-// }
-
 createDropdownTriggerContext()
-
-onBeforeMount(() => {
-  initTrigger()
-})
 </script>
 
 <style lang="less" src="./style/index.less"></style>
