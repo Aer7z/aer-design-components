@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import ButtonSimple from '../components/button-simple/index'
+import ButtonSimple from '../components/button/index'
 import Button from '../components/button/index'
 
 function foo(): void {

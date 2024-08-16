@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import Button from '../index'
+import { Button } from '../index'
 </script>
 
 <style></style>

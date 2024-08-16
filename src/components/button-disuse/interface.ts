@@ -7,16 +7,20 @@ export interface ButtonEmits {
 //Button的参数列表
 export interface ButtonProps {
   disabled?: boolean
+  loading?: boolean
   size?: 'mini' | 'small' | 'medium' | 'large'
   shape?: 'square' | 'circle' | 'round'
+  status?: 'normal' | 'warning' | 'success' | 'danger'
   target?: string
-  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'link' | 'destructive'
+  type?: 'default' | 'primary' | 'dashed' | 'text' | 'link'
 }
 
 export const DEFAULT_BUTTON_PROPS: ButtonProps = {
   disabled: false,
+  loading: false,
   size: 'medium',
-  shape: 'circle',
+  shape: 'square',
+  status: 'normal',
   target: '',
-  variant: 'primary',
+  type: 'default',
 }

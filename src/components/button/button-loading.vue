@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import Button from './index'
+import { Button } from './index'
 
 defineOptions({
-  name: 'ButtonSimpleLoading'
+  name: 'ButtonLoading',
 })
 </script>
 

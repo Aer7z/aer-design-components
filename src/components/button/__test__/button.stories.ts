@@ -1,5 +1,5 @@
 import Preview from './preview.vue'
-import Button from '../index'
+import { Button } from '../index'
 import type { ButtonProps } from '../interface'
 
 export default {
@@ -12,42 +12,27 @@ const PreviewTemplate = (args: ButtonProps) => ({
   setup() {
     return { args }
   },
-  template: '<Preview v-bind="args"> 按钮 </Preview>',
+  template: '<Preview v-bind="args"></Preview>',
 })
 
 export const PreviewInstance: any = PreviewTemplate.bind({})
 PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
-const Template = (args: ButtonProps) => ({
+const template = (args: ButtonProps) => ({
   components: { Button },
   setup() {
     return { args }
   },
   template:
-    '<Button v-bind="args"> 按钮默认状态 </Button><br/><br/>' +
-    '<Button v-bind="args" status="normal"> normal状态 </Button><br/><br/>' +
-    '<Button v-bind="args" status="success"> success状态 </Button><br/><br/>' +
-    '<Button v-bind="args" status="danger"> danger状态 </Button><br/><br/>' +
-    '<Button v-bind="args" status="warning"> warning状态 </Button>',
+    '<Button v-bind="args" variant="primary"> primary按钮 </Button><br/><br/>' +
+    '<Button v-bind="args" variant="secondary"> secondary按钮 </Button><br/><br/>' +
+    '<Button v-bind="args" variant="outline"> outline按钮 </Button><br/><br/>' +
+    '<Button v-bind="args" variant="text"> text按钮 </Button><br/><br/>' +
+    '<Button v-bind="args" variant="link"> link按钮 </Button><br/><br/>' +
+    '<Button v-bind="args" variant="destructive"> destructive按钮 </Button><br/><br/>',
 })
 
-export const PrimaryInstance: any = Template.bind({})
-PrimaryInstance.storyName = '主要按钮'
-PrimaryInstance.args = { type: 'primary' }
-
-export const DefaultInstance: any = Template.bind({})
-DefaultInstance.storyName = '默认按钮'
-DefaultInstance.args = { type: 'default' }
-
-export const TextInstance: any = Template.bind({})
-TextInstance.storyName = '文本按钮'
-TextInstance.args = { type: 'text' }
-
-export const DashedInstance: any = Template.bind({})
-DashedInstance.storyName = '虚线按钮'
-DashedInstance.args = { type: 'dashed' }
-
-export const LinkInstance: any = Template.bind({})
-LinkInstance.storyName = '跳转按钮'
-LinkInstance.args = { type: 'link' }
+export const primaryInstance: any = template.bind({})
+primaryInstance.storyName = '按钮列表'
+primaryInstance.args = {}

@@ -1,14 +1,14 @@
 <template>
   <template v-if="isTagA">
     <a :class="[cls]" :href="target" @click="handleClick" :tabindex="isTagADisabled">
+      <slot name="icon" />
       <slot />
-      <span v-if="loading"><slot name="icon" /> </span>
     </a>
   </template>
   <template v-else>
     <button :class="[cls]" :disabled="disabled" @click="handleClick">
+      <slot name="icon" />
       <slot />
-      <template v-if="loading"><slot name="icon" /> </template>
     </button>
   </template>
 </template>
@@ -20,21 +20,21 @@ import { type ButtonProps, type ButtonEmits, DEFAULT_BUTTON_PROPS } from './inte
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Button',
+  name: 'ButtonSimple',
 })
 
 const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
 const emits = defineEmits<ButtonEmits>()
 
 const cls: string[] = [
-  `${getClsPrefix()}btn`,
-  `${getClsPrefix()}btn-size-${props.size}`,
-  `${getClsPrefix()}btn-shape-${props.shape}`,
-  `${getClsPrefix()}btn-status-${props.status}`,
-  `${getClsPrefix()}btn-type-${props.type}`,
+  `${getClsPrefix()}btn-simple`,
+  `${getClsPrefix()}btn-simple-size-${props.size}`,
+  `${getClsPrefix()}btn-simple-shape-${props.shape}`,
+  `${getClsPrefix()}btn-simple-variant-${props.variant}`,
   //通过布尔值参数值的类样式处理
-  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`,
+  `${props.disabled ? getClsPrefix() + 'btn-simple-disabled' : ''}`,
 ]
+
 const isTagA: ComputedRef<boolean> = computed((): boolean => {
   return props.target === '' ? false : true
 })
@@ -45,11 +45,10 @@ const isTagADisabled: ComputedRef<number> = computed((): number => {
 })
 
 const handleClick: (ev: MouseEvent) => void = (ev: MouseEvent): void => {
-  if (props.loading || props.disabled) {
+  if (props.disabled) {
     ev.preventDefault()
     return
   }
-  // console.log('111')
   ;(ev.currentTarget as HTMLButtonElement).blur()
   emits('click', ev)
 }
