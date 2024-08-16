@@ -9,23 +9,20 @@
     </template>
     <template v-else> -->
     <input
-      :type="radioGroupType"
+      :type="props.type ?? radioGroupType"
       :value="props.value"
       :class="[clsRadio]"
       :disabled="props.disabled"
       :name="radioGroupName"
-      :checked="isChecked"
-      @change="handleChange"
+      :checked="radioGroupDefaultValue === props.value"
     />
-    <div :class="[clsRadioLabel]">
+    <span :class="[clsRadioLabel]">
       <slot></slot>
-    </div>
+    </span>
     <!-- </template> -->
   </label>
 </template>
 <script lang="ts" setup>
-import { ref, computed, inject, onBeforeMount, onMounted } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
 import { type RadioProps, type RadioEmits, DEFAULT_RADIO_PROPS } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 import { useRadioGroupContext } from './context'
@@ -33,18 +30,11 @@ import { useRadioGroupContext } from './context'
 defineOptions({
   name: 'Radio',
 })
-// const radioModel = defineModel()
 
 const props = withDefaults(defineProps<RadioProps>(), DEFAULT_RADIO_PROPS)
-// radioModel.value = ref(props.value)
-let isChecked = ref(props.defaultChecked)
-
+// let isChecked = ref(props.defaultChecked)
 const { radioGroupDefaultValue, radioGroupDirection, radioGroupName, radioGroupSize, radioGroupType } =
   useRadioGroupContext()
-
-const setInitialChecked: () => void = () => {
-  if (radioGroupDefaultValue === props.value) isChecked.value = true
-}
 
 // 定义单选组件的通用样式。
 const clsRadioCommon: string[] = [
@@ -70,15 +60,6 @@ const clsRadioLabel: string[] = [
   `${getClsPrefix()}radio-content`, // 内容特定的样式
 ]
 const emits = defineEmits<RadioEmits>()
-
-const handleChange = (ev: Event) => {
-  const element: HTMLInputElement = ev.target as HTMLInputElement
-  emits('radioChecked', element.value)
-}
-
-onMounted(() => {
-  setInitialChecked()
-})
 </script>
 
 <style lang="less" src="./style/index.less"></style>

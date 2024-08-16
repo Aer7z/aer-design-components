@@ -6,6 +6,7 @@ export function createRadioGroupContext(props: RadioGroupProps) {
   provide<RadioGroupContext>(radioGroupKey, {
     radioGroupDefaultValue: props.defaultValue,
     radioGroupDirection: props.direction,
+    radioGroupDisabled: props.disabled,
     radioGroupName: props.name,
     radioGroupSize: props.size,
     radioGroupType: props.type,
@@ -15,7 +16,8 @@ export function createRadioGroupContext(props: RadioGroupProps) {
 export function useRadioGroupContext() {
   const context: RadioGroupContext | undefined = inject(radioGroupKey)
   if (!context) {
-    throw new Error('请在外层外radioGroup的组件中使用该函数')
+    // throw new Error('请在外层外radioGroup的组件中使用该函数')
+    return {}
   }
   return context
 }

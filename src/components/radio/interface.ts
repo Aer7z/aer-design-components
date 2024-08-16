@@ -28,6 +28,7 @@ export interface RadioGroupProps {
 export interface RadioGroupContext {
   radioGroupDefaultValue?: string
   radioGroupDirection?: 'horizontal' | 'vertical'
+  radioGroupDisabled?: boolean
   radioGroupName?: string
   radioGroupSize?: 'mini' | 'small' | 'medium' | 'large'
   radioGroupType?: 'button' | 'radio'

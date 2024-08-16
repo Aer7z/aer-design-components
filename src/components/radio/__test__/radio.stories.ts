@@ -19,14 +19,14 @@ export const PreviewInstance = PreviewTemplate.bind({})
 PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
-const Template = (args: RadioProps) => ({
-  components: { Radio },
-  setup() {
-    return { args }
-  },
-  template: '<Radio v-bind="args"></Radio>',
-})
+// const Template = (args: RadioProps) => ({
+//   components: { Radio },
+//   setup() {
+//     return { args }
+//   },
+//   template: '<Radio v-bind="args"></Radio>',
+// })
 
-export const Instance = Template.bind({})
-Instance.storyName = '暂定'
-Instance.args = {}
+// export const Instance = Template.bind({})
+// Instance.storyName = '暂定'
+// Instance.args = {}
