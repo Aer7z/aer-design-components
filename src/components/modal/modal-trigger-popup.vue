@@ -14,4 +14,4 @@ defineOptions({
 })
 </script>
 
-<style lang="less" src="./style/modal.less"></style>
+<style lang="less" src="./style/index.less"></style>

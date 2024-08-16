@@ -1,20 +1,20 @@
-import type { App, ComponentPublicInstance } from 'vue';
-import { getComponentsPrefix } from '../_utils/global-config'
-import _{{pascalCase componentName}} from './index.vue'
+// import type { App, ComponentPublicInstance } from 'vue';
+// import { getComponentsPrefix } from '../_utils/global-config'
+// mport _{{pascalCase componentName}} from './index.vue'
 
 
-const  {{pascalCase componentName}} = Object.assign( _{{pascalCase componentName}}, {
-  // Group:  _{{pascalCase componentName}}Group,
-  install: (app: App) => {
-    app.component(getComponentsPrefix() +  _{{pascalCase componentName}}.name,  _{{pascalCase componentName}})
-    // app.component(getComponentsPrefix() +  _{{pascalCase componentName}}Group.name,  _{{pascalCase componentName}}Group)
-  }
-})
+// const  {{pascalCase componentName}} = Object.assign( _{{pascalCase componentName}}, {
+//   // Group:  _{{pascalCase componentName}}Group,
+//   install: (app: App) => {
+//     app.component(getComponentsPrefix() +  _{{pascalCase componentName}}.name,  _{{pascalCase componentName}})
+//     // app.component(getComponentsPrefix() +  _{{pascalCase componentName}}Group.name,  _{{pascalCase componentName}}Group)
+//   }
+// })
 
-export type  {{pascalCase componentName}}Instance = ComponentPublicInstance<typeof  _{{pascalCase componentName}}>
-// export type  _{{pascalCase componentName}}GroupInstance = ComponentPublicInstance<typeof  _{{pascalCase componentName}}Group>
+// export type  {{pascalCase componentName}}Instance = ComponentPublicInstance<typeof  _{{pascalCase componentName}}>
+// // export type  _{{pascalCase componentName}}GroupInstance = ComponentPublicInstance<typeof  _{{pascalCase componentName}}Group>
 
-// export {  _{{pascalCase componentName}}Group as  {{pascalCase componentName}}Group }
-export default {{pascalCase componentName}}
+// // export {  _{{pascalCase componentName}}Group as  {{pascalCase componentName}}Group }
+// export default {{pascalCase componentName}}
 
 export {default as {{pascalCase componentName}} } from './{{componentName}}.vue'

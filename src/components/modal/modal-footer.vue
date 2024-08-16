@@ -38,4 +38,4 @@ const clsModalFooter: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}
 const clsModalFooterButton: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-footer-button`])
 </script>
 
-<style lang="less" src="./style/modal.less"></style>
+<style lang="less" src="./style/index.less"></style>

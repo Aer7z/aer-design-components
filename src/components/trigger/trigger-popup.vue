@@ -7,9 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount } from 'vue'
-import type { ComputedRef } from 'vue'
-import { getClsPrefix } from '../_utils/global-config'
+import { onBeforeUnmount } from 'vue'
 import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
 import { useTriggerContext } from './context'
 

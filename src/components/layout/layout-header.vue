@@ -1,22 +1,20 @@
 <template>
-  <div :class="[clsModalBody]">
-    <slot name="default"></slot>
+  <div :class="clsLayoutHeader">
+    <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { ModalEmits } from './interface'
+import type {} from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'ModalBody',
+  name: 'LayoutHeader',
 })
 
-const emits = defineEmits<ModalEmits>()
-
-const clsModalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])
+const clsLayoutHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}layout-header`])
 </script>
 
 <style lang="less" src="./style/index.less"></style>

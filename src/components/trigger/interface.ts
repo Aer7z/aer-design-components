@@ -15,7 +15,7 @@ export interface TriggerProps {
 }
 
 export interface TriggerPopupProps {
-  clickOutsideToClose?: boolean
+  // clickOutsideToClose?: boolean
 }
 
 export interface TriggerPopupPosRec {
@@ -37,5 +37,5 @@ export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
 }
 
 export const DEFAULT_TRIGGER_POPUP_PROPS: TriggerPopupProps = {
-  clickOutsideToClose: false,
+  // clickOutsideToClose: false,
 }

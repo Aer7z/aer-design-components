@@ -5,7 +5,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-// import type { } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 import { type OverlayProps, DEFAULT_OVERLAY_PROPS } from './interface'
 
