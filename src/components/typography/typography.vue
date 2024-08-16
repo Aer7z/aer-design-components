@@ -9,7 +9,7 @@
 // import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: '{{pascalCase componentName}} ' ,
+  name: 'Typography ' ,
 })
 
 </script>
