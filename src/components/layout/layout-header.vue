@@ -1,5 +1,5 @@
 <template>
-  <div :class="clsLayoutHeader">
+  <div :class="clsLayoutHeader" :style="styleHeader">
     <slot></slot>
   </div>
 </template>
@@ -7,12 +7,16 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import type {} from './interface'
+import { DEFAULT_LAYOUT_HEADER_PROPS, type LayoutHeaderProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
   name: 'LayoutHeader',
 })
+
+const props = withDefaults(defineProps<LayoutHeaderProps>(), DEFAULT_LAYOUT_HEADER_PROPS)
+
+const styleHeader = `height:${props.height};background-color:${props.backgroundColor}`
 
 const clsLayoutHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}layout-header`])
 </script>

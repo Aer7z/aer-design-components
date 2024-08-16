@@ -18,7 +18,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<LayoutSidebarProps>(), DEFAULT_LAYOUT_SIDEBAR_PROPS)
 
-const styleSidebar = `width:${props.width}`
+const styleSidebar = `width:${props.width};background-color:${props.backgroundColor}`
 </script>
 
 <style lang="less" src="./style/index.less"></style>
