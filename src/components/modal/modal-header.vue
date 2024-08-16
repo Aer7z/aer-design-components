@@ -8,8 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance } from 'vue'
-import type { ComputedRef } from 'vue'
+import { getCurrentInstance } from 'vue'
 import type { ModalEmits } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
@@ -25,8 +24,8 @@ const handleCancel = (ev: MouseEvent) => {
   emits('cancel', ev)
 }
 
-const clsModalHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header`])
-const clsModalHeaderButton: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-header-button`])
+const clsModalHeader: string = `${getClsPrefix()}modal-header`
+const clsModalHeaderButton: string = `${getClsPrefix()}modal-header-button`
 </script>
 
 <style lang="less" src="./style/index.less"></style>

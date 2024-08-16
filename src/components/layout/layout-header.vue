@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
 import { DEFAULT_LAYOUT_HEADER_PROPS, type LayoutHeaderProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
@@ -18,7 +16,7 @@ const props = withDefaults(defineProps<LayoutHeaderProps>(), DEFAULT_LAYOUT_HEAD
 
 const styleHeader = `height:${props.height};background-color:${props.backgroundColor}`
 
-const clsLayoutHeader: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}layout-header`])
+const clsLayoutHeader: string = `${getClsPrefix()}layout-header`
 </script>
 
 <style lang="less" src="./style/index.less"></style>

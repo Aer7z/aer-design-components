@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
 import { DEFAULT_LAYOUT_FOOTER_PROPS, type LayoutFooterProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
@@ -17,7 +15,7 @@ const props = withDefaults(defineProps<LayoutFooterProps>(), DEFAULT_LAYOUT_FOOT
 
 const styleFooter = `height:${props.height};background-color:${props.backgroundColor}`
 
-const clsLayoutFooter: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}layout-footer`])
+const clsLayoutFooter: string = `${getClsPrefix()}layout-footer`
 </script>
 
 <style lang="less" src="./style/index.less"></style>

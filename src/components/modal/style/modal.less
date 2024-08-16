@@ -30,24 +30,28 @@
   opacity: 1;
   background-color: var(@modal-content-background-color);
 }
+
 .@{components-prefix}modal-header {
   box-sizing: border-box;
   margin: 0 0 @modal-content-padding-height 0;
 }
+
 .@{components-prefix}modal-header-button {
   position: absolute;
   top: @modal-content-padding-height;
   right: @modal-content-padding-width;
 }
+
 .@{components-prefix}modal-body {
   box-sizing: border-box;
   margin: 0 0 @modal-content-padding-height 0;
 }
+
 .@{components-prefix}modal-footer {
-  position: relative;
-  box-sizing: border-box;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
+
 .@{components-prefix}modal-footer-button {
   display: inline-block;
   &:first-child {

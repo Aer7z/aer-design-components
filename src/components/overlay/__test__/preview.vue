@@ -3,7 +3,7 @@
     <ModalTrigger><button>触发按钮</button></ModalTrigger>
     <ModalTriggerPopup>
       <Overlay>
-        <ModalContent>
+        <ModalWrapper>
           <ModalHeader
             >头部区域
             <template #cancel>
@@ -26,13 +26,13 @@
               </ModalTrigger>
             </template>
           </ModalFooter>
-        </ModalContent>
+        </ModalWrapper>
       </Overlay>
     </ModalTriggerPopup>
   </Modal>
 </template>
 
 <script lang="ts" setup>
-import { Modal, ModalTrigger, ModalTriggerPopup, ModalContent, ModalHeader, ModalBody, ModalFooter } from '../../modal'
+import { Modal, ModalTrigger, ModalTriggerPopup, ModalWrapper, ModalHeader, ModalBody, ModalFooter } from '../../modal'
 import { Overlay } from '../index'
 </script>

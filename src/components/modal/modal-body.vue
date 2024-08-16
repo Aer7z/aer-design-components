@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
 import type { ModalEmits } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
 
@@ -16,7 +14,7 @@ defineOptions({
 
 const emits = defineEmits<ModalEmits>()
 
-const clsModalBody: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}modal-body`])
+const clsModalBody: string = `${getClsPrefix()}modal-body`
 </script>
 
 <style lang="less" src="./style/index.less"></style>
