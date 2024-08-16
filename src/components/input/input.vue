@@ -96,39 +96,35 @@ const clsCommon: string[] = [
   `${props.disabled ? getClsPrefix() + 'input-disabled' : ''}`,
 ]
 // Input组件最外层包裹层的样式
-const clsInputWrapper: ComputedRef<string[]> = computed(() => [
+const clsInputWrapper: string[] = [
   ...clsCommon,
   `${getClsPrefix()}input-size-${props.size}`,
   `${getClsPrefix()}input-wrapper`,
-])
+]
 // Input组件内层包裹层的样式
-const clsInputContent: ComputedRef<string[]> = computed(() => [
+const clsInputContent: string[] = [
   ...clsCommon,
   `${getClsPrefix()}input-size-${props.size}`,
   `${getClsPrefix()}input-content`,
-])
+]
 
 // Input组件中的input的样式
-const clsInput: ComputedRef<string[]> = computed(() => [
-  ...clsCommon,
-  `${getClsPrefix()}input-font-size-${props.size}`,
-  `${getClsPrefix()}input`,
-])
+const clsInput: string[] = [...clsCommon, `${getClsPrefix()}input-font-size-${props.size}`, `${getClsPrefix()}input`]
 // Input组件中字数统计的样式
-const clsInputCountArea: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-count-area`])
+const clsInputCountArea: string = `${getClsPrefix()}input-count-area`
 // Input组件中字数清零按钮的样式
-const clsInputClearBtn: ComputedRef<string[]> = computed(() => [
+const clsInputClearBtn: string[] = [
   `${props.disabled ? getClsPrefix() + 'input-clear-btn-disabled' : ''}`,
   `${getClsPrefix()}input-clear-btn`,
-])
+]
 // Input组件中前缀元素的样式
-const clsInputPrefix: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-prefix`])
+const clsInputPrefix: string = `${getClsPrefix()}input-prefix`
 // Input组件中后缀元素的样式
-const clsInputSuffix: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-suffix`])
+const clsInputSuffix: string = `${getClsPrefix()}input-suffix`
 // Input组件中前置标签的样式
-const clsInputPrepend: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-prepend`])
+const clsInputPrepend: string = `${getClsPrefix()}input-prepend`
 // Input组件中后置标签的样式
-const clsInputAppend: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}input-append`])
+const clsInputAppend: string = `${getClsPrefix()}input-append`
 
 onMounted(() => {
   //默认值和双向绑定数值之间该做什么样的取舍?

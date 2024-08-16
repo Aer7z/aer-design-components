@@ -1,7 +1,8 @@
 <template>
-  <Radio />
+  <Radio> 11 </Radio>
+  <div>2</div>
 </template>
 
 <script lang="ts" setup>
-import Radio from '../index.ts'
+import { Radio, RadioGroup } from '../index'
 </script>

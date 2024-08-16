@@ -26,7 +26,7 @@ defineOptions({
 const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
 const emits = defineEmits<ButtonEmits>()
 
-const cls: ComputedRef<string[]> = computed(() => [
+const cls: string[] = [
   `${getClsPrefix()}btn`,
   `${getClsPrefix()}btn-size-${props.size}`,
   `${getClsPrefix()}btn-shape-${props.shape}`,
@@ -34,7 +34,7 @@ const cls: ComputedRef<string[]> = computed(() => [
   `${getClsPrefix()}btn-type-${props.type}`,
   //通过布尔值参数值的类样式处理
   `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`,
-])
+]
 const isTagA: ComputedRef<boolean> = computed((): boolean => {
   return props.target === '' ? false : true
 })

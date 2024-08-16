@@ -53,22 +53,22 @@ const clsRadioCommon: string[] = [
 ]
 
 // 单选组件的包装器样式。
-const clsRadioWrapper: ComputedRef<string[]> = computed(() => [
+const clsRadioWrapper: string[] = [
   ...clsRadioCommon, // 包含通用样式
   `${getClsPrefix()}radio-wrapper`, // 特定的包装器样式
-])
+]
 
 // 单选组件本身的样式。
-const clsRadio: ComputedRef<string[]> = computed(() => [
+const clsRadio: string[] = [
   ...clsRadioCommon, // 包含通用样式
   `${getClsPrefix()}radio`, // 特定的单选样式
-])
+]
 
 // 单选内容的样式。
-const clsRadioLabel: ComputedRef<string[]> = computed(() => [
+const clsRadioLabel: string[] = [
   `${getClsPrefix()}radio-font-size-${radioGroupSize}`, // 根据属性设置字体大小，或默认设置为中等大小
   `${getClsPrefix()}radio-content`, // 内容特定的样式
-])
+]
 const emits = defineEmits<RadioEmits>()
 
 const handleChange = (ev: Event) => {

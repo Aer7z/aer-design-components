@@ -18,10 +18,10 @@ defineOptions({
 const props = withDefaults(defineProps<RadioGroupProps>(), DEFAULT_RADIO_GROUP_PROPS)
 const model = defineModel()
 
-const clsRadioGroupContainer: ComputedRef<string[]> = computed(() => [
+const clsRadioGroupContainer: string[] = [
   `${getClsPrefix()}radio-group-container-${props.direction}`,
   `${getClsPrefix()}radio-group-container`,
-])
+]
 const emits = defineEmits<RadioGroupEmits>()
 
 const handleChange = (ev: Event) => {

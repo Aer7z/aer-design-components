@@ -26,14 +26,14 @@ defineOptions({
 const props = withDefaults(defineProps<ButtonSimpleProps>(), DEFAULT_BUTTON_SIMPLE_PROPS)
 const emits = defineEmits<ButtonSimpleEmits>()
 
-const cls: ComputedRef<string[]> = computed(() => [
+const cls: string[] = [
   `${getClsPrefix()}btn-simple`,
   `${getClsPrefix()}btn-simple-size-${props.size}`,
   `${getClsPrefix()}btn-simple-shape-${props.shape}`,
   `${getClsPrefix()}btn-simple-variant-${props.variant}`,
   //通过布尔值参数值的类样式处理
   `${props.disabled ? getClsPrefix() + 'btn-simple-disabled' : ''}`,
-])
+]
 
 const isTagA: ComputedRef<boolean> = computed((): boolean => {
   return props.target === '' ? false : true
