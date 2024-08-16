@@ -19,14 +19,14 @@ export const PreviewInstance = PreviewTemplate.bind({})
 PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
-const Template = (args: InputProps) => ({
-  components: { Input },
-  setup() {
-    return { args }
-  },
-  template: '<Input v-bind="args"></Input>',
-})
+// const Template = (args: InputProps) => ({
+//   components: { Input },
+//   setup() {
+//     return { args }
+//   },
+//   template: '<Input v-bind="args"></Input>',
+// })
 
-export const Instance = Template.bind({})
-Instance.storyName = '暂定'
-Instance.args = {}
+// export const Instance = Template.bind({})
+// Instance.storyName = '暂定'
+// Instance.args = {}

@@ -19,14 +19,14 @@ export const PreviewInstance = PreviewTemplate.bind({})
 PreviewInstance.storyName = '默认预览'
 PreviewInstance.args = {}
 
-const Template = (args: any) => ({
-  components: { iconLoading },
-  setup() {
-    return { args }
-  },
-  template: '<iconLoading v-bind="args"></iconLoading>',
-})
+// const Template = (args: any) => ({
+//   components: { iconLoading },
+//   setup() {
+//     return { args }
+//   },
+//   template: '<iconLoading v-bind="args"></iconLoading>',
+// })
 
-export const Instance = Template.bind({})
-Instance.storyName = '暂定'
-Instance.args = {}
+// export const Instance = Template.bind({})
+// Instance.storyName = '暂定'
+// Instance.args = {}
