@@ -6,10 +6,18 @@
   justify-content: center;
 
   box-sizing: border-box;
-  border: solid;
-  // border-radius: 4px;
   border-width: 1px;
   white-space: nowrap;
+  &-prepend-border {
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+  }
+  &-append-border {
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
+  }
 }
 
 // Input组件包裹层的样式
@@ -20,7 +28,6 @@
 
   box-sizing: border-box;
   border: solid;
-  // border-radius: 4px;
   border-width: 1px;
   white-space: nowrap;
 
@@ -38,9 +45,6 @@
 }
 // Input组件中前缀元素的样式
 .@{components-prefix}input-prefix {
-  //或许就根本不用加入，传参的时候加入
-  //我该如何同步状态呢？需要同步吗
-  //统一设置就行给wrapper设置
   .styleCommon;
   margin-left: 0.3em;
 }
@@ -53,6 +57,7 @@
 .@{components-prefix}input-prepend {
   .styleCommon;
 }
+
 // Input组件中后置标签的样式
 .@{components-prefix}input-append {
   .styleCommon;
@@ -64,7 +69,6 @@
   justify-content: center;
 
   box-sizing: border-box;
-  // border: solid;
   user-select: none;
 }
 // Input组件中字数统计的样式

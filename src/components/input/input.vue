@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 // console.log(getCurrentInstance())
-import { computed, onMounted } from 'vue'
+import { computed, getCurrentInstance, onMounted } from 'vue'
 import type { ComputedRef } from 'vue'
 import { DEFAULT_INPUT_PROPS, type InputEmits, type InputProps } from './interface'
 import { getClsPrefix } from '../_utils/global-config'
@@ -51,6 +51,8 @@ const countRate: ComputedRef<string> = computed(() => {
   const InputStr: string = String(inputModel.value).replace(/\n|\r/, '') //转换成为字符串，并且去除回车换行符
   return `${InputStr.length}/${props.maxLength}`
 })
+
+const instance = getCurrentInstance()
 
 //失焦的时候触发的回调函数
 const handleBlur = (ev: FocusEvent): void => {
@@ -100,6 +102,8 @@ const clsInputWrapper: string[] = [
   ...clsCommon,
   `${getClsPrefix()}input-size-${props.size}`,
   `${getClsPrefix()}input-wrapper`,
+  instance?.slots.prepend ? `${getClsPrefix()}input-wrapper-prepend-border` : '',
+  instance?.slots.append ? `${getClsPrefix()}input-wrapper-append-border` : '',
 ]
 // Input组件内层包裹层的样式
 const clsInputContent: string[] = [
