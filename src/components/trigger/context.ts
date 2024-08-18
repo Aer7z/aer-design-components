@@ -9,6 +9,7 @@ const triggerPopupRec = ref({
   bottom: '',
   right: '',
 })
+
 const triggerPopupVisible = ref(false)
 
 export function createTriggerContext() {

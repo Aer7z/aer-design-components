@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount } from 'vue'
 import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
 import { useTriggerContext } from './context'
 
@@ -20,13 +19,5 @@ defineOptions({
 
 const triggerContext = useTriggerContext()
 
-const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
-
-function handleTurnPopupOff() {
-  triggerContext.triggerPopupVisible.value = false
-}
-
-onBeforeUnmount(() => {
-  handleTurnPopupOff()
-})
+// const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
 </script>

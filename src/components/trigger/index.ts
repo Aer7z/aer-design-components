@@ -19,5 +19,6 @@
 // export { _TriggerPopup as TriggerPopup }
 // export default Trigger
 
+export { default as TriggerProvider } from './trigger-provider.vue'
 export { default as Trigger } from './trigger.vue'
 export { default as TriggerPopup } from './trigger-popup.vue'
