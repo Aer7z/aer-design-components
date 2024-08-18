@@ -1,8 +1,11 @@
 <template>
   <Teleport to="body">
-    <div v-if="triggerPopupVisible" :style="[triggerPopupPosRec]">
+    <span
+      v-if="triggerContext.triggerPopupVisible.value"
+      :style="['position:absolute', triggerContext.triggerPopupRec.value]"
+    >
       <slot></slot>
-    </div>
+    </span>
   </Teleport>
 </template>
 
@@ -15,12 +18,12 @@ defineOptions({
   name: 'TriggerPopup',
 })
 
-const { triggerPopupPosRec, triggerPopupVisible } = useTriggerContext()
+const triggerContext = useTriggerContext()
 
 const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
 
 function handleTurnPopupOff() {
-  triggerPopupVisible.value = false
+  triggerContext.triggerPopupVisible.value = false
 }
 
 onBeforeUnmount(() => {

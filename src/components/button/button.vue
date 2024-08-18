@@ -27,12 +27,12 @@ const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
 const emits = defineEmits<ButtonEmits>()
 
 const cls: string[] = [
-  `${getClsPrefix()}btn-simple`,
-  `${getClsPrefix()}btn-simple-size-${props.size}`,
-  `${getClsPrefix()}btn-simple-shape-${props.shape}`,
-  `${getClsPrefix()}btn-simple-variant-${props.variant}`,
+  `${getClsPrefix()}btn`,
+  `${getClsPrefix()}btn-size-${props.size}`,
+  `${getClsPrefix()}btn-shape-${props.shape}`,
+  `${getClsPrefix()}btn-variant-${props.variant}`,
   //通过布尔值参数值的类样式处理
-  `${props.disabled ? getClsPrefix() + 'btn-simple-disabled' : ''}`,
+  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`,
 ]
 
 const isTagA: ComputedRef<boolean> = computed((): boolean => {

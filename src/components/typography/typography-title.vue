@@ -9,7 +9,7 @@
 // import { getClsPrefix } from '../_utils/global-config'
 
 defineOptions({
-  name: 'Typography',
+  name: 'TypographyTitle',
 })
 </script>
 

@@ -1,7 +1,7 @@
 @import './token.less';
 
 // 按钮基本样式
-.@{components-prefix}btn-simple {
+.@{components-prefix}btn {
   cursor: pointer;
   border: var(--border);
   background-color: var(--background-color);
@@ -17,7 +17,7 @@
     --color: var(--color-hover);
     --text-decoration: var(--text-decoration-hover, none);
   }
-  &:focus:not(.@{components-prefix}btn-simple-variant-link) {
+  &:focus:not(.@{components-prefix}btn-variant-link) {
     transform: translateY(1px);
     box-shadow: 0 3px 5px var(@btn-focus-boxShadow-color); /* 在活动状态下改变阴影颜色 */
   }
@@ -35,7 +35,7 @@
   user-select: none;
 }
 
-.@{components-prefix}btn-simple-variant-primary {
+.@{components-prefix}btn-variant-primary {
   --border: none;
   --background-color: var(@btn-primary-bg-color);
   --color: var(@btn-primary-text-color);
@@ -43,7 +43,7 @@
   --color-hover: var(@btn-primary-text-color-hover);
   --outline-color: var(@btn-outline-color);
 }
-.@{components-prefix}btn-simple-variant-secondary {
+.@{components-prefix}btn-variant-secondary {
   --border: none;
   --background-color: var(@btn-secondary-bg-color);
   --color: var(@btn-secondary-text-color);
@@ -51,7 +51,7 @@
   --color-hover: var(@btn-secondary-text-color-hover);
   --outline-color: var(@btn-outline-color);
 }
-.@{components-prefix}btn-simple-variant-outline {
+.@{components-prefix}btn-variant-outline {
   --border: solid;
   --background-color: var(@btn-outline-bg-color);
   --color: var(@btn-outline-text-color);
@@ -59,7 +59,7 @@
   --color-hover: var(@btn-outline-text-color-hover);
   --outline-color: var(@btn-outline-color);
 }
-.@{components-prefix}btn-simple-variant-text {
+.@{components-prefix}btn-variant-text {
   --border: none;
   --background-color: var(@btn-text-bg-color);
   --color: var(@btn-text-text-color);
@@ -67,7 +67,7 @@
   --color-hover: var(@btn-text-text-color-hover);
   --outline-color: var(@btn-outline-color);
 }
-.@{components-prefix}btn-simple-variant-link {
+.@{components-prefix}btn-variant-link {
   --border: none;
   --background-color: var(@btn-link-bg-color);
   --color: var(@btn-link-text-color);
@@ -76,7 +76,7 @@
   --text-decoration-hover: underline;
   --outline-color: var(@btn-outline-color);
 }
-.@{components-prefix}btn-simple-variant-destructive {
+.@{components-prefix}btn-variant-destructive {
   --border: none;
   --background-color: var(@btn-destructive-bg-color);
   --color: var(@btn-destructive-text-color);
@@ -87,7 +87,7 @@
 
 // 按钮的禁用状态
 // (实际添加中)后动态添加类，起到覆盖作用
-.@{components-prefix}btn-simple-disabled {
+.@{components-prefix}btn-disabled {
   background-color: var(@btn-bg-color-disabled);
   color: var(@btn-text-color-disabled);
   cursor: not-allowed;
@@ -95,7 +95,7 @@
 }
 
 // 按钮的大小、字体尺寸
-.@{components-prefix}btn-simple-size {
+.@{components-prefix}btn-size {
   &-mini {
     height: @btn-height-1;
     font-size: @btn-font-size-1;
@@ -114,7 +114,7 @@
   }
 }
 // 按钮的形状
-.@{components-prefix}btn-simple-shape {
+.@{components-prefix}btn-shape {
   &-square {
     border-radius: @btn-border-radius-square;
   }

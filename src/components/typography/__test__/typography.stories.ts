@@ -1,5 +1,5 @@
-import  Typography from "../typography.vue"
-import Preview from "./preview.vue"
+import { Typography, TypographyText } from '../index'
+import Preview from './preview.vue'
 import type { TypographyProps } from '../interface'
 
 export default {
@@ -7,17 +7,17 @@ export default {
   component: Typography, //用以提供组件的所有相关属性、事件控制
 }
 
-const PreviewTemplate: any = (args:TypographyProps) => ({
+const PreviewTemplate: any = (args: TypographyProps) => ({
   components: { Preview },
   setup() {
-    return { args };
+    return { args }
   },
-  template: '<preview v-bind="args" />',
-});
+  template: '<Preview v-bind="args" />',
+})
 
-export const PreviewInstance = PreviewTemplate.bind({});
-PreviewInstance.storyName = "默认预览";
-PreviewInstance.args = {};
+export const PreviewInstance = PreviewTemplate.bind({})
+PreviewInstance.storyName = '默认预览'
+PreviewInstance.args = {}
 
 // const Template = (args: TypographyProps) => ({
 //   components: { Typography },

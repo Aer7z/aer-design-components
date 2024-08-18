@@ -17,3 +17,5 @@
 // export default Typography
 
 export { default as Typography } from './typography.vue'
+export { default as TypographyText } from './typography-text.vue'
+export { default as TypographyTitle } from './typography-title.vue'

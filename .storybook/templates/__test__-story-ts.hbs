@@ -1,4 +1,4 @@
-import  {{pascalCase componentName}} from "../{{componentName}}.vue"
+import { {{pascalCase componentName}} }  from "../index"
 import Preview from "./preview.vue"
 import type { {{pascalCase componentName}}Props } from '../interface'
 
@@ -12,7 +12,7 @@ const PreviewTemplate: any = (args:{{pascalCase componentName}}Props) => ({
   setup() {
     return { args };
   },
-  template: '<preview v-bind="args" />',
+  template: '<Preview v-bind="args" />',
 });
 
 export const PreviewInstance = PreviewTemplate.bind({});

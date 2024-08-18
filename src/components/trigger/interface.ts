@@ -18,7 +18,8 @@ export interface TriggerPopupProps {
   // clickOutsideToClose?: boolean
 }
 
-export interface TriggerPopupPosRec {
+export interface TriggerPopupRec {
+  [key: string]: any // 添加索引签名
   top: string
   left: string
   bottom: string
@@ -26,7 +27,7 @@ export interface TriggerPopupPosRec {
 }
 
 export interface TriggerPopupContext {
-  triggerPopupPosRec: Ref<TriggerPopupPosRec>
+  triggerPopupRec: Ref<TriggerPopupRec>
   triggerPopupVisible: Ref<boolean>
 }
 

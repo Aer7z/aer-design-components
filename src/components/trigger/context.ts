@@ -3,7 +3,7 @@ import type { TriggerPopupContext } from './interface'
 
 const triggerPopupKey = Symbol('triggerPopup')
 
-const triggerPopupPosRec = ref({
+const triggerPopupRec = ref({
   top: '',
   left: '',
   bottom: '',
@@ -13,7 +13,7 @@ const triggerPopupVisible = ref(false)
 
 export function createTriggerContext() {
   provide<TriggerPopupContext>(triggerPopupKey, {
-    triggerPopupPosRec,
+    triggerPopupRec,
     triggerPopupVisible,
   })
 }
