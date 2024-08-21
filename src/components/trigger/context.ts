@@ -3,18 +3,18 @@ import type { TriggerPopupContext } from './interface'
 
 const triggerPopupKey = Symbol('triggerPopup')
 
-const triggerPopupRec = ref({
-  top: '',
-  left: '',
-  bottom: '',
-  right: '',
-})
+// const triggerPopupRec = ref({
+//   top: '',
+//   left: '',
+//   bottom: '',
+//   right: '',
+// })
 
 const triggerPopupVisible = ref(false)
 
 export function createTriggerContext() {
   provide<TriggerPopupContext>(triggerPopupKey, {
-    triggerPopupRec,
+    // triggerPopupRec,
     triggerPopupVisible,
   })
 }

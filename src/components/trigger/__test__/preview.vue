@@ -5,8 +5,16 @@
   </span> -->
   <!-- <span> -->
   <TriggerProvider>
-    <Trigger position="top"><button>按钮</button></Trigger>
-    <TriggerPopup><span>展示页面</span></TriggerPopup>
+    <PlacementProvider>
+      <Trigger>
+        <PlacementReference placement="top">
+          <button>按钮</button>
+        </PlacementReference>
+      </Trigger>
+      <TriggerPopup>
+        <Placement><span>展示页面</span> </Placement>
+      </TriggerPopup>
+    </PlacementProvider>
   </TriggerProvider>
   <!-- </span> -->
   <!-- <span>
@@ -25,6 +33,7 @@
 
 <script lang="ts" setup>
 import { TriggerProvider, Trigger, TriggerPopup } from '../index'
+import { PlacementProvider, PlacementReference, Placement } from '../../placement'
 // import { createTriggerContext } from '../context'
 // createTriggerContext()
 </script>

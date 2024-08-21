@@ -1,16 +1,13 @@
 <template>
   <Teleport to="body">
-    <span
-      v-if="triggerContext.triggerPopupVisible.value"
-      :style="['position:absolute', triggerContext.triggerPopupRec.value]"
-    >
+    <span v-if="triggerContext.triggerPopupVisible.value">
       <slot></slot>
     </span>
   </Teleport>
 </template>
 
 <script lang="ts" setup>
-import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
+// import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
 import { useTriggerContext } from './context'
 
 defineOptions({

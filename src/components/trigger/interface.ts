@@ -10,7 +10,7 @@ export interface TriggerEmits {
 
 export interface TriggerProps {
   disabled?: boolean
-  position?: 'top' | 'bottom' | 'left' | 'right'
+  // position?: 'top' | 'bottom' | 'left' | 'right'
   trigger?: 'hover' | 'click' | 'focus'
 }
 
@@ -18,22 +18,22 @@ export interface TriggerPopupProps {
   // clickOutsideToClose?: boolean
 }
 
-export interface TriggerPopupRec {
-  [key: string]: any // 添加索引签名
-  top: string
-  left: string
-  bottom: string
-  right: string
-}
+// export interface TriggerPopupRec {
+//   [key: string]: any // 添加索引签名
+//   top: string
+//   left: string
+//   bottom: string
+//   right: string
+// }
 
 export interface TriggerPopupContext {
-  triggerPopupRec: Ref<TriggerPopupRec>
+  // triggerPopupRec: Ref<TriggerPopupRec>
   triggerPopupVisible: Ref<boolean>
 }
 
 export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
   disabled: false,
-  position: 'bottom',
+  // position: 'bottom',
   trigger: 'click',
 }
 

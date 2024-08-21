@@ -11,12 +11,12 @@ export interface TypographyProps {}
 
 export interface TypographyTextProps {
   size?: 'xsmall' | 'small' | 'medium' | 'large'
-  color?: 'normal' | 'success' | 'danger'
+  color?: 'black' | 'success' | 'danger' | 'white'
 }
 
 export const DEFAULT_TYPOGRAPHY_TEXT_PROPS: TypographyTextProps = {
   size: 'medium',
-  color: 'normal',
+  color: 'black',
 }
 
 // export const DEFAULT_Typography_PROPS: TypographyProps = {
