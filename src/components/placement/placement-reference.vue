@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, type Ref } from 'vue'
-import { usePlacementContext } from './context'
+import { inject, onMounted, ref, type Ref } from 'vue'
 import { DEFAULT_PLACEMENT_PROPS, type PlacementProps, type PlacementRec } from './interface'
+import type { placementContext } from './context'
 
 // import { computed } from 'vue'
 // import type { ComputedRef } from 'vue'
@@ -19,8 +19,9 @@ defineOptions({
 })
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
 const placementRef: Ref = ref<HTMLElement>()
+const placementContextObject: placementContext | undefined = inject('placementContextObject')
+placementContextObject?.usePlacementContext.call(placementContextObject)
 
-const placementContext = usePlacementContext()
 const props = withDefaults(defineProps<PlacementProps>(), DEFAULT_PLACEMENT_PROPS)
 
 //获取触发器Trigger的位置大小信息的函数
@@ -64,7 +65,7 @@ const computePopupRec = (placementRec: DOMRect) => {
 //根据参数position调整获得的数据的函数
 const setPlacementRec = (placementRec: DOMRect) => {
   let newRec: PlacementRec = computePopupRec(placementRec)
-  placementContext.placementRec.value = newRec
+  placementContextObject!.placementRec.value = newRec
 }
 
 onMounted(() => {

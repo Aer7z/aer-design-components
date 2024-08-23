@@ -1,20 +1,21 @@
 <template>
-  <Teleport to="body">
-    <span v-if="triggerContext.triggerPopupVisible.value">
+  <Teleport to="body" :disabled="props.teleportToBody">
+    <template v-if="triggerContextObject.triggerPopupVisible.value">
       <slot></slot>
-    </span>
+    </template>
   </Teleport>
 </template>
 
 <script lang="ts" setup>
-// import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
-import { useTriggerContext } from './context'
+import { DEFAULT_TRIGGER_POPUP_PROPS, type TriggerPopupProps } from './interface'
+import { triggerContext } from './context'
+import { ref, type Ref, inject } from 'vue'
 
 defineOptions({
   name: 'TriggerPopup',
 })
+const triggerContextObject: triggerContext | undefined = inject('triggerContextObject')
+triggerContextObject?.useTriggerContext.call(triggerContextObject)
 
-const triggerContext = useTriggerContext()
-
-// const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
+const props = withDefaults(defineProps<TriggerPopupProps>(), DEFAULT_TRIGGER_POPUP_PROPS)
 </script>
