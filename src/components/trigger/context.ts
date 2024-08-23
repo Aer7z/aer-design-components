@@ -1,28 +1,9 @@
 import { provide, inject, ref } from 'vue'
 import type { TriggerPopupContext } from './interface'
 
-// const triggerPopupKey = Symbol('triggerPopup')
-
-// const triggerPopupVisible = ref(false)
-
-// export function createTriggerContext() {
-//   provide<TriggerPopupContext>(triggerPopupKey, {
-//     // triggerPopupRec,
-//     triggerPopupVisible,
-//   })
-// }
-
-// export function useTriggerContext() {
-//   const context: TriggerPopupContext | undefined = inject(triggerPopupKey)
-//   if (!context) {
-//     throw new Error('请在包含 createTriggerContext 方法组件的子组件中使用该函数')
-//   }
-//   return context
-// }
-
-export class triggerContext {
+class triggerContext {
   triggerPopupKey: symbol
-  triggerPopupVisible: any // 假设 placementRec 的类型为任意类型，你可以根据实际情况调整
+  triggerPopupVisible: any // 假设 triggerPopupVisible 的类型为任意类型，你可以根据实际情况调整
   constructor() {
     this.triggerPopupKey = Symbol('triggerPopup')
     this.triggerPopupVisible = ref(false)
@@ -37,8 +18,24 @@ export class triggerContext {
   useTriggerContext() {
     const context: TriggerPopupContext | undefined = inject(this.triggerPopupKey)
     if (!context) {
-      throw new Error('请在包含 createTriggerContext 方法组件的子组件中使用该函数')
+      throw new Error('请先使用triggerContext类创建对象中的createTriggerContext')
     }
     return context
   }
+}
+
+const triggerContextObjectKey = Symbol('triggerContextObjectKey')
+
+export function createTriggerContext() {
+  const triggerContextObject = new triggerContext()
+  provide(triggerContextObjectKey, triggerContextObject) // 和下方useTriggerContext的inject配合
+  triggerContextObject.createTriggerContext()
+}
+
+export function useTriggerContext() {
+  const triggerContextObject: triggerContext | undefined = inject(triggerContextObjectKey)
+  if (!triggerContextObject) {
+    throw new Error('请在包含 createTriggerContext 方法组件的子组件中使用该函数')
+  }
+  return triggerContextObject.useTriggerContext()
 }

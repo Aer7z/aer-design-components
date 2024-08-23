@@ -8,10 +8,9 @@
 import { ref, inject } from 'vue'
 import type { Ref } from 'vue'
 import { DEFAULT_TRIGGER_PROPS, type TriggerEmits, type TriggerProps } from './interface'
-import { triggerContext } from './context'
+import { useTriggerContext } from './context'
 
-const triggerContextObject: triggerContext | undefined = inject('triggerContextObject')
-triggerContextObject?.useTriggerContext.call(triggerContextObject)
+const triggerContext = useTriggerContext()
 
 defineOptions({
   name: 'Trigger',
@@ -23,7 +22,7 @@ const emits = defineEmits<TriggerEmits>()
 // 改变可见性的函数
 const changeVisible = () => {
   // 切换可见性状态
-  triggerContextObject!.triggerPopupVisible.value = !triggerContextObject!.triggerPopupVisible.value
+  triggerContext!.triggerPopupVisible.value = !triggerContext!.triggerPopupVisible.value
 }
 
 // 不同触发事件对应的处理函数

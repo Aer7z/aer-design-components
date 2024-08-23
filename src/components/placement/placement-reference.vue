@@ -5,22 +5,17 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import { DEFAULT_PLACEMENT_PROPS, type PlacementProps, type PlacementRec } from './interface'
-import type { placementContext } from './context'
-
-// import { computed } from 'vue'
-// import type { ComputedRef } from 'vue'
-// import type { } from './interface'
-// import { getClsPrefix } from '../_utils/global-config'
+import { usePlacementContext } from './context'
 
 defineOptions({
   name: 'PlacementReference',
 })
 //获取元素，力求计算出元素的位置，从而计算下拉框的位置
 const placementRef: Ref = ref<HTMLElement>()
-const placementContextObject: placementContext | undefined = inject('placementContextObject')
-placementContextObject?.usePlacementContext.call(placementContextObject)
+
+const placementContext = usePlacementContext()
 
 const props = withDefaults(defineProps<PlacementProps>(), DEFAULT_PLACEMENT_PROPS)
 
@@ -65,7 +60,7 @@ const computePopupRec = (placementRec: DOMRect) => {
 //根据参数position调整获得的数据的函数
 const setPlacementRec = (placementRec: DOMRect) => {
   let newRec: PlacementRec = computePopupRec(placementRec)
-  placementContextObject!.placementRec.value = newRec
+  placementContext!.placementRec.value = newRec
 }
 
 onMounted(() => {

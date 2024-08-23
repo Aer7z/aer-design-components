@@ -17,7 +17,7 @@
   <TriggerProvider>
     <PlacementProvider>
       <Trigger>
-        <PlacementReference placement="top">
+        <PlacementReference>
           <button>按钮</button>
         </PlacementReference>
       </Trigger>
