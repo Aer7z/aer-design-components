@@ -1,13 +1,13 @@
-import { PopupPlacement }  from "../index"
+import { Placement }  from "../index"
 import Preview from "./preview.vue"
-import type { PopupPlacementProps } from '../interface'
+import type { PlacementProps } from '../interface'
 
 export default {
-  title: 'PopupPlacement', //组件总名称
-  component: PopupPlacement, //用以提供组件的所有相关属性、事件控制
+  title: 'Placement', //组件总名称
+  component: Placement, //用以提供组件的所有相关属性、事件控制
 }
 
-const PreviewTemplate: any = (args:PopupPlacementProps) => ({
+const PreviewTemplate: any = (args:PlacementProps) => ({
   components: { Preview },
   setup() {
     return { args };

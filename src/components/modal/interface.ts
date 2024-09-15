@@ -1,4 +1,4 @@
-import type { TriggerPopupPosRec } from '../trigger/interface'
+import type { TriggerPopupProps } from '../trigger/interface'
 //Modal的事件列表
 export interface ModalEmits {
   [key: string]: any // 添加索引签名
@@ -21,4 +21,4 @@ export const DEFAULT_MODAL_PROPS: ModalProps = {
   isMaskShow: true,
 }
 
-export interface ModalTriggerPopupPosRec extends TriggerPopupPosRec {}
+export interface ModalTriggerPopupPosRec extends TriggerPopupProps {}

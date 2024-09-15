@@ -1,4 +1,4 @@
-import type { TriggerPopupPosRec } from '../trigger/interface'
+import type { TriggerPopupProps } from '../trigger/interface'
 
 //Dropdown 的事件列表
 export interface DropdownEmits {
@@ -13,4 +13,4 @@ export interface DropdownProps {
   // body?: string
 }
 
-export interface DropdownTriggerPopupPosRec extends TriggerPopupPosRec {}
+export interface DropdownTriggerPopupPosRec extends TriggerPopupProps {}

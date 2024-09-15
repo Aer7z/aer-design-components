@@ -4,5 +4,5 @@
 </template>
 
 <script lang="ts" setup>
-import { PopupPlacement } from "../index";
+import { Placement } from "../index";
 </script>
