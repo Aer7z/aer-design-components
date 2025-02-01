@@ -10,18 +10,18 @@ export default function (plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/components/{{componentName}}/__test__/preview.vue',
-        templateFile: './.storybook/templates/__test__-preview-vue.hbs',
+        path: 'src/storybook/{{componentName}}/preview.vue',
+        templateFile: './.storybook/templates/storybook-preview-vue.hbs',
       },
       {
         type: 'add',
-        path: 'src/components/{{componentName}}/__test__/{{componentName}}.stories.ts',
-        templateFile: './.storybook/templates/__test__-story-ts.hbs',
+        path: 'src/storybook/{{componentName}}/{{componentName}}.stories.ts',
+        templateFile: './.storybook/templates/storybook-story-ts.hbs',
       },
       {
         type: 'add',
-        path: 'src/components/{{componentName}}/__test__/{{componentName}}.test.ts',
-        templateFile: './.storybook/templates/__test__-test-ts.hbs',
+        path: 'src/storybook/{{componentName}}/{{componentName}}.test.ts',
+        templateFile: './.storybook/templates/storybook-test-ts.hbs',
       },
       {
         type: 'add',
