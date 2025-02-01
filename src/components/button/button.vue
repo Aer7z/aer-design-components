@@ -16,14 +16,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { type ButtonProps, type ButtonEmits, DEFAULT_BUTTON_PROPS } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type ButtonProps, type ButtonEmits } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'ButtonSimple',
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
+const props = withDefaults(defineProps<ButtonProps>(), {
+  disabled: false,
+  size: 'medium',
+  shape: 'circle',
+  target: '',
+  variant: 'primary',
+})
 const emits = defineEmits<ButtonEmits>()
 
 const cls: string[] = [

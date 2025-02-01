@@ -11,7 +11,7 @@
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 // import type { ButtonSimpleProps, ButtonSimpleEmits } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'Checkbox'

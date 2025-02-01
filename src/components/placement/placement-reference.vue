@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from 'vue'
-import { DEFAULT_PLACEMENT_PROPS, type PlacementProps, type PlacementRec } from './interface'
+import { type PlacementProps, type PlacementRec } from './interface'
 import { usePlacementContext } from './context'
 
 defineOptions({
@@ -17,7 +17,9 @@ const placementRef: Ref = ref<HTMLElement>()
 
 const placementContext = usePlacementContext()
 
-const props = withDefaults(defineProps<PlacementProps>(), DEFAULT_PLACEMENT_PROPS)
+const props = withDefaults(defineProps<PlacementProps>(), {
+  placement: 'bottom',
+})
 
 //获取触发器Trigger的位置大小信息的函数
 const getPlacementRec: () => DOMRect = () => {

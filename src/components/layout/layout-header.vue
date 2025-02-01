@@ -5,14 +5,17 @@
 </template>
 
 <script lang="ts" setup>
-import { DEFAULT_LAYOUT_HEADER_PROPS, type LayoutHeaderProps } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import {  type LayoutHeaderProps } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'LayoutHeader',
 })
 
-const props = withDefaults(defineProps<LayoutHeaderProps>(), DEFAULT_LAYOUT_HEADER_PROPS)
+const props = withDefaults(defineProps<LayoutHeaderProps>(), {
+  height: '30px',
+  backgroundColor: 'transparent',
+})
 
 const styleHeader = `height:${props.height};background-color:${props.backgroundColor}`
 

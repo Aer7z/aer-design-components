@@ -22,14 +22,3 @@ export interface InputProps {
   status?: 'normal' | 'error' | 'warning'
   type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'erl'
 }
-
-export const DEFAULT_INPUT_PROPS: InputProps = {
-  disabled: false,
-  maxLength: 100,
-  readOnly: false,
-  showClear: false,
-  showCount: false,
-  size: 'medium',
-  status: 'normal',
-  type: 'text',
-}

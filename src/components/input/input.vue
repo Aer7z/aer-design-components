@@ -35,15 +35,24 @@
 // console.log(getCurrentInstance())
 import { computed, getCurrentInstance, onMounted } from 'vue'
 import type { ComputedRef } from 'vue'
-import { DEFAULT_INPUT_PROPS, type InputEmits, type InputProps } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type InputEmits, type InputProps } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'Input',
 })
 const inputModel = defineModel()
 
-const props = withDefaults(defineProps<InputProps>(), DEFAULT_INPUT_PROPS)
+const props = withDefaults(defineProps<InputProps>(), {
+  disabled: false,
+  maxLength: 100,
+  readOnly: false,
+  showClear: false,
+  showCount: false,
+  size: 'medium',
+  status: 'normal',
+  type: 'text',
+})
 
 const emits = defineEmits<InputEmits>()
 

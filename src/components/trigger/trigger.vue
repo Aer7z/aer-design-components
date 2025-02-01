@@ -5,9 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject } from 'vue'
-import type { Ref } from 'vue'
-import { DEFAULT_TRIGGER_PROPS, type TriggerEmits, type TriggerProps } from './interface'
+import { type TriggerEmits, type TriggerProps } from './interface'
 import { useTriggerContext } from './context'
 
 const triggerContext = useTriggerContext()
@@ -16,7 +14,10 @@ defineOptions({
   name: 'Trigger',
 })
 
-const props = withDefaults(defineProps<TriggerProps>(), DEFAULT_TRIGGER_PROPS)
+const props = withDefaults(defineProps<TriggerProps>(), {
+  disabled: false,
+  trigger: 'click',
+})
 const emits = defineEmits<TriggerEmits>()
 
 // 改变可见性的函数

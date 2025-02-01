@@ -5,14 +5,17 @@
 </template>
 
 <script lang="ts" setup>
-import { getClsPrefix } from '../_utils/global-config'
-import { DEFAULT_TYPOGRAPHY_TEXT_PROPS, type TypographyTextProps } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
+import { type TypographyTextProps } from './interface'
 
 defineOptions({
   name: 'TypographyText',
 })
 
-const props = withDefaults(defineProps<TypographyTextProps>(), DEFAULT_TYPOGRAPHY_TEXT_PROPS)
+const props = withDefaults(defineProps<TypographyTextProps>(), {
+  size: 'medium',
+  color: 'black',
+})
 
 const clsTypographyTextSize = `${getClsPrefix()}text-size-${props.size}`
 const clsTypographyTextColor = `${getClsPrefix()}text-color-${props.color}`

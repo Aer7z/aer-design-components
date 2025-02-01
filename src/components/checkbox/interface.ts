@@ -1,28 +1,25 @@
-import type { RadioType } from './constants'
-import type { RadioSize, RadioGroupDirection, RadioGroupSize, RadioGroupType } from './constants'
-//Checkbox 组件 未修改
-export interface RadioEmits {
+import type { CheckboxGroupDirection } from './constants'
+//Checkbox 组件
+
+export interface CheckboxEmits {
   [key: string]: any // 添加索引签名
-  radioChecked: (value: string | number | boolean) => true
+  CheckboxChecked: (value: string | number | boolean) => true
 }
-export interface RadioProps {
+export interface CheckboxProps {
   defaultChecked?: boolean
   disabled?: boolean
-  // modelValue?: string | number | boolean
-  size?: RadioSize
-  type?: RadioType
+  modelValue?: string | number | boolean
   value?: string | number | boolean
 }
 
-export interface RadioGroupEmits {
+export interface CheckboxGroupEmits {
   [key: string]: any // 添加索引签名
   checkedChange: (value: string | number | boolean) => true
 }
-export interface RadioGroupProps {
+
+export interface CheckboxGroupProps {
   defaultValue?: string | number | boolean
-  direction?: RadioGroupDirection
+  direction?: CheckboxGroupDirection
   disabled?: boolean
   modelValue?: string | number | boolean
-  size?: RadioGroupSize
-  type?: RadioGroupType
 }

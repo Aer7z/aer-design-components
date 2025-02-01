@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
 import type { ModalEmits } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'ModalFooter',

@@ -23,6 +23,3 @@ export interface PlacementContext {
   placementRec: Ref<PlacementRec>
 }
 
-export const DEFAULT_PLACEMENT_PROPS: PlacementProps = {
-  placement: 'bottom',
-}

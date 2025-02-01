@@ -5,15 +5,22 @@
 </template>
 
 <script lang="ts" setup>
-import { type RadioGroupProps, type RadioGroupEmits, DEFAULT_RADIO_GROUP_PROPS } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type RadioGroupProps, type RadioGroupEmits } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 import { createRadioGroupContext } from './context'
 
 defineOptions({
   name: 'RadioGroup',
 })
 
-const props = withDefaults(defineProps<RadioGroupProps>(), DEFAULT_RADIO_GROUP_PROPS)
+const props = withDefaults(defineProps<RadioGroupProps>(), {
+  direction: 'horizontal',
+  disabled: false,
+  // modelValue: '',
+  name: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+  size: 'medium',
+  type: 'radio',
+})
 createRadioGroupContext(props)
 const emits = defineEmits<RadioGroupEmits>()
 const model = defineModel()

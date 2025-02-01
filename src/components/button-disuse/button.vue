@@ -16,24 +16,32 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { type ButtonProps, type ButtonEmits, DEFAULT_BUTTON_PROPS } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type ButtonProps, type ButtonEmits } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'Button',
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), DEFAULT_BUTTON_PROPS)
+const props = withDefaults(defineProps<ButtonProps>(), {
+  disabled: false,
+  loading: false,
+  size: 'medium',
+  shape: 'square',
+  status: 'normal',
+  target: '',
+  type: 'default',
+})
 const emits = defineEmits<ButtonEmits>()
 
 const cls: string[] = [
-  `${getClsPrefix()}btn`,
-  `${getClsPrefix()}btn-size-${props.size}`,
-  `${getClsPrefix()}btn-shape-${props.shape}`,
-  `${getClsPrefix()}btn-status-${props.status}`,
-  `${getClsPrefix()}btn-type-${props.type}`,
+  `${getClsPrefix()}btn-nonuse`,
+  `${getClsPrefix()}btn-nonuse-size-${props.size}`,
+  `${getClsPrefix()}btn-nonuse-shape-${props.shape}`,
+  `${getClsPrefix()}btn-nonuse-status-${props.status}`,
+  `${getClsPrefix()}btn-nonuse-type-${props.type}`,
   //通过布尔值参数值的类样式处理
-  `${props.disabled ? getClsPrefix() + 'btn-disabled' : ''}`,
+  `${props.disabled ? getClsPrefix() + 'btn-nonuse-disabled' : ''}`,
 ]
 const isTagA: ComputedRef<boolean> = computed((): boolean => {
   return props.target === '' ? false : true

@@ -33,19 +33,3 @@ export interface RadioGroupContext {
   radioGroupSize?: 'mini' | 'small' | 'medium' | 'large'
   radioGroupType?: 'button' | 'radio'
 }
-
-export const DEFAULT_RADIO_PROPS: RadioProps = {
-  defaultChecked: false,
-  disabled: false,
-  size: 'medium',
-  type: 'radio',
-}
-
-export const DEFAULT_RADIO_GROUP_PROPS: RadioGroupProps = {
-  direction: 'horizontal',
-  disabled: false,
-  // modelValue: '',
-  name: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
-  size: 'medium',
-  type: 'radio',
-}
