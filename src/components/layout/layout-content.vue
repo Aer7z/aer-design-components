@@ -5,14 +5,17 @@
 </template>
 
 <script lang="ts" setup>
-import { getClsPrefix } from '../_utils/global-config'
-import { DEFAULT_LAYOUT_CONTENT_PROPS, type LayoutContentProps } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
+import {  type LayoutContentProps } from './interface'
 
 defineOptions({
   name: 'LayoutContent',
 })
 
-const props = withDefaults(defineProps<LayoutContentProps>(), DEFAULT_LAYOUT_CONTENT_PROPS)
+const props = withDefaults(defineProps<LayoutContentProps>(), {
+  height: '30px',
+  backgroundColor: 'transparent',
+})
 
 const styleContent = `height:${props.height};background-color:${props.backgroundColor}`
 

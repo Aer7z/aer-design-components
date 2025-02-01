@@ -20,12 +20,3 @@ export interface TriggerPopupProps {
 export interface TriggerPopupContext {
   triggerPopupVisible: Ref<boolean>
 }
-
-export const DEFAULT_TRIGGER_PROPS: TriggerProps = {
-  disabled: false,
-  trigger: 'click',
-}
-
-export const DEFAULT_TRIGGER_POPUP_PROPS: TriggerPopupProps = {
-  teleportToBody: true,
-}

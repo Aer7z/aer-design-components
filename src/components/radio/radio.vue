@@ -23,15 +23,20 @@
   </label>
 </template>
 <script lang="ts" setup>
-import { type RadioProps, type RadioEmits, DEFAULT_RADIO_PROPS } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type RadioProps, type RadioEmits } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 import { useRadioGroupContext } from './context'
 
 defineOptions({
   name: 'Radio',
 })
 
-const props = withDefaults(defineProps<RadioProps>(), DEFAULT_RADIO_PROPS)
+const props = withDefaults(defineProps<RadioProps>(), {
+  defaultChecked: false,
+  disabled: false,
+  size: 'medium',
+  type: 'radio',
+})
 // let isChecked = ref(props.defaultChecked)
 const { radioGroupDefaultValue, radioGroupDirection, radioGroupName, radioGroupSize, radioGroupType } =
   useRadioGroupContext()

@@ -1,6 +1,9 @@
 /node_modules
 /coverage
 
+# 打包后的文件不上传
+/dist
+
 
 # story 的测试部分不上传
 *storybook.log

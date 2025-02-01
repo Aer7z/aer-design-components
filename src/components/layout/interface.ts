@@ -29,23 +29,3 @@ export interface LayoutFooterProps {
   height?: string
   backgroundColor?: string
 }
-
-export const DEFAULT_LAYOUT_HEADER_PROPS: LayoutHeaderProps = {
-  height: '30px',
-  backgroundColor: 'transparent',
-}
-
-export const DEFAULT_LAYOUT_SIDEBAR_PROPS: LayoutSidebarProps = {
-  width: '20%',
-  backgroundColor: 'transparent',
-}
-
-export const DEFAULT_LAYOUT_CONTENT_PROPS: LayoutContentProps = {
-  height: '30px',
-  backgroundColor: 'transparent',
-}
-
-export const DEFAULT_LAYOUT_FOOTER_PROPS: LayoutFooterProps = {
-  height: '30px',
-  backgroundColor: 'transparent',
-}

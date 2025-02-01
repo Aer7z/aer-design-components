@@ -11,6 +11,3 @@ export interface OverlayProps {
   isMaskShow?: boolean
 }
 
-export const DEFAULT_OVERLAY_PROPS: OverlayProps = {
-  isMaskShow: true,
-}

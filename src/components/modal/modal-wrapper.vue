@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getClsPrefix } from '../_utils/global-config'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'ModalContent',

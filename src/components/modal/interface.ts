@@ -17,8 +17,4 @@ export interface ModalContext {
   isMaskShow?: boolean
 }
 
-export const DEFAULT_MODAL_PROPS: ModalProps = {
-  isMaskShow: true,
-}
-
 export interface ModalTriggerPopupPosRec extends TriggerPopupProps {}

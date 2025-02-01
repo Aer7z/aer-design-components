@@ -5,13 +5,16 @@
 </template>
 
 <script lang="ts" setup>
-import { DEFAULT_LAYOUT_FOOTER_PROPS, type LayoutFooterProps } from './interface'
-import { getClsPrefix } from '../_utils/global-config'
+import { type LayoutFooterProps } from './interface'
+import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
   name: 'LayoutFooter',
 })
-const props = withDefaults(defineProps<LayoutFooterProps>(), DEFAULT_LAYOUT_FOOTER_PROPS)
+const props = withDefaults(defineProps<LayoutFooterProps>(), {
+  height: '30px',
+  backgroundColor: 'transparent',
+})
 
 const styleFooter = `height:${props.height};background-color:${props.backgroundColor}`
 

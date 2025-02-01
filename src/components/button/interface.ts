@@ -12,11 +12,3 @@ export interface ButtonProps {
   target?: string
   variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'link' | 'destructive'
 }
-
-export const DEFAULT_BUTTON_PROPS: ButtonProps = {
-  disabled: false,
-  size: 'medium',
-  shape: 'circle',
-  target: '',
-  variant: 'primary',
-}
