@@ -1,0 +1,21 @@
+@import './token.less';
+
+.@{components-prefix}input-new {
+  display: inline-flex;
+
+  box-sizing: border-box;
+  border: solid;
+  white-space: nowrap;
+
+  width: 180px;
+  padding: 7px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none; /* 去除默认的轮廓样式 */
+
+  &:focus:not(.@{components-prefix}input-disabled) {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 1px;
+  }
+}
