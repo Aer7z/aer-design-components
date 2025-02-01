@@ -12,8 +12,6 @@
     </PlacementProvider>
   </TriggerProvider>
   <br />
-  <br />
-  <br />
   <TriggerProvider>
     <PlacementProvider>
       <Trigger>

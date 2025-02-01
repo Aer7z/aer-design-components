@@ -9,13 +9,15 @@
     "aer",
     "aer7z"
   ],
+  "type": "module",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
     "format": "prettier --write src/",
     "preview": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "plop": "plop"
   },
   "dependencies": {
     "pinia": "^2.3.1",

@@ -1,6 +1,5 @@
 <template>
   <slot></slot>
-  <!-- <div>23123</div> -->
 </template>
 
 <script lang="ts" setup>
