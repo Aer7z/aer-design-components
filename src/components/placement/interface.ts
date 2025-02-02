@@ -8,7 +8,19 @@ export interface PlacementEmits {
 
 //Button的参数列表
 export interface PlacementProps {
-  placement?: 'top' | 'bottom' | 'left' | 'right'
+  placement?:
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'leftTop'
+    | 'leftBottom'
+    | 'rightTop'
+    | 'rightBottom'
 }
 
 export interface PlacementRec {
@@ -22,4 +34,3 @@ export interface PlacementRec {
 export interface PlacementContext {
   placementRec: Ref<PlacementRec>
 }
-

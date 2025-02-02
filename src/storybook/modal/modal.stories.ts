@@ -1,11 +1,11 @@
 // import Modal from '../modal.vue'
-import { Modal, ModalTrigger, ModalTriggerPopup, ModalHeader, ModalBody, ModalFooter } from '@/components/modal/index'
+import { Modal, ModalTrigger, ModalTriggerContent, ModalHeader, ModalBody, ModalFooter } from '@/components/modal/index'
 import Preview from './preview.vue'
 import type { ModalProps } from '@/components/modal/interface'
 
 export default {
   title: 'Modal', //组件总名称
-  component: [Modal, ModalTrigger, ModalTriggerPopup, ModalHeader, ModalBody, ModalFooter], //用以提供组件的所有相关属性、事件控制
+  component: [Modal, ModalTrigger, ModalTriggerContent, ModalHeader, ModalBody, ModalFooter], //用以提供组件的所有相关属性、事件控制
 }
 
 const PreviewTemplate: any = (args: ModalProps) => ({

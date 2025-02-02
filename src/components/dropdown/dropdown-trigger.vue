@@ -1,13 +1,16 @@
 <template>
-  <Trigger>
+  <TriggerListen>
     <template v-slot:default>
-      <slot></slot>
+      <PlacementReference>
+        <slot></slot>
+      </PlacementReference>
     </template>
-  </Trigger>
+  </TriggerListen>
 </template>
 
 <script lang="ts" setup>
-import { Trigger } from '../trigger/index'
+import { TriggerListen } from '@/components/trigger/index'
+import { PlacementReference } from '@/components/placement/index'
 
 defineOptions({
   name: 'DropdownTrigger',

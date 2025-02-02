@@ -18,4 +18,4 @@
 
 export { default as Placement } from './placement.vue'
 export { default as PlacementReference } from './placement-reference.vue'
-export { default as PlacementProvider } from './placement-provider.vue'
+export { default as PlacementContent } from './placement-content.vue'

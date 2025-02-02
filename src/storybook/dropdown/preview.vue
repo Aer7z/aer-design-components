@@ -3,12 +3,12 @@
     <dropdown-trigger>
       <button>点击</button>
     </dropdown-trigger>
-    <DropdownTriggerPopup>
+    <DropdownTriggerContent>
       <div>展示</div>
-    </DropdownTriggerPopup>
+    </DropdownTriggerContent>
   </Dropdown>
 </template>
 
 <script lang="ts" setup>
-import { Dropdown, DropdownTrigger, DropdownTriggerPopup } from '@/components/dropdown/index'
+import { Dropdown, DropdownTrigger, DropdownTriggerContent } from '@/components/dropdown/index'
 </script>

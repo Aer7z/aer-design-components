@@ -1,10 +1,10 @@
 import { provide, inject } from 'vue'
 import type { ModalContext, ModalProps } from './interface'
 
-export {
-  createTriggerContext as createModalTriggerContext,
-  // useTriggerContext as useModalTriggerContext,
-} from '../trigger/context'
+// export {
+//   createTriggerContext as createModalTriggerContext,
+//   // useTriggerContext as useModalTriggerContext,
+// } from '../trigger/context'
 
 const modalPropsContextKey = Symbol('modalPropsContextKey')
 

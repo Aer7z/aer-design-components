@@ -1,10 +1,13 @@
 <template>
-  <slot></slot>
+  <Trigger>
+    <slot></slot>
+  </Trigger>
 </template>
 
 <script lang="ts" setup>
 import { type ModalEmits, type ModalProps } from './interface'
-import { createModalPropsContext, createModalTriggerContext } from './context'
+import { createModalPropsContext } from './context'
+import { Trigger } from '@/components/trigger/index'
 
 defineOptions({
   name: 'Modal',
@@ -15,7 +18,6 @@ const props = withDefaults(defineProps<ModalProps>(), {
 })
 
 const emits = defineEmits<ModalEmits>()
-createModalTriggerContext()
 createModalPropsContext(props)
 </script>
 

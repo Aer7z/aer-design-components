@@ -1,15 +1,18 @@
 <template>
-  <slot></slot>
+  <Placement>
+    <Trigger>
+      <slot></slot>
+    </Trigger>
+  </Placement>
 </template>
 
 <script lang="ts" setup>
-import { createDropdownTriggerContext } from './context'
+import { Trigger } from '@/components/trigger/index'
+import { Placement } from '@/components/placement'
 
 defineOptions({
   name: 'Dropdown',
 })
-
-createDropdownTriggerContext()
 </script>
 
 <style lang="less" src="./style/index.less"></style>

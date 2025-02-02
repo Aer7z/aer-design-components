@@ -1,13 +1,13 @@
 <template>
-  <Trigger>
+  <TriggerListen>
     <template v-slot:default>
       <slot></slot>
     </template>
-  </Trigger>
+  </TriggerListen>
 </template>
 
 <script lang="ts" setup>
-import { Trigger } from '../trigger/index'
+import { TriggerListen } from '@/components/trigger/index'
 
 defineOptions({
   name: 'ModalTrigger',

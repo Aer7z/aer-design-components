@@ -1,21 +1,24 @@
 <template>
-  <TriggerPopup>
+  <TriggerContent>
     <template v-slot:default>
-      <div :class="[cls]">
-        <slot></slot>
-      </div>
+      <PlacementContent>
+        <div :class="[cls]">
+          <slot></slot>
+        </div>
+      </PlacementContent>
     </template>
-  </TriggerPopup>
+  </TriggerContent>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { TriggerPopup } from '../trigger/index'
+import { TriggerContent } from '@/components/trigger/index'
+import { PlacementContent } from '@/components/placement/index'
 import { getClsPrefix } from '@/components/_utils/global-config'
 
 defineOptions({
-  name: 'DropdownTriggerPopup',
+  name: 'DropdownTriggerContent',
 })
 
 const cls: ComputedRef<string[]> = computed(() => [`${getClsPrefix()}dropdown-trigger-popup`])

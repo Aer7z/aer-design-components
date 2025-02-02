@@ -10,13 +10,13 @@ export interface TriggerEmits {
 
 export interface TriggerProps {
   disabled?: boolean
-  trigger?: 'hover' | 'click' | 'focus'
+  triggerMode?: 'hover' | 'click' | 'focus'
 }
 
-export interface TriggerPopupProps {
+export interface TriggerContentProps {
   teleportToBody?: boolean
 }
 
-export interface TriggerPopupContext {
-  triggerPopupVisible: Ref<boolean>
+export interface TriggerContentContext {
+  triggerContentVisible: Ref<boolean>
 }

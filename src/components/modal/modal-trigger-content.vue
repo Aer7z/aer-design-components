@@ -1,16 +1,16 @@
 <template>
-  <TriggerPopup>
+  <TriggerContent>
     <template v-slot:default>
       <slot></slot>
     </template>
-  </TriggerPopup>
+  </TriggerContent>
 </template>
 
 <script lang="ts" setup>
-import { TriggerPopup } from '../trigger/index'
+import { TriggerContent } from '@/components/trigger/index'
 
 defineOptions({
-  name: 'ModalTriggerPopup',
+  name: 'ModalTriggerContent',
 })
 </script>
 

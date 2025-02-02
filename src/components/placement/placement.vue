@@ -1,17 +1,17 @@
 <template>
-  <span :style="['position:absolute', placementContext?.placementRec.value]">
+  <span>
     <slot></slot>
   </span>
 </template>
 
 <script lang="ts" setup>
-import { usePlacementContext } from './context'
+import { createPlacementContext } from './context'
 
 defineOptions({
   name: 'Placement',
 })
 
-const placementContext = usePlacementContext()
+createPlacementContext()
 </script>
 
 <style lang="less" src="./style/index.less"></style>
